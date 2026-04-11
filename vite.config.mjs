@@ -21,6 +21,22 @@ export default defineConfig(({ command }) => {
                     "resources/css/app.css",
                     "resources/css/editor-style.css",
                 ],
+                output: {
+                    entryFileNames: (chunkInfo) => {
+                        // Keep theme.js as is, hash others
+                        return chunkInfo.name === "theme"
+                            ? "theme.js"
+                            : "[name]-[hash].js";
+                    },
+                    chunkFileNames: "[name]-[hash].js",
+                    assetFileNames: (assetInfo) => {
+                        // Keep editor-style.css as is, hash others
+                        if (assetInfo.name === "editor-style.css") {
+                            return "editor-style.css";
+                        }
+                        return "[name]-[hash][extname]";
+                    },
+                },
             },
         },
         plugins: [tailwindcss()],
