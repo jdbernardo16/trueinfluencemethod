@@ -77,9 +77,9 @@ $posts = new WP_Query([
                     <?php echo esc_html(tim_get_field('blog_hero_heading', 'Conversations That Matter')); ?>
                 </h1>
 
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-                    <?php echo esc_html(tim_get_field('blog_hero_description', 'Join Joanna for honest conversations about leadership, authenticity, and the journey to finding your voice. New episodes every week.')); ?>
-                </p>
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
+                    <?php echo tim_get_field('blog_hero_description', 'Join Joanna for honest conversations about leadership, authenticity, and the journey to finding your voice. New episodes every week.'); ?>
+                </div>
 
                 <?php
                 $cta_link = tim_get_field('blog_hero_cta_link', '');
@@ -109,9 +109,9 @@ $posts = new WP_Query([
                         <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                             <?php echo esc_html(tim_get_field('blog_latest_heading', 'Latest Episodes')); ?>
                         </h2>
-                        <p class="text-[#0f203d]/70 text-lg max-w-2xl mx-auto">
-                            <?php echo esc_html(tim_get_field('blog_latest_description', 'Catch up on the most recent conversations and insights from Joanna.')); ?>
-                        </p>
+                        <div class="text-[#0f203d]/70 text-lg max-w-2xl mx-auto">
+                            <?php echo tim_get_field('blog_latest_description', 'Catch up on the most recent conversations and insights from Joanna.'); ?>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-3 gap-8">
@@ -136,9 +136,9 @@ $posts = new WP_Query([
                     <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                         <?php echo esc_html(tim_get_field('blog_grid_heading', 'All Episodes')); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/70 text-lg max-w-2xl mx-auto">
-                        <?php echo esc_html(tim_get_field('blog_grid_description', 'Browse the complete archive of conversations and insights.')); ?>
-                    </p>
+                    <div class="text-[#faf8f5]/70 text-lg max-w-2xl mx-auto">
+                        <?php echo tim_get_field('blog_grid_description', 'Browse the complete archive of conversations and insights.'); ?>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

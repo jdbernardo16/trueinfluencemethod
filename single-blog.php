@@ -66,7 +66,7 @@
 
                     <div class="flex items-center justify-center gap-4 text-sm text-[#faf8f5]/60">
                         <span><?php echo get_the_date(); ?></span>
-                        <span class="w-1 h-1 rounded-full bg-[#d4b478]" />
+                        <span class="w-1 h-1 rounded-full bg-[#d4b478]"></span>
                         <span><?php echo get_reading_time(); ?></span>
                     </div>
                 </div>
