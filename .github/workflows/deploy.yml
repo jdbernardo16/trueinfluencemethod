@@ -43,9 +43,9 @@ jobs:
                   # Copy files excluding those in .distignore
                   rsync -av --exclude-from='.distignore' --exclude='deploy-package' --exclude='.git' --exclude='.github' ./ deploy-package/
 
-                  # Remove any remaining hidden files/directories
-                  find deploy-package -name '.*' -type d -exec rm -rf {} + 2>/dev/null || true
-                  find deploy-package -name '.*' -type f -delete 2>/dev/null || true
+                  # Remove hidden files/directories EXCEPT .vite (needed for Vite manifest)
+                  find deploy-package -name '.*' -type d ! -path '*/dist/.vite' -exec rm -rf {} + 2>/dev/null || true
+                  find deploy-package -name '.*' -type f ! -path '*/dist/.vite/*' -delete 2>/dev/null || true
 
             - name: Deploy to Hostinger via FTP
               uses: SamKirkland/FTP-Deploy-Action@v4.3.4
