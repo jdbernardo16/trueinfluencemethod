@@ -32,9 +32,6 @@ jobs:
             - name: Install PHP dependencies
               run: composer install --no-dev --optimize-autoloader
 
-            - name: Clear Vite cache
-              run: rm -rf node_modules/.vite
-
             - name: Build assets
               run: npm run build
 
