@@ -29,9 +29,9 @@
 
                     <div class="absolute bottom-8 left-8 right-8">
                         <div class="bg-[#faf8f5]/95 backdrop-blur-sm p-6 rounded-xl">
-                            <p class="font-serif text-[#0f203d] text-lg italic">
+                            <div class="font-serif text-[#0f203d] text-lg italic">
                                 "<?php tim_esc_text(tim_get_field('about_philosophy_quote_overlay', 'Your story is not just where you\'ve been. It\'s the reason people choose to follow you.')); ?>"
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
