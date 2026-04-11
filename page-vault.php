@@ -55,9 +55,9 @@
                     <?php echo esc_html(get_field('vault_hero_heading') ?: 'Enter The Vault'); ?>
                 </h1>
 
-                <p class="text-lg md:text-xl text-[#faf8f5]/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+                <div class="text-lg md:text-xl text-[#faf8f5]/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
                     <?php echo wp_kses_post(get_field('vault_hero_description') ?: 'A free monthly safe space for women leaders to tell their story, connect with peers, and unlock your authentic voice.'); ?>
-                </p>
+                </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="<?php echo esc_url(get_field('vault_hero_primary_cta_link') ?: home_url('/vault-registration/')); ?>"
@@ -94,9 +94,9 @@
                         <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-8 leading-tight">
                             <?php echo esc_html(get_field('vault_about_heading') ?: 'A Safe Space for Your Voice'); ?>
                         </h2>
-                        <p class="text-[#0f203d]/70 font-light leading-relaxed text-lg">
+                        <div class="text-[#0f203d]/70 font-light leading-relaxed text-lg">
                             <?php echo wp_kses_post(get_field('vault_about_description') ?: 'The Vault is Joanna\'s gift to women leaders seeking a supportive community to share their story, practice their message, and connect with like-minded peers. This complimentary monthly gathering provides a judgment-free environment where you can speak authentically and receive gentle guidance.'); ?>
-                        </p>
+                        </div>
                     </div>
                     <div class="relative">
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -117,9 +117,9 @@
                                 <h3 class="font-serif text-xl text-[#0f203d] mb-4">
                                     <?php echo esc_html($feature['vault_about_feature_title']); ?>
                                 </h3>
-                                <p class="text-[#0f203d]/70 font-light leading-relaxed">
+                                <div class="text-[#0f203d]/70 font-light leading-relaxed">
                                     <?php echo wp_kses_post($feature['vault_about_feature_description']); ?>
-                                </p>
+                                </div>
                             </div>
                         <?php endforeach;
                     else:
@@ -143,9 +143,9 @@
                                 <h3 class="font-serif text-xl text-[#0f203d] mb-4">
                                     <?php echo esc_html($feature['vault_about_feature_title']); ?>
                                 </h3>
-                                <p class="text-[#0f203d]/70 font-light leading-relaxed">
+                                <div class="text-[#0f203d]/70 font-light leading-relaxed">
                                     <?php echo wp_kses_post($feature['vault_about_feature_description']); ?>
-                                </p>
+                                </div>
                             </div>
                     <?php endforeach;
                     endif; ?>
@@ -208,9 +208,9 @@
                                 <h3 class="font-serif text-xl text-[#faf8f5] mb-3">
                                     <?php echo esc_html($benefit['vault_benefit_title']); ?>
                                 </h3>
-                                <p class="text-[#faf8f5]/70 font-light leading-relaxed text-sm">
+                                <div class="text-[#faf8f5]/70 font-light leading-relaxed text-sm">
                                     <?php echo wp_kses_post($benefit['vault_benefit_description']); ?>
-                                </p>
+                                </div>
                             </div>
                         <?php endforeach;
                     else:
@@ -286,9 +286,9 @@
                                 <h3 class="font-serif text-xl text-[#faf8f5] mb-3">
                                     <?php echo esc_html($benefit['vault_benefit_title']); ?>
                                 </h3>
-                                <p class="text-[#faf8f5]/70 font-light leading-relaxed text-sm">
+                                <div class="text-[#faf8f5]/70 font-light leading-relaxed text-sm">
                                     <?php echo wp_kses_post($benefit['vault_benefit_description']); ?>
-                                </p>
+                                </div>
                             </div>
                     <?php endforeach;
                     endif; ?>
@@ -315,9 +315,9 @@
                     <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6 leading-tight">
                         <?php echo esc_html(get_field('vault_cta_heading') ?: 'Ready to Enter The Vault?'); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/80 font-light leading-relaxed text-lg mb-8">
+                    <div class="text-[#faf8f5]/80 font-light leading-relaxed text-lg mb-8">
                         <?php echo wp_kses_post(get_field('vault_cta_description') ?: 'Join our next First Friday gathering and take the first step toward unlocking your authentic voice in a supportive community of women leaders.'); ?>
-                    </p>
+                    </div>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a href="<?php echo esc_url(get_field('vault_cta_primary_cta_link') ?: home_url('/vault-registration/')); ?>"
                             class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl">

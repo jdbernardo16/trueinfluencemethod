@@ -124,9 +124,9 @@ $iconMap = array(
                 <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-[#faf8f5] mb-8">
                     <?php echo esc_html($hero_heading); ?>
                 </h1>
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
                     <?php echo wp_kses_post($hero_description); ?>
-                </p>
+                </div>
             </div>
         </section>
 
@@ -140,18 +140,18 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-8">
                         <?php echo esc_html($intro_heading); ?>
                     </h2>
-                    <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($intro_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <p class="text-[#0f203d]/80 text-lg leading-relaxed mb-6">
+                        <div class="text-[#0f203d]/80 text-lg leading-relaxed mb-6">
                             <?php echo wp_kses_post($intro_left_paragraph_1); ?>
-                        </p>
-                        <p class="text-[#0f203d]/80 text-lg leading-relaxed">
+                        </div>
+                        <div class="text-[#0f203d]/80 text-lg leading-relaxed">
                             <?php echo wp_kses_post($intro_left_paragraph_2); ?>
-                        </p>
+                        </div>
                     </div>
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl">
                         <img src="<?php echo esc_url($intro_image['url']); ?>" alt="<?php echo esc_attr($intro_image['alt']); ?>" class="w-full h-auto">
@@ -170,9 +170,9 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
                         <?php echo esc_html($step1_heading); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($step1_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <?php foreach ($step1_blocks as $block): ?>
@@ -198,9 +198,9 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-8">
                         <?php echo esc_html($step2_heading); ?>
                     </h2>
-                    <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($step2_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <?php foreach ($step2_visions as $vision): ?>
@@ -227,9 +227,9 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
                         <?php echo esc_html($step3_heading); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($step3_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <?php foreach ($step3_outcomes as $outcome): ?>
@@ -257,9 +257,9 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-8">
                         <?php echo esc_html($step4_heading); ?>
                     </h2>
-                    <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($step4_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
                     <?php foreach ($step4_paths as $path): ?>
@@ -282,9 +282,9 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
                         <?php echo esc_html($step5_heading); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($step5_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <?php foreach ($step5_investments as $investment): ?>
@@ -328,9 +328,9 @@ $iconMap = array(
                     <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-8">
                         <?php echo esc_html($step6_heading); ?>
                     </h2>
-                    <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                    <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                         <?php echo wp_kses_post($step6_description); ?>
-                    </p>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div>
@@ -340,9 +340,9 @@ $iconMap = array(
                                 <?php echo wp_kses_post($step6_success_box_content); ?>
                             </div>
                         </div>
-                        <p class="text-[#0f203d]/80">
+                        <div class="text-[#0f203d]/80">
                             <?php echo wp_kses_post($step6_additional_paragraph); ?>
-                        </p>
+                        </div>
                     </div>
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl">
                         <img src="<?php echo esc_url($step6_image['url']); ?>" alt="<?php echo esc_attr($step6_image['alt']); ?>" class="w-full h-auto">
@@ -363,9 +363,9 @@ $iconMap = array(
                 <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
                     <?php echo esc_html($cta_heading); ?>
                 </h2>
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
                     <?php echo wp_kses_post($cta_description); ?>
-                </p>
+                </div>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="<?php echo esc_url(home_url('/apply/')); ?>"
                         class="inline-flex items-center justify-center gap-3 bg-[#d4b478] text-[#0f203d] text-sm uppercase tracking-widest px-8 py-4 rounded-full font-medium hover:bg-[#b87d1f] transition-colors duration-300">

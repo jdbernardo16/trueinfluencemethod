@@ -36,9 +36,9 @@
         <h2 class="font-serif text-4xl md:text-6xl text-[#faf8f5] mb-6">
             <?php tim_esc_text(tim_get_field('about_cta_heading', 'Ready to Find Your Voice?')); ?>
         </h2>
-        <p class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+        <div class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
             <?php tim_esc_content(tim_get_field('about_cta_description', 'The first step is a conversation. Fill out Joanna\'s private client inquiry form and her team will be in touch to guide you toward the right path.')); ?>
-        </p>
+        </div>
 
         <?php
         $cta_button_link = tim_get_field('about_cta_button_link');

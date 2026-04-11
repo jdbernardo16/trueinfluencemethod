@@ -1,0 +1,255 @@
+<?php
+
+/**
+ * Blog Page ACF Field Group
+ *
+ * Registers ACF fields for the blog landing page template.
+ *
+ * @package tim-wordpress
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group([
+        'key' => 'group_blog_page',
+        'title' => 'Blog Page',
+        'fields' => [
+            // Hero Section
+            [
+                'key' => 'field_blog_hero_badge',
+                'label' => 'Hero Badge Text',
+                'name' => 'blog_hero_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text displayed above the hero heading.',
+                'required' => 0,
+                'default_value' => 'Latest Episodes',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_hero_heading',
+                'label' => 'Hero Heading',
+                'name' => 'blog_hero_heading',
+                'type' => 'text',
+                'instructions' => 'The main heading text for the hero section.',
+                'required' => 0,
+                'default_value' => 'Conversations That Matter',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_hero_description',
+                'label' => 'Hero Description',
+                'name' => 'blog_hero_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text displayed below the hero heading.',
+                'required' => 0,
+                'default_value' => 'Join Joanna for honest conversations about leadership, authenticity, and the journey to finding your voice. New episodes every week.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_hero_cta_text',
+                'label' => 'Hero CTA Text',
+                'name' => 'blog_hero_cta_text',
+                'type' => 'text',
+                'instructions' => 'The text for the call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Listen Now',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_hero_cta_link',
+                'label' => 'Hero CTA Link',
+                'name' => 'blog_hero_cta_link',
+                'type' => 'page_link',
+                'instructions' => 'Select the page for the call-to-action button.',
+                'required' => 0,
+                'post_type' => ['page'],
+                'taxonomy' => [],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Latest Episodes Section
+            [
+                'key' => 'field_blog_latest_badge',
+                'label' => 'Latest Badge Text',
+                'name' => 'blog_latest_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text for the latest episodes section.',
+                'required' => 0,
+                'default_value' => 'Fresh Content',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_latest_heading',
+                'label' => 'Latest Section Heading',
+                'name' => 'blog_latest_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the latest episodes section.',
+                'required' => 0,
+                'default_value' => 'Latest Episodes',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_latest_description',
+                'label' => 'Latest Section Description',
+                'name' => 'blog_latest_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text for the latest episodes section.',
+                'required' => 0,
+                'default_value' => 'Catch up on the most recent conversations and insights from Joanna.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Grid Section
+            [
+                'key' => 'field_blog_grid_badge',
+                'label' => 'Grid Badge Text',
+                'name' => 'blog_grid_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text for the grid section.',
+                'required' => 0,
+                'default_value' => 'Archive',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_grid_heading',
+                'label' => 'Grid Section Heading',
+                'name' => 'blog_grid_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the grid section.',
+                'required' => 0,
+                'default_value' => 'All Episodes',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_blog_grid_description',
+                'label' => 'Grid Section Description',
+                'name' => 'blog_grid_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text for the grid section.',
+                'required' => 0,
+                'default_value' => 'Browse the complete archive of conversations and insights.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-blog.php',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => [
+            'the_content',
+            'excerpt',
+            'discussion',
+            'comments',
+            'revisions',
+            'slug',
+            'author',
+            'format',
+            'page_attributes',
+            'featured_image',
+            'categories',
+            'tags',
+            'send-trackbacks',
+        ],
+        'active' => true,
+        'description' => 'ACF fields for the Blog landing page template.',
+    ]);
+}

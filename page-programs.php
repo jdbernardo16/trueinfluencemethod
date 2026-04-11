@@ -32,9 +32,9 @@
                 <h1 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
                     <?php echo esc_html(get_field('programs_hero_heading') ?: 'Three Offers. One Method. Transformation at Every Level.'); ?>
                 </h1>
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
                     <?php echo wp_kses_post(get_field('programs_hero_description') ?: 'Joanna offers three distinct paths into True Influence Method™️ — each designed for a different context, depth, and investment. All three are grounded in same rigorous process. All three create lasting change.'); ?>
-                </p>
+                </div>
             </div>
         </section>
 
@@ -49,12 +49,12 @@
                         <?php echo esc_html(get_field('programs_private_heading') ?: 'Private Training: The Deepest Work Joanna Does.'); ?>
                     </h2>
                 </div>
-                <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
                     <?php echo wp_kses_post(get_field('programs_private_description_1') ?: 'Designed for founders, CEOs, and executives who are ready to own their message, develop their signature story, and step fully into thought leadership. This is one-on-one, high-touch, and entirely bespoke.'); ?>
-                </p>
-                <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                </div>
+                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
                     <?php echo wp_kses_post(get_field('programs_private_description_2') ?: 'Private clients work directly with Joanna in a structured 90-day engagement — and join her exclusive quarterly Mastermind & Retreat throughout the time they work together.'); ?>
-                </p>
+                </div>
 
                 <h3 class="font-serif text-2xl text-[#d4b478] mb-8 text-center"><?php echo esc_html(get_field('programs_private_levels_heading') ?: 'Three Levels of Private Training:'); ?></h3>
 
@@ -149,12 +149,12 @@
                         <?php echo esc_html(get_field('programs_speak_heading') ?: 'Speak & Rise: Find Your Voice. Tell Your Story. Lead Your Room.'); ?>
                     </h2>
                 </div>
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
                     <?php echo wp_kses_post(get_field('programs_speak_description_1') ?: 'Speak & Rise is Joanna\'s group training experience — a powerful, community-driven program for leaders who are ready to develop their story, sharpen their message, and step into their voice alongside a group of peers doing the same brave work.'); ?>
-                </p>
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                </div>
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
                     <?php echo wp_kses_post(get_field('programs_speak_description_2') ?: 'It is the most accessible entry point into True Influence Method™️ — and it is anything but ordinary.'); ?>
-                </p>
+                </div>
 
                 <!-- What's Included -->
                 <div class="grid md:grid-cols-2 gap-6 mb-12">
@@ -221,12 +221,12 @@
                         <?php echo esc_html(get_field('programs_corporate_heading') ?: 'Corporate Programs: Bring True Influence to Your Organization.'); ?>
                     </h2>
                 </div>
-                <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
                     <?php echo wp_kses_post(get_field('programs_corporate_description_1') ?: 'Joanna works with leadership teams, executive groups, and organizations who want to build a culture of courageous, clear, and authentic communication. Every corporate engagement is fully customized — designed around your team\'s specific context, goals, and communication challenges.'); ?>
-                </p>
-                <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                </div>
+                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
                     <?php echo wp_kses_post(get_field('programs_corporate_description_2') ?: 'Whether you are preparing leaders for high-stakes presentations, building a stronger executive voice across your organization, or embedding a communication methodology at scale — Joanna\'s corporate work delivers transformation that is immediately felt and lasting in impact.'); ?>
-                </p>
+                </div>
 
                 <!-- Corporate offerings -->
                 <div class="grid md:grid-cols-2 gap-6 mb-12">

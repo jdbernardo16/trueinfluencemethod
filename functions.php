@@ -4,6 +4,12 @@ if (is_file(__DIR__ . '/vendor/autoload_packages.php')) {
     require_once __DIR__ . '/vendor/autoload_packages.php';
 }
 
+// Require custom navigation walker
+require_once get_template_directory() . '/src/Walkers/PrimaryNavWalker.php';
+
+// Require ACF helper functions
+require_once get_template_directory() . '/acf/helpers/acf-helpers.php';
+
 function tailpress(): TailPress\Framework\Theme
 {
     return TailPress\Framework\Theme::instance()
@@ -22,6 +28,7 @@ function tailpress(): TailPress\Framework\Theme
         ->menus(
             fn($manager) => $manager
                 ->add('primary', __('Primary Menu', 'tailpress'))
+                ->add('dropdown', __('Dropdown Menu', 'tailpress'))
                 ->add('footer', __('Footer Menu', 'tailpress'))
         )
         ->themeSupport(fn($manager) => $manager->add([

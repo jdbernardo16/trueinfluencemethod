@@ -1,0 +1,255 @@
+<?php
+
+/**
+ * Articles Page ACF Field Group
+ *
+ * Registers ACF fields for the articles landing page template.
+ *
+ * @package tim-wordpress
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group([
+        'key' => 'group_articles_page',
+        'title' => 'Articles Page',
+        'fields' => [
+            // Hero Section
+            [
+                'key' => 'field_articles_hero_badge',
+                'label' => 'Hero Badge Text',
+                'name' => 'articles_hero_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text displayed above the hero heading.',
+                'required' => 0,
+                'default_value' => 'Research & Insights',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_hero_heading',
+                'label' => 'Hero Heading',
+                'name' => 'articles_hero_heading',
+                'type' => 'text',
+                'instructions' => 'The main heading text for the hero section.',
+                'required' => 0,
+                'default_value' => 'Leadership Begins With Knowing What You Stand For',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_hero_description',
+                'label' => 'Hero Description',
+                'name' => 'articles_hero_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text displayed below the hero heading.',
+                'required' => 0,
+                'default_value' => 'Joanna writes about the intersection of leadership, communication, and authentic influence. Her articles explore the questions that matter most to founders, CEOs, and mission-driven leaders.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_hero_cta_text',
+                'label' => 'Hero CTA Text',
+                'name' => 'articles_hero_cta_text',
+                'type' => 'text',
+                'instructions' => 'The text for the call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Explore Articles',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_hero_cta_link',
+                'label' => 'Hero CTA Link',
+                'name' => 'articles_hero_cta_link',
+                'type' => 'page_link',
+                'instructions' => 'Select the page for the call-to-action button.',
+                'required' => 0,
+                'post_type' => ['page'],
+                'taxonomy' => [],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Featured Section
+            [
+                'key' => 'field_articles_featured_badge',
+                'label' => 'Featured Badge Text',
+                'name' => 'articles_featured_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text for the featured section.',
+                'required' => 0,
+                'default_value' => 'Featured',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_featured_heading',
+                'label' => 'Featured Section Heading',
+                'name' => 'articles_featured_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the featured section.',
+                'required' => 0,
+                'default_value' => 'Must-Read Insights',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_featured_description',
+                'label' => 'Featured Section Description',
+                'name' => 'articles_featured_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text for the featured section.',
+                'required' => 0,
+                'default_value' => 'Deep-dive articles on leadership, communication, and authentic influence.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Grid Section
+            [
+                'key' => 'field_articles_grid_badge',
+                'label' => 'Grid Badge Text',
+                'name' => 'articles_grid_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text for the grid section.',
+                'required' => 0,
+                'default_value' => 'All Articles',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_grid_heading',
+                'label' => 'Grid Section Heading',
+                'name' => 'articles_grid_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the grid section.',
+                'required' => 0,
+                'default_value' => 'Explore All Insights',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_articles_grid_description',
+                'label' => 'Grid Section Description',
+                'name' => 'articles_grid_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text for the grid section.',
+                'required' => 0,
+                'default_value' => 'Browse our complete collection of articles on leadership and communication.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-articles.php',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => [
+            'the_content',
+            'excerpt',
+            'discussion',
+            'comments',
+            'revisions',
+            'slug',
+            'author',
+            'format',
+            'page_attributes',
+            'featured_image',
+            'categories',
+            'tags',
+            'send-trackbacks',
+        ],
+        'active' => true,
+        'description' => 'ACF fields for the Articles landing page template.',
+    ]);
+}

@@ -1,0 +1,255 @@
+<?php
+
+/**
+ * Tips Page ACF Field Group
+ *
+ * Registers ACF fields for the tips landing page template.
+ *
+ * @package tim-wordpress
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group([
+        'key' => 'group_tips_page',
+        'title' => 'Tips Page',
+        'fields' => [
+            // Hero Section
+            [
+                'key' => 'field_tips_hero_badge',
+                'label' => 'Hero Badge Text',
+                'name' => 'tips_hero_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text displayed above the hero heading.',
+                'required' => 0,
+                'default_value' => 'Quick Wins',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_hero_heading',
+                'label' => 'Hero Heading',
+                'name' => 'tips_hero_heading',
+                'type' => 'text',
+                'instructions' => 'The main heading text for the hero section.',
+                'required' => 0,
+                'default_value' => 'Speaking Tips That Actually Work',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_hero_description',
+                'label' => 'Hero Description',
+                'name' => 'tips_hero_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text displayed below the hero heading.',
+                'required' => 0,
+                'default_value' => 'Practical, actionable tips you can implement today. No fluff, no theory — just real strategies that help you speak with confidence and authenticity.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_hero_cta_text',
+                'label' => 'Hero CTA Text',
+                'name' => 'tips_hero_cta_text',
+                'type' => 'text',
+                'instructions' => 'The text for the call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Get Started',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_hero_cta_link',
+                'label' => 'Hero CTA Link',
+                'name' => 'tips_hero_cta_link',
+                'type' => 'page_link',
+                'instructions' => 'Select the page for the call-to-action button.',
+                'required' => 0,
+                'post_type' => ['page'],
+                'taxonomy' => [],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Quick Tips Section
+            [
+                'key' => 'field_tips_quick_badge',
+                'label' => 'Quick Tips Badge Text',
+                'name' => 'tips_quick_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text for the quick tips section.',
+                'required' => 0,
+                'default_value' => 'Quick Wins',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_quick_heading',
+                'label' => 'Quick Tips Section Heading',
+                'name' => 'tips_quick_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the quick tips section.',
+                'required' => 0,
+                'default_value' => 'Try These Today',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_quick_description',
+                'label' => 'Quick Tips Section Description',
+                'name' => 'tips_quick_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text for the quick tips section.',
+                'required' => 0,
+                'default_value' => 'Simple, actionable tips you can implement right now to improve your speaking.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Grid Section
+            [
+                'key' => 'field_tips_grid_badge',
+                'label' => 'Grid Badge Text',
+                'name' => 'tips_grid_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text for the grid section.',
+                'required' => 0,
+                'default_value' => 'All Tips',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_grid_heading',
+                'label' => 'Grid Section Heading',
+                'name' => 'tips_grid_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the grid section.',
+                'required' => 0,
+                'default_value' => 'Explore All Tips',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_tips_grid_description',
+                'label' => 'Grid Section Description',
+                'name' => 'tips_grid_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text for the grid section.',
+                'required' => 0,
+                'default_value' => 'Browse our complete collection of speaking tips and strategies.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-tips.php',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => [
+            'the_content',
+            'excerpt',
+            'discussion',
+            'comments',
+            'revisions',
+            'slug',
+            'author',
+            'format',
+            'page_attributes',
+            'featured_image',
+            'categories',
+            'tags',
+            'send-trackbacks',
+        ],
+        'active' => true,
+        'description' => 'ACF fields for the Tips landing page template.',
+    ]);
+}

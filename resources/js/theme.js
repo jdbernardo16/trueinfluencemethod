@@ -91,35 +91,29 @@
 
         if (!dropdownMenu) return;
 
-        const dropdownContent = {
-            programs: {
-                content: document.getElementById("dropdown-programs-content"),
-                description:
-                    "Transform your speaking skills with our comprehensive programs designed for every stage of your journey.",
-            },
-            about: {
-                content: document.getElementById("dropdown-about-content"),
-                description:
-                    "Discover the True Influence Method and learn about Joanna's journey from speaker to leadership coach.",
-            },
-            community: {
-                content: document.getElementById("dropdown-community-content"),
-                description:
-                    "Join our community of speakers and leaders, access exclusive content, and attend transformational events.",
-            },
-            resources: {
-                content: document.getElementById("dropdown-resources-content"),
-                description:
-                    "Access articles, speaking tips, media features, and podcasts to accelerate your growth.",
-            },
-        };
+        // Build dropdown content dynamically from the menu structure
+        const dropdownSections =
+            dropdownMenu.querySelectorAll("[data-dropdown]");
+        const dropdownContent = {};
+
+        dropdownSections.forEach((section) => {
+            const dropdownId = section.getAttribute("data-dropdown");
+            if (dropdownId) {
+                dropdownContent[dropdownId] = {
+                    section: section,
+                    description: section.getAttribute("data-description") || "",
+                };
+            }
+        });
 
         let activeDropdown = null;
 
         dropdownToggles.forEach((toggle) => {
             toggle.addEventListener("click", (e) => {
                 e.stopPropagation();
-                const dropdownId = toggle.id.replace("dropdown-", "");
+                const dropdownId = toggle.getAttribute("data-dropdown");
+
+                if (!dropdownId) return;
 
                 // Toggle current dropdown
                 if (activeDropdown === dropdownId) {
@@ -139,46 +133,63 @@
 
             // Show specific content
             Object.keys(dropdownContent).forEach((key) => {
-                if (dropdownContent[key].content) {
-                    dropdownContent[key].content.classList.add("hidden");
+                if (dropdownContent[key].section) {
+                    dropdownContent[key].section.classList.add("hidden");
                 }
             });
 
-            if (dropdownContent[id] && dropdownContent[id].content) {
-                dropdownContent[id].content.classList.remove("hidden");
+            if (dropdownContent[id] && dropdownContent[id].section) {
+                dropdownContent[id].section.classList.remove("hidden");
             }
 
             // Update description
-            if (
-                dropdownDescription &&
-                dropdownContent[id] &&
-                dropdownContent[id].description
-            ) {
-                dropdownDescription.textContent =
-                    dropdownContent[id].description;
+            if (dropdownDescription) {
+                dropdownDescription.textContent = "";
                 document
                     .getElementById("dropdown-description")
-                    .classList.remove("hidden");
+                    .classList.add("hidden");
+            }
+
+            if (dropdownContent[id] && dropdownContent[id].description) {
+                if (dropdownDescription) {
+                    dropdownDescription.textContent =
+                        dropdownContent[id].description;
+                    document
+                        .getElementById("dropdown-description")
+                        .classList.remove("hidden");
+                }
             }
 
             // Update aria-expanded
-            document
-                .getElementById(`dropdown-${id}`)
-                .setAttribute("aria-expanded", "true");
+            const toggle = document.querySelector(
+                `.dropdown-toggle[data-dropdown="${id}"]`,
+            );
+            if (toggle) {
+                toggle.setAttribute("aria-expanded", "true");
+            }
 
             activeDropdown = id;
         }
 
         function closeDropdown() {
             if (activeDropdown) {
-                document
-                    .getElementById(`dropdown-${activeDropdown}`)
-                    .setAttribute("aria-expanded", "false");
+                const toggle = document.querySelector(
+                    `.dropdown-toggle[data-dropdown="${activeDropdown}"]`,
+                );
+                if (toggle) {
+                    toggle.setAttribute("aria-expanded", "false");
+                }
             }
             dropdownMenu.classList.add("hidden");
-            document
-                .getElementById("dropdown-description")
-                .classList.add("hidden");
+
+            // Hide description
+            if (dropdownDescription) {
+                dropdownDescription.textContent = "";
+                document
+                    .getElementById("dropdown-description")
+                    .classList.add("hidden");
+            }
+
             activeDropdown = null;
         }
 
@@ -210,17 +221,23 @@
 
         mobileDropdownToggles.forEach((toggle) => {
             toggle.addEventListener("click", () => {
-                const dropdownId = toggle.id.replace("mobile-dropdown-", "");
-                const linksContainer = document.getElementById(
-                    `mobile-${dropdownId}-links`,
-                );
+                const dropdownId = toggle.getAttribute("data-dropdown");
 
-                if (linksContainer) {
-                    linksContainer.classList.toggle("hidden");
-                    toggle.setAttribute(
-                        "aria-expanded",
-                        !linksContainer.classList.contains("hidden"),
-                    );
+                if (!dropdownId) return;
+
+                // Find the parent menu item and its sub-menu
+                const parentItem = toggle.closest(".menu-item-has-children");
+                if (parentItem) {
+                    const linksContainer =
+                        parentItem.querySelector(".sub-menu");
+
+                    if (linksContainer) {
+                        linksContainer.classList.toggle("hidden");
+                        toggle.setAttribute(
+                            "aria-expanded",
+                            !linksContainer.classList.contains("hidden"),
+                        );
+                    }
                 }
             });
         });

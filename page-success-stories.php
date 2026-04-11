@@ -120,9 +120,9 @@ function get_image_url($image_field, $default_url)
                     <?php echo esc_html($hero_heading); ?>
                 </h1>
 
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                     <?php echo wp_kses_post($hero_description); ?>
-                </p>
+                </div>
             </div>
         </section>
 
@@ -141,9 +141,9 @@ function get_image_url($image_field, $default_url)
                     <h2 class="font-serif text-3xl md:text-4xl text-[#0f203d] mb-4">
                         <?php echo esc_html($testimonials_heading); ?>
                     </h2>
-                    <p class="text-[#0f203d]/70 max-w-2xl mx-auto">
+                    <div class="text-[#0f203d]/70 max-w-2xl mx-auto">
                         <?php echo wp_kses_post($testimonials_description); ?>
-                    </p>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -193,9 +193,9 @@ function get_image_url($image_field, $default_url)
                     <?php echo esc_html($case_studies_heading); ?>
                 </h2>
 
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
                     <?php echo wp_kses_post($case_studies_description); ?>
-                </p>
+                </div>
 
                 <a href="<?php echo esc_url(is_array($case_studies_cta_link) ? get_permalink($case_studies_cta_link['ID']) : $case_studies_cta_link); ?>"
                     class="inline-flex group px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 relative overflow-hidden">

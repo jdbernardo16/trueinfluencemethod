@@ -114,9 +114,9 @@ if (empty($phases)) {
                 </h1>
 
                 <div class="max-w-3xl mx-auto">
-                    <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
+                    <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
                         <?php echo wp_kses_post(get_field('journey_hero_description') ?: 'The True Influence Method™️ is not a framework you slot yourself into. It\'s a living process — responsive, deep, and entirely grounded in who you are. It moves through five phases, each building on the last, until your message and your delivery are one.'); ?>
-                    </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -180,9 +180,9 @@ if (empty($phases)) {
                             </span>
                         </h2>
 
-                        <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed mb-8">
+                        <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed mb-8">
                             <?php echo wp_kses_post(get_field('journey_callout_description') ?: 'Clients often arrive expecting a structured program with deliverables and timelines. What they find is something more powerful — a process that meets them exactly where they are, surfaces what has always been true, and gives them tools to lead from it.'); ?>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="relative">
@@ -239,9 +239,9 @@ if (empty($phases)) {
                 <h2 class="font-serif text-4xl md:text-6xl text-[#0f203d] mb-6">
                     <?php echo esc_html(get_field('journey_cta_heading') ?: 'Where Would You Like to Begin?'); ?>
                 </h2>
-                <p class="text-[#0f203d]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                <div class="text-[#0f203d]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
                     <?php echo wp_kses_post(get_field('journey_cta_description') ?: 'Every journey through True Influence Method™️ starts with a conversation. Let us know where you are and where you want to go — and Joanna\'s team will guide you to the right path.'); ?>
-                </p>
+                </div>
 
                 <a href="<?php echo esc_url(get_field('journey_cta_button_link') ?: home_url('/apply/')); ?>"
                     class="inline-flex items-center gap-3 px-10 py-5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/20 text-lg group">

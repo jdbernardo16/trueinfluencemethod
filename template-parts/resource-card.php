@@ -36,7 +36,7 @@ $category = !empty($categories) ? $categories[0] : null;
     <div class="p-6">
         <div class="flex items-center gap-3 mb-3 text-sm text-[#faf8f5]/60">
             <span><?php echo get_the_date(); ?></span>
-            <span class="w-1 h-1 rounded-full bg-[#d4b478]" />
+            <span class="w-1 h-1 rounded-full bg-[#d4b478]"></span>
             <span><?php echo get_reading_time(); ?></span>
         </div>
 

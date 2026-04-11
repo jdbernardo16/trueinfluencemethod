@@ -20,9 +20,9 @@
                     <?php tim_esc_text(tim_get_field('about_hero_heading', 'She Trains Leaders to <span class="italic text-[#d4b478]">Speak</span>.<br />And Speakers to <span class="italic text-[#d4b478]">Lead</span>.')); ?>
                 </h1>
 
-                <p class="text-lg md:text-xl text-[#faf8f5]/80 mb-8 max-w-lg leading-relaxed">
+                <div class="text-lg md:text-xl text-[#faf8f5]/80 mb-8 max-w-lg leading-relaxed">
                     <?php tim_esc_content(tim_get_field('about_hero_description', 'Joanna Horton McPherson helps leaders find their authentic voice through the True Influence Method™ — building trust, emotional clarity, and real-world impact.')); ?>
-                </p>
+                </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-10">
                     <?php
@@ -46,9 +46,9 @@
                     </a>
                 </div>
 
-                <p class="text-sm text-[#faf8f5]/60 font-medium">
+                <div class="text-sm text-[#faf8f5]/60 font-medium">
                     <?php tim_esc_text(tim_get_field('about_hero_featured_on', 'As featured on MTV, Harvard, USA Today')); ?>
-                </p>
+                </div>
             </div>
 
             <!-- Image Area -->
@@ -73,12 +73,12 @@
 
                 <!-- Decorative elements -->
                 <div class="absolute bottom-8 left-8 bg-[#faf8f5]/90 backdrop-blur-sm p-6 rounded-xl max-w-xs shadow-lg hidden md:block">
-                    <p class="font-serif italic text-[#0f203d] text-lg mb-2">
+                    <div class="font-serif italic text-[#0f203d] text-lg mb-2">
                         "<?php tim_esc_text(tim_get_field('about_hero_overlay_quote', 'True Influence')); ?>"
-                    </p>
-                    <p class="text-xs text-[#0f203d]/70 uppercase tracking-wider font-semibold">
+                    </div>
+                    <div class="text-xs text-[#0f203d]/70 uppercase tracking-wider font-semibold">
                         <?php tim_esc_text(tim_get_field('about_hero_overlay_label', 'Signature Method')); ?>
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>

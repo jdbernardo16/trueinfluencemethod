@@ -126,9 +126,9 @@ $iconMap = array(
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-[#faf8f5] mb-6">
                         <?php echo esc_html(get_field('mastermind_hero_heading') ?: '90-Day Mastermind'); ?>
                     </h1>
-                    <p class="text-lg md:text-xl text-[#faf8f5]/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+                    <div class="text-lg md:text-xl text-[#faf8f5]/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
                         <?php echo wp_kses_post(get_field('mastermind_hero_description') ?: 'A structured journey of self-discovery and mastery. Transform your story, craft your message, and own your stage—at your own pace.'); ?>
-                    </p>
+                    </div>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
                             <span class="uppercase tracking-wider"><?php echo esc_html(get_field('mastermind_hero_cta_text') ?: 'Begin Your Journey'); ?></span>
@@ -154,9 +154,9 @@ $iconMap = array(
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                                 <?php echo esc_html(get_field('mastermind_overview_heading') ?: 'Self-Study. Self-Advancement.'); ?>
                             </h2>
-                            <p class="text-lg text-[#0f203d]/80 font-light max-w-3xl mb-8">
+                            <div class="text-lg text-[#0f203d]/80 font-light max-w-3xl mb-8">
                                 <?php echo wp_kses_post(get_field('mastermind_overview_description') ?: 'The 90-Day Mastermind is designed for leaders who value autonomy and structure. Progress through three carefully crafted phases, each building on the last, as you discover, develop, and master your authentic voice.'); ?>
-                            </p>
+                            </div>
                             <div class="inline-block bg-[#d4b478]/10 border border-[#d4b478]/30 rounded-full px-6 py-3">
                                 <span class="text-[#d4b478] font-medium">
                                     <?php echo esc_html(get_field('mastermind_overview_tagline') ?: 'Your Journey, Your Timeline'); ?>
@@ -203,9 +203,9 @@ $iconMap = array(
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                             <?php echo esc_html(get_field('mastermind_phases_heading') ?: 'Three Phases to Mastery'); ?>
                         </h2>
-                        <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
+                        <div class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
                             <?php echo wp_kses_post(get_field('mastermind_phases_description') ?: 'Each phase builds upon the last, creating a comprehensive path to authentic leadership communication'); ?>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="space-y-8">
@@ -267,9 +267,9 @@ $iconMap = array(
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                                 <?php echo esc_html(get_field('mastermind_included_heading') ?: 'Everything You Need to Succeed'); ?>
                             </h2>
-                            <p class="text-lg text-[#0f203d]/80 font-light max-w-2xl mb-8">
+                            <div class="text-lg text-[#0f203d]/80 font-light max-w-2xl mb-8">
                                 <?php echo wp_kses_post(get_field('mastermind_included_description') ?: 'A complete toolkit designed to support your transformation from start to finish'); ?>
-                            </p>
+                            </div>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
                             <?php
@@ -311,9 +311,9 @@ $iconMap = array(
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                             <?php echo esc_html(get_field('mastermind_advancement_heading') ?: 'Earn Your Progress'); ?>
                         </h2>
-                        <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
+                        <div class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
                             <?php echo wp_kses_post(get_field('mastermind_advancement_description') ?: 'Advancement is earned through engagement and demonstrated understanding. Each phase has clear criteria you must meet before moving forward.'); ?>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -341,9 +341,9 @@ $iconMap = array(
                                 <?php echo esc_html(get_field('mastermind_rubric_title') ?: 'The Rubric System'); ?>
                             </h3>
                         </div>
-                        <p class="text-lg text-[#faf8f5]/80 font-light max-w-3xl mx-auto leading-relaxed mb-6">
+                        <div class="text-lg text-[#faf8f5]/80 font-light max-w-3xl mx-auto leading-relaxed mb-6">
                             <?php echo wp_kses_post(get_field('mastermind_rubric_description') ?: 'Each phase concludes with a self-assessment rubric that measures your understanding and application of key concepts. This ensures you\'ve genuinely integrated the learning before advancing—creating a foundation that builds confidence and capability.'); ?>
-                        </p>
+                        </div>
                         <p class="text-[#d4b478] font-medium">
                             <?php echo esc_html(get_field('mastermind_rubric_note') ?: 'Pass the rubric to unlock the next phase'); ?>
                         </p>
@@ -362,9 +362,9 @@ $iconMap = array(
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                                 <?php echo esc_html(get_field('mastermind_why_heading') ?: 'A Proven Path to Transformation'); ?>
                             </h2>
-                            <p class="text-lg text-[#0f203d]/80 font-light max-w-3xl mb-8">
+                            <div class="text-lg text-[#0f203d]/80 font-light max-w-3xl mb-8">
                                 <?php echo wp_kses_post(get_field('mastermind_why_description') ?: 'The 90-Day Mastermind combines structure, community, and accountability to create lasting change in how you communicate and lead.'); ?>
-                            </p>
+                            </div>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
                             <?php
@@ -447,9 +447,9 @@ $iconMap = array(
                                 <h3 class="font-serif text-xl text-[#0f203d] mb-3">
                                     <?php echo esc_html($benefit['title']); ?>
                                 </h3>
-                                <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
+                                <div class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
                                     <?php echo wp_kses_post($benefit['description']); ?>
-                                </p>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -466,9 +466,9 @@ $iconMap = array(
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                             <?php echo esc_html(get_field('mastermind_upgrade_heading') ?: 'Want More?'); ?>
                         </h2>
-                        <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
+                        <div class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
                             <?php echo wp_kses_post(get_field('mastermind_upgrade_description') ?: 'The Mastermind is a powerful foundation. When you\'re ready for deeper transformation, you can upgrade to Private Client at any time.'); ?>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -575,9 +575,9 @@ $iconMap = array(
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                                 <?php echo esc_html(get_field('mastermind_cta_heading') ?: 'Ready to Find Your Voice?'); ?>
                             </h2>
-                            <p class="text-lg text-[#0f203d]/80 font-light leading-relaxed mb-10 max-w-2xl">
+                            <div class="text-lg text-[#0f203d]/80 font-light leading-relaxed mb-10 max-w-2xl">
                                 <?php echo wp_kses_post(get_field('mastermind_cta_description') ?: 'The 90-Day Mastermind gives you the structure, tools, and community to transform your story into powerful leadership communication. Begin your journey today.'); ?>
-                            </p>
+                            </div>
 
                             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
                                 <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">

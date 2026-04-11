@@ -46,16 +46,16 @@
                     <?php tim_esc_text(tim_get_field('about_philosophy_heading', 'Your Story Is Not Just Where You\'ve Been. <span class="block text-[#d4b478] mt-2">It\'s the Reason People Choose to Follow You.</span>')); ?>
                 </h2>
 
-                <p class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed mb-8">
+                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed mb-8">
                     <?php tim_esc_content(tim_get_field('about_philosophy_description', 'Joanna believes that authentic communication is not a skill to be learned — it\'s a truth to be uncovered. Her work begins not with what you want to say, but with who you are and what you\'ve lived. From that foundation, she helps leaders build a voice that is authoritative, emotionally resonant, and entirely their own.')); ?>
-                </p>
+                </div>
 
                 <blockquote class="font-serif italic text-2xl text-[#d4b478] border-l-4 border-[#d4b478] pl-6 my-8">
                     <?php tim_esc_content(tim_get_field('about_philosophy_blockquote', '"Being a voice for your work is not just good for sales. It\'s good for the soul."')); ?>
                 </blockquote>
-                <p class="text-[#0f203d]/60 text-sm font-medium">
+                <div class="text-[#0f203d]/60 text-sm font-medium">
                     <?php tim_esc_text(tim_get_field('about_philosophy_author', '— Joanna Horton McPherson')); ?>
-                </p>
+                </div>
             </div>
         </div>
     </div>

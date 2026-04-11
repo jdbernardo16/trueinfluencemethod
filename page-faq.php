@@ -55,9 +55,9 @@ $faqs = get_field('faq_items');
                 </h1>
 
                 <div class="max-w-3xl mx-auto">
-                    <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
+                    <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed">
                         <?php echo wp_kses_post(get_field('faq_hero_description') ?: 'If you have a question that isn\'t answered here, Joanna\'s team is always happy to help. Reach out via contact form or submit your application and we\'ll be in touch.'); ?>
-                    </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -93,9 +93,9 @@ $faqs = get_field('faq_items');
                                     </svg>
                                 </button>
                                 <div class="faq-content px-8 pb-6 hidden" id="faq-content-<?php echo esc_attr($index); ?>">
-                                    <p class="text-[#0f203d]/70 text-lg leading-relaxed">
+                                    <div class="text-[#0f203d]/70 text-lg leading-relaxed">
                                         <?php echo wp_kses_post($faq['faq_item_answer']); ?>
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -129,9 +129,9 @@ $faqs = get_field('faq_items');
                 <h2 class="font-serif text-4xl md:text-6xl text-[#faf8f5] mb-6">
                     <?php echo esc_html(get_field('faq_cta_heading') ?: 'Still Have Questions?'); ?>
                 </h2>
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
                     <?php echo wp_kses_post(get_field('faq_cta_description') ?: 'Joanna\'s team is happy to answer anything not covered here. Reach out directly or submit your application and someone will be in touch shortly.'); ?>
-                </p>
+                </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="<?php echo esc_url(get_field('faq_cta_primary_link') ?: home_url('/apply/')); ?>"
