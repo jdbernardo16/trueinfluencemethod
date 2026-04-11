@@ -35,21 +35,6 @@ jobs:
             - name: Build assets
               run: npm run build
 
-            - name: Verify build output
-              run: |
-                  echo "Checking if dist directory exists..."
-                  if [ -d "dist" ]; then
-                      echo "✓ dist directory exists"
-                      echo "Contents of dist directory:"
-                      ls -la dist/
-                      echo ""
-                      echo "Contents of dist/assets/:"
-                      ls -la dist/assets/ || echo "No assets directory found"
-                  else
-                      echo "✗ dist directory does not exist!"
-                      exit 1
-                  fi
-
             - name: Create deployment package
               run: |
                   # Create a temporary directory for deployment
@@ -61,38 +46,6 @@ jobs:
                   # Remove hidden files/directories EXCEPT .vite (needed for Vite manifest)
                   find deploy-package -name '.*' -type d ! -path '*/dist/.vite' -exec rm -rf {} + 2>/dev/null || true
                   find deploy-package -name '.*' -type f ! -path '*/dist/.vite/*' -delete 2>/dev/null || true
-
-            - name: Verify deployment package
-              run: |
-                  echo "Checking deployment package structure..."
-                  echo "Contents of deploy-package:"
-                  ls -la deploy-package/
-                  echo ""
-                  if [ -d "deploy-package/dist" ]; then
-                      echo "✓ dist directory exists in deployment package"
-                      echo "Contents of deploy-package/dist:"
-                      ls -la deploy-package/dist/
-                      echo ""
-                      if [ -d "deploy-package/dist/assets" ]; then
-                          echo "✓ assets directory exists in deployment package"
-                          echo "Contents of deploy-package/dist/assets:"
-                          ls -la deploy-package/dist/assets/
-                      else
-                          echo "✗ assets directory does not exist in deployment package"
-                          echo "Attempting to manually copy dist directory..."
-                          mkdir -p deploy-package/dist
-                          cp -r dist/* deploy-package/dist/
-                          echo "✓ Manually copied dist directory"
-                          ls -la deploy-package/dist/assets/
-                      fi
-                  else
-                      echo "✗ dist directory does not exist in deployment package"
-                      echo "Attempting to manually copy dist directory..."
-                      mkdir -p deploy-package/dist
-                      cp -r dist/* deploy-package/dist/
-                      echo "✓ Manually copied dist directory"
-                      ls -la deploy-package/dist/
-                  fi
 
             - name: Deploy to Hostinger via FTP
               uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -112,8 +65,7 @@ jobs:
                       **/deploy-package/**
                       **/.DS_Store
                       **/Thumbs.db
-                  security: loose
-                  log-level: verbose
+                      **/resources/**
 
             - name: Cleanup
               if: always()
