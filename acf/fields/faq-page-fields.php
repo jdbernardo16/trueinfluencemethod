@@ -1,0 +1,270 @@
+<?php
+
+/**
+ * FAQ Page ACF Field Group
+ *
+ * Registers ACF fields for the FAQ page template.
+ *
+ * @package tim-wordpress
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group([
+        'key' => 'group_faq_page',
+        'title' => 'FAQ Page',
+        'fields' => [
+            // Hero Section
+            [
+                'key' => 'field_faq_hero_badge',
+                'label' => 'Hero Badge Text',
+                'name' => 'faq_hero_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text displayed above the hero heading.',
+                'required' => 0,
+                'default_value' => 'Frequently Asked Questions',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_hero_heading',
+                'label' => 'Hero Heading',
+                'name' => 'faq_hero_heading',
+                'type' => 'text',
+                'instructions' => 'The main heading text for the hero section.',
+                'required' => 0,
+                'default_value' => 'Your Questions, Answered.',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_hero_description',
+                'label' => 'Hero Description',
+                'name' => 'faq_hero_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text displayed below the hero heading.',
+                'required' => 0,
+                'default_value' => 'If you have a question that isn\'t answered here, Joanna\'s team is always happy to help. Reach out via contact form or submit your application and we\'ll be in touch.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // FAQ Items Section
+            [
+                'key' => 'field_faq_items',
+                'label' => 'FAQ Items',
+                'name' => 'faq_items',
+                'type' => 'repeater',
+                'instructions' => 'Add frequently asked questions and answers.',
+                'required' => 0,
+                'collapsed' => '',
+                'min' => 0,
+                'max' => 0,
+                'layout' => 'block',
+                'button_label' => 'Add FAQ Item',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_faq_item_question',
+                        'label' => 'Question',
+                        'name' => 'faq_item_question',
+                        'type' => 'text',
+                        'instructions' => 'The question text.',
+                        'required' => 0,
+                        'default_value' => '',
+                        'placeholder' => 'e.g., Who is True Influence Method™️ designed for?',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                        'wrapper' => [
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                    ],
+                    [
+                        'key' => 'field_faq_item_answer',
+                        'label' => 'Answer',
+                        'name' => 'faq_item_answer',
+                        'type' => 'textarea',
+                        'instructions' => 'The answer text.',
+                        'required' => 0,
+                        'default_value' => '',
+                        'placeholder' => 'e.g., Joanna works primarily with founders, CEOs, executives, and mission-driven leaders...',
+                        'maxlength' => '',
+                        'rows' => 5,
+                        'new_lines' => 'wpautop',
+                        'wrapper' => [
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ],
+                    ],
+                ],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // CTA Section
+            [
+                'key' => 'field_faq_cta_heading',
+                'label' => 'CTA Heading',
+                'name' => 'faq_cta_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text for the CTA section.',
+                'required' => 0,
+                'default_value' => 'Still Have Questions?',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_cta_description',
+                'label' => 'CTA Description',
+                'name' => 'faq_cta_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text displayed below the CTA heading.',
+                'required' => 0,
+                'default_value' => 'Joanna\'s team is happy to answer anything not covered here. Reach out directly or submit your application and someone will be in touch shortly.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_cta_primary_text',
+                'label' => 'Primary CTA Button Text',
+                'name' => 'faq_cta_primary_text',
+                'type' => 'text',
+                'instructions' => 'The text for the primary call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Submit Your Application',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_cta_primary_link',
+                'label' => 'Primary CTA Button Link',
+                'name' => 'faq_cta_primary_link',
+                'type' => 'url',
+                'instructions' => 'The URL for the primary call-to-action button.',
+                'required' => 0,
+                'default_value' => '/apply/',
+                'placeholder' => 'https://example.com/apply/',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_cta_secondary_text',
+                'label' => 'Secondary CTA Button Text',
+                'name' => 'faq_cta_secondary_text',
+                'type' => 'text',
+                'instructions' => 'The text for the secondary call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Book a Consultation',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_faq_cta_secondary_link',
+                'label' => 'Secondary CTA Button Link',
+                'name' => 'faq_cta_secondary_link',
+                'type' => 'url',
+                'instructions' => 'The URL for the secondary call-to-action button.',
+                'required' => 0,
+                'default_value' => 'https://calendly.com/joanna-trueinfluencemethod/private-training',
+                'placeholder' => 'https://calendly.com/...',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-faq.php',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => [
+            'the_content',
+            'excerpt',
+            'discussion',
+            'comments',
+            'revisions',
+            'slug',
+            'author',
+            'format',
+            'page_attributes',
+            'featured_image',
+            'categories',
+            'tags',
+            'send-trackbacks',
+        ],
+        'active' => true,
+        'description' => 'ACF fields for the FAQ page template.',
+    ]);
+}

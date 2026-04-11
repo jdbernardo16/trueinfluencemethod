@@ -1,0 +1,233 @@
+<?php
+
+/**
+ * Apply Page ACF Field Group
+ *
+ * Registers ACF fields for the apply page template.
+ *
+ * @package tim-wordpress
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group([
+        'key' => 'group_apply_page',
+        'title' => 'Apply Page',
+        'fields' => [
+            // Hero Section
+            [
+                'key' => 'field_apply_hero_badge',
+                'label' => 'Hero Badge Text',
+                'name' => 'apply_hero_badge',
+                'type' => 'text',
+                'instructions' => 'The badge text displayed above the hero heading.',
+                'required' => 0,
+                'default_value' => 'Apply / Work With Joanna',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_hero_heading',
+                'label' => 'Hero Heading',
+                'name' => 'apply_hero_heading',
+                'type' => 'text',
+                'instructions' => 'The main heading text for the hero section.',
+                'required' => 0,
+                'default_value' => "Let's Find Out If This Is the Right Fit.",
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_hero_description_1',
+                'label' => 'Hero Description Paragraph 1',
+                'name' => 'apply_hero_description_1',
+                'type' => 'textarea',
+                'instructions' => 'The first description paragraph displayed below the hero heading.',
+                'required' => 0,
+                'default_value' => 'Joanna works with a limited number of private clients at any one time, and every corporate and group engagement is carefully considered. The inquiry form is the first step — not a commitment, just a conversation.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_hero_description_2',
+                'label' => 'Hero Description Paragraph 2',
+                'name' => 'apply_hero_description_2',
+                'type' => 'textarea',
+                'instructions' => 'The second description paragraph displayed below the first description.',
+                'required' => 0,
+                'default_value' => 'Fill it out honestly. Tell us where you are, where you want to go, and what feels most alive in your work right now. Joanna\'s team will review your submission and be in touch within 2 business days.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_email_address',
+                'label' => 'Email Address',
+                'name' => 'apply_email_address',
+                'type' => 'email',
+                'instructions' => 'The email address displayed in the contact section.',
+                'required' => 0,
+                'default_value' => 'joanna@trueinfluencemethod.com',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_consultation_button_text',
+                'label' => 'Consultation Button Text',
+                'name' => 'apply_consultation_button_text',
+                'type' => 'text',
+                'instructions' => 'The text for the consultation button.',
+                'required' => 0,
+                'default_value' => 'Book a Consultation →',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_consultation_link',
+                'label' => 'Consultation Link',
+                'name' => 'apply_consultation_link',
+                'type' => 'url',
+                'instructions' => 'The URL for the consultation booking link.',
+                'required' => 0,
+                'default_value' => 'https://calendly.com/joanna-trueinfluencemethod/private-training',
+                'placeholder' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            // Success Modal Section
+            [
+                'key' => 'field_apply_success_heading',
+                'label' => 'Success Modal Heading',
+                'name' => 'apply_success_heading',
+                'type' => 'text',
+                'instructions' => 'The heading text displayed in the success modal.',
+                'required' => 0,
+                'default_value' => 'Application Submitted!',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_success_message',
+                'label' => 'Success Modal Message',
+                'name' => 'apply_success_message',
+                'type' => 'textarea',
+                'instructions' => 'The message text displayed in the success modal.',
+                'required' => 0,
+                'default_value' => 'Thank you for reaching out. Your application has been received, and we\'ll get back to you within 2 business days.',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_apply_success_button_text',
+                'label' => 'Success Modal Button Text',
+                'name' => 'apply_success_button_text',
+                'type' => 'text',
+                'instructions' => 'The text for the close button in the success modal.',
+                'required' => 0,
+                'default_value' => 'Close',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-apply.php',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => [
+            'the_content',
+            'excerpt',
+            'discussion',
+            'comments',
+            'revisions',
+            'slug',
+            'author',
+            'format',
+            'page_attributes',
+            'featured_image',
+            'categories',
+            'tags',
+            'send-trackbacks',
+        ],
+        'active' => true,
+        'description' => 'Fields for the Apply page template.',
+    ]);
+}

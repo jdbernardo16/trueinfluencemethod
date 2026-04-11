@@ -7,300 +7,17 @@
  * @package tim-wordpress
  */
 
-// Define retreat features
-$retreatFeatures = array(
-    array(
-        'title' => 'Focused Work',
-        'description' => 'Intensive, productive time to develop your message',
-        'icon' => 'Target'
-    ),
-    array(
-        'title' => 'Partner Feedback',
-        'description' => 'Real-time feedback from peers',
-        'icon' => 'Users'
-    ),
-    array(
-        'title' => 'Live Application',
-        'description' => 'Apply training frameworks in real-time',
-        'icon' => 'Play'
-    ),
-    array(
-        'title' => 'Deep Integration',
-        'description' => 'Reflect and integrate learning',
-        'icon' => 'BookOpen'
-    ),
-    array(
-        'title' => 'VIP Access',
-        'description' => 'Private dinner for private clients',
-        'icon' => 'Crown'
-    ),
-    array(
-        'title' => 'Stage Performance',
-        'description' => 'Deliver your talk with real evaluation',
-        'icon' => 'Mic'
-    ),
-    array(
-        'title' => 'Advancement Scoring',
-        'description' => 'Progress through scoring system',
-        'icon' => 'TrendingUp'
-    ),
-    array(
-        'title' => 'Recognition',
-        'description' => 'Celebrate completion and growth',
-        'icon' => 'Award'
-    )
-);
+// Get retreat features from ACF
+$retreatFeatures = get_field('retreat_features') ?: [];
 
-// Define retreat days schedule
-$retreatDays = array(
-    array(
-        'day' => 1,
-        'title' => 'Arrival Day',
-        'theme' => 'Break the Performance',
-        'sessions' => array(
-            array(
-                'period' => 'ARRIVAL & PM SESSION',
-                'activities' => array(
-                    array(
-                        'time' => '3:00 PM',
-                        'title' => 'Welcome + Container Setting',
-                        'description' => 'Journals, agenda, and norms'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Define the Work',
-                        'description' => 'Expectations with rubric & advancement'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Focused Work',
-                        'description' => 'Story + message clarity'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Opening Intentions',
-                        'description' => 'Meet & connect'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Cohort Meet-up',
-                        'description' => 'Same-phase students - review advancement goals & peer feedback structure'
-                    ),
-                    array(
-                        'time' => '5:30 PM',
-                        'title' => 'Dinner',
-                        'description' => 'Sit with Pod [Green, Blue, Orange or Purple w/ room] - circle of mixed level students, with guide',
-                        'highlight' => true
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Free Time',
-                        'description' => 'Evening relaxation and connection'
-                    )
-                )
-            )
-        )
-    ),
-    array(
-        'day' => 2,
-        'title' => 'Build + Refine Day',
-        'theme' => 'Say It So It Lands',
-        'sessions' => array(
-            array(
-                'period' => 'AM SESSION',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'Breakfast & Welcome Remarks',
-                        'description' => 'Start the day with connection'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Pods: Story Circle & Integration',
-                        'description' => 'Share insights and reflections'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Full Group Discussion',
-                        'description' => 'Collective learning and exchange'
-                    )
-                )
-            ),
-            array(
-                'period' => 'PM SESSION',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'Self-Advancement Session 1',
-                        'description' => 'Focused work: design, structure & message'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Partners: Practice & Feedback',
-                        'description' => 'Apply learnings with peer review'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Self-Advancement Session 2',
-                        'description' => 'Refined work: design, structure & message'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Pods: Live Practice',
-                        'description' => 'Small group practice sessions'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Private 1:1 with Joanna',
-                        'description' => 'Individual advisory session',
-                        'highlight' => true
-                    )
-                )
-            ),
-            array(
-                'period' => 'EVENING',
-                'time' => 'After Dinner',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'VIP Dinner',
-                        'description' => 'Private clients only - deeper conversation, proximity to Joanna, identity expansion',
-                        'highlight' => true,
-                        'specialNote' => 'Private clients exclusive'
-                    )
-                )
-            )
-        )
-    ),
-    array(
-        'day' => 3,
-        'title' => 'Promotion Day',
-        'theme' => 'Be Seen and Celebrated',
-        'sessions' => array(
-            array(
-                'period' => 'AM SESSION',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'Breakfast & Welcome Remarks',
-                        'description' => 'Final day preparations'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Pod: Expectations + Rubric Review',
-                        'description' => 'Stage Day preparation'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Partner: Final Practice',
-                        'description' => 'Last rehearsal before stage'
-                    )
-                )
-            ),
-            array(
-                'period' => 'PM SESSION - STAGE DAY',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'Set Intention & Feedback',
-                        'description' => 'Begin Stage Day with purpose'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Participant Talks',
-                        'description' => 'Each participant delivers their talk',
-                        'highlight' => true
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Real-Time Scoring',
-                        'description' => 'Audience scans QR code & completes rubric in real time. Scores populated instantly.',
-                        'highlight' => true
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Qualification',
-                        'description' => 'Scores determine: Advancement, Top speakers, Promotions to next level',
-                        'highlight' => true
-                    )
-                )
-            ),
-            array(
-                'period' => 'AWARDS + RECOGNITION',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'Top 3 Appreciation Awards',
-                        'description' => 'Recognize outstanding performances',
-                        'highlight' => true
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Peer Kudos',
-                        'description' => 'Celebrate in the app',
-                        'highlight' => true
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Acknowledgment',
-                        'description' => 'Celebrate growth and risk-taking',
-                        'highlight' => true
-                    )
-                )
-            ),
-            array(
-                'period' => 'CLOSING CIRCLE',
-                'activities' => array(
-                    array(
-                        'time' => '',
-                        'title' => 'Pods: Reflection & Integration',
-                        'description' => 'Identity anchoring'
-                    ),
-                    array(
-                        'time' => '',
-                        'title' => 'Next Steps & Exit Survey',
-                        'description' => 'Plan your continued journey'
-                    )
-                )
-            )
-        )
-    )
-);
+// Get retreat days from ACF
+$retreatDays = get_field('retreat_days') ?: [];
 
-// Define retreat highlights
-$retreatHighlights = array(
-    array(
-        'title' => 'Relaxation Room',
-        'description' => 'Open 9am-8pm - A downtime room for relaxing, conversation and showing up as you are. Guides are present and available for connection and reflection. Intended to be a safe space that supports growth in what you\'re building.',
-        'icon' => 'Home'
-    ),
-    array(
-        'title' => 'Stage Day',
-        'description' => 'The culmination of the retreat where all work leads to - each participant delivers their talk with real-time feedback and scoring.',
-        'icon' => 'Sparkles'
-    ),
-    array(
-        'title' => 'VIP Dinner',
-        'description' => 'Exclusive private client dinner featuring deeper conversation, proximity to Joanna, and identity expansion.',
-        'icon' => 'Crown'
-    )
-);
+// Get retreat highlights from ACF
+$retreatHighlights = get_field('retreat_highlights') ?: [];
 
-// Define retreat awards
-$retreatAwards = array(
-    array(
-        'title' => 'Top 3 Appreciation Awards',
-        'description' => 'Recognize the highest-scoring performances on Stage Day'
-    ),
-    array(
-        'title' => 'Peer Kudos',
-        'description' => 'Celebrate each other\'s growth and courage in the app'
-    ),
-    array(
-        'title' => 'Growth Acknowledgment',
-        'description' => 'Honor those who took meaningful risks and showed significant development'
-    )
-);
+// Get retreat awards from ACF
+$retreatAwards = get_field('retreat_awards') ?: [];
 
 // Icon mapping to SVG (simplified versions)
 $iconMap = array(
@@ -344,20 +61,26 @@ $iconMap = array(
             <!-- Hero Section -->
             <section class="relative min-h-[80vh] flex items-center">
                 <div class="absolute inset-0">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/carousel/img1.webp" alt="True Influence Retreat" class="w-full h-full object-cover opacity-30" />
+                    <?php
+                    $heroBackgroundImage = get_field('retreat_hero_background_image');
+                    if ($heroBackgroundImage) : ?>
+                        <img src="<?php echo esc_url($heroBackgroundImage); ?>" alt="True Influence Retreat" class="w-full h-full object-cover opacity-30" />
+                    <?php else : ?>
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/carousel/img1.webp" alt="True Influence Retreat" class="w-full h-full object-cover opacity-30" />
+                    <?php endif; ?>
                     <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/70 via-[#0f203d]/50 to-[#0f203d]" />
                 </div>
                 <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-12 text-center">
                     <div class="mb-6">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase">
-                            Immersive Experience
+                            <?php echo esc_html(get_field('retreat_hero_badge') ?: 'Immersive Experience'); ?>
                         </span>
                     </div>
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-[#faf8f5] mb-6">
-                        True Influence<br />Retreat
+                        <?php echo esc_html(get_field('retreat_hero_heading') ?: 'True Influence Retreat'); ?>
                     </h1>
                     <p class="text-lg md:text-xl text-[#faf8f5]/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
-                        A transformative 3-day experience where focused work, partner feedback, and live application converge to prepare you for the stage.
+                        <?php echo esc_html(get_field('retreat_hero_description') ?: 'A transformative 3-day experience where focused work, partner feedback, and live application converge to prepare you for the stage.'); ?>
                     </p>
                 </div>
                 <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2">
@@ -372,17 +95,17 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            Retreat Structure
+                            <?php echo esc_html(get_field('retreat_overview_badge') ?: 'Retreat Structure'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            All Levels, One Container
+                            <?php echo esc_html(get_field('retreat_overview_heading') ?: 'All Levels, One Container'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-3xl mx-auto mb-8">
-                            This is a supportive working environment, not a passive experience.
+                            <?php echo esc_html(get_field('retreat_overview_description') ?: 'This is a supportive working environment, not a passive experience.'); ?>
                         </p>
                         <div class="inline-block bg-[#d4b478]/10 border border-[#d4b478]/30 rounded-full px-6 py-3">
                             <span class="text-[#d4b478] font-medium">
-                                Everything leads to Stage Day
+                                <?php echo esc_html(get_field('retreat_overview_badge_text') ?: 'Everything leads to Stage Day'); ?>
                             </span>
                         </div>
                     </div>
@@ -391,13 +114,13 @@ $iconMap = array(
                         <?php foreach ($retreatFeatures as $index => $feature): ?>
                             <div class="group bg-[#faf8f5]/5 border border-[#faf8f5]/10 rounded-2xl p-6 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
                                 <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <?php echo isset($iconMap[$feature['icon']]) ? $iconMap[$feature['icon']] : $iconMap['Target']; ?>
+                                    <?php echo isset($iconMap[$feature['feature_icon']]) ? $iconMap[$feature['feature_icon']] : $iconMap['Target']; ?>
                                 </div>
                                 <h3 class="font-serif text-xl text-[#faf8f5] mb-2">
-                                    <?php echo esc_html($feature['title']); ?>
+                                    <?php echo esc_html($feature['feature_title']); ?>
                                 </h3>
                                 <p class="text-[#faf8f5]/70 font-light text-sm leading-relaxed">
-                                    <?php echo esc_html($feature['description']); ?>
+                                    <?php echo esc_html($feature['feature_description']); ?>
                                 </p>
                             </div>
                         <?php endforeach; ?>
@@ -410,13 +133,13 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            The Journey
+                            <?php echo esc_html(get_field('retreat_schedule_badge') ?: 'The Journey'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Three Days to Transformation
+                            <?php echo esc_html(get_field('retreat_schedule_heading') ?: 'Three Days to Transformation'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
-                            From arrival to stage day, every moment is designed for growth
+                            <?php echo esc_html(get_field('retreat_schedule_description') ?: 'From arrival to stage day, every moment is designed for growth'); ?>
                         </p>
                     </div>
 
@@ -428,64 +151,64 @@ $iconMap = array(
                             ['bg' => 'from-yellow-900/20 to-yellow-900/5', 'border' => 'border-yellow-500/30', 'accent' => 'text-yellow-400']
                         ];
                         foreach ($retreatDays as $dayIndex => $day):
-                            $colors = $dayColors[$dayIndex];
+                            $colors = $dayColors[$dayIndex % count($dayColors)];
                         ?>
                             <div class="bg-gradient-to-br <?php echo $colors['bg']; ?> border <?php echo $colors['border']; ?> rounded-3xl overflow-hidden">
                                 <div class="p-8 md:p-12">
                                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
                                         <div class="flex items-center gap-4">
                                             <div class="w-16 h-16 bg-gradient-to-br <?php echo $colors['bg']; ?> border <?php echo $colors['border']; ?> rounded-2xl flex items-center justify-center">
-                                                <span class="text-2xl font-serif font-bold text-[#faf8f5]">0<?php echo $day['day']; ?></span>
+                                                <span class="text-2xl font-serif font-bold text-[#faf8f5]">0<?php echo $day['day_number']; ?></span>
                                             </div>
                                             <div>
                                                 <h3 class="font-serif text-2xl md:text-3xl text-[#faf8f5] mb-1">
-                                                    <?php echo esc_html($day['title']); ?>
+                                                    <?php echo esc_html($day['day_title']); ?>
                                                 </h3>
                                                 <p class="text-sm font-medium <?php echo $colors['accent']; ?> tracking-wider uppercase">
-                                                    <?php echo esc_html($day['theme']); ?>
+                                                    <?php echo esc_html($day['day_theme']); ?>
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="space-y-6">
-                                        <?php foreach ($day['sessions'] as $sessionIndex => $session): ?>
+                                        <?php foreach ($day['day_sessions'] as $sessionIndex => $session): ?>
                                             <div class="space-y-4">
                                                 <div class="flex items-center gap-3 mb-4">
                                                     <?php echo $iconMap['Calendar']; ?>
                                                     <h4 class="text-lg font-medium text-[#faf8f5] uppercase tracking-wider">
-                                                        <?php echo esc_html($session['period']); ?>
+                                                        <?php echo esc_html($session['session_period']); ?>
                                                     </h4>
-                                                    <?php if (isset($session['time']) && $session['time']): ?>
+                                                    <?php if (isset($session['session_time']) && $session['session_time']): ?>
                                                         <div class="flex items-center gap-2 ml-auto">
                                                             <?php echo $iconMap['Clock']; ?>
-                                                            <span class="text-sm text-[#faf8f5]/60"><?php echo esc_html($session['time']); ?></span>
+                                                            <span class="text-sm text-[#faf8f5]/60"><?php echo esc_html($session['session_time']); ?></span>
                                                         </div>
                                                     <?php endif; ?>
                                                 </div>
 
                                                 <div class="grid grid-cols-1 gap-3">
-                                                    <?php foreach ($session['activities'] as $activityIndex => $activity): ?>
-                                                        <div class="relative p-4 rounded-xl transition-all duration-300 <?php echo isset($activity['highlight']) && $activity['highlight'] ? 'bg-[#d4b478]/10 border-2 border-[#d4b478]/50' : 'bg-[#faf8f5]/5 border border-[#faf8f5]/10 hover:border-[#faf8f5]/30'; ?>">
+                                                    <?php foreach ($session['session_activities'] as $activityIndex => $activity): ?>
+                                                        <div class="relative p-4 rounded-xl transition-all duration-300 <?php echo isset($activity['activity_highlight']) && $activity['activity_highlight'] ? 'bg-[#d4b478]/10 border-2 border-[#d4b478]/50' : 'bg-[#faf8f5]/5 border border-[#faf8f5]/10 hover:border-[#faf8f5]/30'; ?>">
                                                             <div class="flex items-start gap-3">
-                                                                <?php if (isset($activity['highlight']) && $activity['highlight']): ?>
+                                                                <?php if (isset($activity['activity_highlight']) && $activity['activity_highlight']): ?>
                                                                     <?php echo $iconMap['Sparkles']; ?>
                                                                 <?php endif; ?>
                                                                 <div class="flex-1">
                                                                     <div class="flex items-center gap-2 mb-1">
-                                                                        <?php if (isset($activity['time']) && $activity['time']): ?>
-                                                                            <span class="text-xs <?php echo $colors['accent']; ?> font-medium"><?php echo esc_html($activity['time']); ?></span>
+                                                                        <?php if (isset($activity['activity_time']) && $activity['activity_time']): ?>
+                                                                            <span class="text-xs <?php echo $colors['accent']; ?> font-medium"><?php echo esc_html($activity['activity_time']); ?></span>
                                                                         <?php endif; ?>
-                                                                        <h5 class="font-medium text-[#faf8f5]"><?php echo esc_html($activity['title']); ?></h5>
-                                                                        <?php if (isset($activity['specialNote'])): ?>
+                                                                        <h5 class="font-medium text-[#faf8f5]"><?php echo esc_html($activity['activity_title']); ?></h5>
+                                                                        <?php if (isset($activity['activity_special_note'])): ?>
                                                                             <?php echo $iconMap['Award']; ?>
                                                                         <?php endif; ?>
                                                                     </div>
-                                                                    <?php if (isset($activity['description']) && $activity['description']): ?>
-                                                                        <p class="text-[#faf8f5]/70 font-light text-sm"><?php echo esc_html($activity['description']); ?></p>
+                                                                    <?php if (isset($activity['activity_description']) && $activity['activity_description']): ?>
+                                                                        <p class="text-[#faf8f5]/70 font-light text-sm"><?php echo esc_html($activity['activity_description']); ?></p>
                                                                     <?php endif; ?>
-                                                                    <?php if (isset($activity['specialNote'])): ?>
-                                                                        <span class="inline-block mt-2 text-xs text-[#d4b478] font-medium tracking-wider uppercase"><?php echo esc_html($activity['specialNote']); ?></span>
+                                                                    <?php if (isset($activity['activity_special_note'])): ?>
+                                                                        <span class="inline-block mt-2 text-xs text-[#d4b478] font-medium tracking-wider uppercase"><?php echo esc_html($activity['activity_special_note']); ?></span>
                                                                     <?php endif; ?>
                                                                 </div>
                                                             </div>
@@ -507,13 +230,13 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            The Experience
+                            <?php echo esc_html(get_field('retreat_experience_badge') ?: 'The Experience'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Not Just Training. Transformation.
+                            <?php echo esc_html(get_field('retreat_experience_heading') ?: 'Not Just Training. Transformation.'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
-                            This is a supportive working environment where every moment leads to growth
+                            <?php echo esc_html(get_field('retreat_experience_description') ?: 'This is a supportive working environment where every moment leads to growth'); ?>
                         </p>
                     </div>
 
@@ -522,13 +245,13 @@ $iconMap = array(
                             <div class="group bg-[#faf8f5]/5 border border-[#faf8f5]/10 rounded-2xl overflow-hidden hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
                                 <div class="relative p-8">
                                     <div class="w-16 h-16 bg-[#d4b478]/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                        <?php echo isset($iconMap[$highlight['icon']]) ? $iconMap[$highlight['icon']] : $iconMap['Zap']; ?>
+                                        <?php echo isset($iconMap[$highlight['highlight_icon']]) ? $iconMap[$highlight['highlight_icon']] : $iconMap['Zap']; ?>
                                     </div>
                                     <h3 class="font-serif text-2xl text-[#faf8f5] mb-4">
-                                        <?php echo esc_html($highlight['title']); ?>
+                                        <?php echo esc_html($highlight['highlight_title']); ?>
                                     </h3>
                                     <p class="text-[#faf8f5]/70 font-light leading-relaxed">
-                                        <?php echo esc_html($highlight['description']); ?>
+                                        <?php echo esc_html($highlight['highlight_description']); ?>
                                     </p>
                                 </div>
                             </div>
@@ -540,11 +263,11 @@ $iconMap = array(
                             <div class="flex items-center justify-center gap-4 mb-6">
                                 <?php echo $iconMap['Zap']; ?>
                                 <h3 class="font-serif text-2xl md:text-3xl text-[#faf8f5]">
-                                    Every Activity Has Purpose
+                                    <?php echo esc_html(get_field('retreat_callout_title') ?: 'Every Activity Has Purpose'); ?>
                                 </h3>
                             </div>
                             <p class="text-lg text-[#faf8f5]/80 font-light max-w-3xl mx-auto leading-relaxed">
-                                From focused work sessions to partner feedback, from pod integration to stage performance - every element is designed to build your confidence and prepare you for the spotlight.
+                                <?php echo esc_html(get_field('retreat_callout_description') ?: 'From focused work sessions to partner feedback, from pod integration to stage performance - every element is designed to build your confidence and prepare you for the spotlight.'); ?>
                             </p>
                         </div>
                     </div>
@@ -556,13 +279,13 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            Stage Day
+                            <?php echo esc_html(get_field('retreat_stages_badge') ?: 'Stage Day'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Be Seen and Celebrated
+                            <?php echo esc_html(get_field('retreat_stages_heading') ?: 'Be Seen and Celebrated'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
-                            The culmination of your journey - deliver your talk with real-time feedback and recognition
+                            <?php echo esc_html(get_field('retreat_stages_description') ?: 'The culmination of your journey - deliver your talk with real-time feedback and recognition'); ?>
                         </p>
                     </div>
 
@@ -573,23 +296,37 @@ $iconMap = array(
                                     <?php echo $iconMap['Mic']; ?>
                                 </div>
                                 <h3 class="font-serif text-2xl text-[#faf8f5]">
-                                    The Stage Experience
+                                    <?php echo esc_html(get_field('retreat_stage_experience_heading') ?: 'The Stage Experience'); ?>
                                 </h3>
                             </div>
                             <div class="space-y-4">
-                                <?php foreach (
-                                    [
-                                        'Set intention & feedback framework',
-                                        'Each participant delivers their talk',
-                                        'Audience scans QR code & completes rubric in real time',
-                                        'Scores populated instantly'
-                                    ] as $item
-                                ): ?>
+                                <?php
+                                $stageExperienceItems = get_field('retreat_stage_experience_items') ?: [];
+                                if (!empty($stageExperienceItems)) :
+                                    foreach ($stageExperienceItems as $item) : ?>
+                                        <div class="flex items-start gap-3">
+                                            <?php echo $iconMap['CheckCircle2']; ?>
+                                            <p class="text-[#faf8f5]/80 font-light"><?php echo esc_html($item['stage_experience_item']); ?></p>
+                                        </div>
+                                    <?php endforeach;
+                                else : ?>
                                     <div class="flex items-start gap-3">
                                         <?php echo $iconMap['CheckCircle2']; ?>
-                                        <p class="text-[#faf8f5]/80 font-light"><?php echo esc_html($item); ?></p>
+                                        <p class="text-[#faf8f5]/80 font-light">Set intention & feedback framework</p>
                                     </div>
-                                <?php endforeach; ?>
+                                    <div class="flex items-start gap-3">
+                                        <?php echo $iconMap['CheckCircle2']; ?>
+                                        <p class="text-[#faf8f5]/80 font-light">Each participant delivers their talk</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <?php echo $iconMap['CheckCircle2']; ?>
+                                        <p class="text-[#faf8f5]/80 font-light">Audience scans QR code & completes rubric in real time</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <?php echo $iconMap['CheckCircle2']; ?>
+                                        <p class="text-[#faf8f5]/80 font-light">Scores populated instantly</p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -599,25 +336,36 @@ $iconMap = array(
                                     <?php echo $iconMap['TrendingUp']; ?>
                                 </div>
                                 <h3 class="font-serif text-2xl text-[#faf8f5]">
-                                    Qualification
+                                    <?php echo esc_html(get_field('retreat_qualification_heading') ?: 'Qualification'); ?>
                                 </h3>
                             </div>
                             <p class="text-[#faf8f5]/80 font-light leading-relaxed mb-6">
-                                Scores determine your advancement through the program, recognize top speakers, and identify promotions to the next level.
+                                <?php echo esc_html(get_field('retreat_qualification_description') ?: 'Scores determine your advancement through the program, recognize top speakers, and identify promotions to the next level.'); ?>
                             </p>
                             <div class="grid grid-cols-3 gap-4 text-center">
-                                <?php foreach (
-                                    [
-                                        ['icon' => 'Trophy', 'label' => 'Top Speakers'],
-                                        ['icon' => 'TrendingUp', 'label' => 'Advancement'],
-                                        ['icon' => 'Users', 'label' => 'Next Level']
-                                    ] as $item
-                                ): ?>
+                                <?php
+                                $qualificationItems = get_field('retreat_qualification_items') ?: [];
+                                if (!empty($qualificationItems)) :
+                                    foreach ($qualificationItems as $item) : ?>
+                                        <div class="p-4 bg-[#d4b478]/10 rounded-xl">
+                                            <?php echo isset($iconMap[$item['qualification_item_icon']]) ? $iconMap[$item['qualification_item_icon']] : $iconMap['Trophy']; ?>
+                                            <p class="text-xs text-[#faf8f5]/80 font-medium mt-2"><?php echo esc_html($item['qualification_item_label']); ?></p>
+                                        </div>
+                                    <?php endforeach;
+                                else : ?>
                                     <div class="p-4 bg-[#d4b478]/10 rounded-xl">
-                                        <?php echo $iconMap[$item['icon']]; ?>
-                                        <p class="text-xs text-[#faf8f5]/80 font-medium mt-2"><?php echo esc_html($item['label']); ?></p>
+                                        <?php echo $iconMap['Trophy']; ?>
+                                        <p class="text-xs text-[#faf8f5]/80 font-medium mt-2">Top Speakers</p>
                                     </div>
-                                <?php endforeach; ?>
+                                    <div class="p-4 bg-[#d4b478]/10 rounded-xl">
+                                        <?php echo $iconMap['TrendingUp']; ?>
+                                        <p class="text-xs text-[#faf8f5]/80 font-medium mt-2">Advancement</p>
+                                    </div>
+                                    <div class="p-4 bg-[#d4b478]/10 rounded-xl">
+                                        <?php echo $iconMap['Users']; ?>
+                                        <p class="text-xs text-[#faf8f5]/80 font-medium mt-2">Next Level</p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -625,7 +373,7 @@ $iconMap = array(
                     <div>
                         <div class="text-center mb-10">
                             <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase">
-                                Awards & Recognition
+                                <?php echo esc_html(get_field('retreat_awards_badge') ?: 'Awards & Recognition'); ?>
                             </span>
                         </div>
 
@@ -636,10 +384,10 @@ $iconMap = array(
                                         <?php echo $iconMap['Award']; ?>
                                     </div>
                                     <h4 class="font-serif text-xl text-[#faf8f5] mb-3">
-                                        <?php echo esc_html($award['title']); ?>
+                                        <?php echo esc_html($award['award_title']); ?>
                                     </h4>
                                     <p class="text-[#faf8f5]/70 font-light text-sm leading-relaxed">
-                                        <?php echo esc_html($award['description']); ?>
+                                        <?php echo esc_html($award['award_description']); ?>
                                     </p>
                                 </div>
                             <?php endforeach; ?>
@@ -656,25 +404,34 @@ $iconMap = array(
                             <?php echo $iconMap['Award']; ?>
                         </div>
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            Your Next Step
+                            <?php echo esc_html(get_field('retreat_cta_badge') ?: 'Your Next Step'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Ready to Transform?
+                            <?php echo esc_html(get_field('retreat_cta_heading') ?: 'Ready to Transform?'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-                            Join the True Influence Retreat and experience three days of focused work, partner feedback, and stage performance that will elevate your leadership presence.
+                            <?php echo esc_html(get_field('retreat_cta_description') ?: 'Join the True Influence Retreat and experience three days of focused work, partner feedback, and stage performance that will elevate your leadership presence.'); ?>
                         </p>
 
                         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
-                                <span class="uppercase tracking-wider">Apply Now</span>
-                                <?php echo $iconMap['ArrowRight']; ?>
-                            </a>
+                            <?php
+                            $ctaButtonLink = get_field('retreat_cta_button_link');
+                            if ($ctaButtonLink) : ?>
+                                <a href="<?php echo esc_url($ctaButtonLink); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
+                                    <span class="uppercase tracking-wider"><?php echo esc_html(get_field('retreat_cta_button_text') ?: 'Apply Now'); ?></span>
+                                    <?php echo $iconMap['ArrowRight']; ?>
+                                </a>
+                            <?php else : ?>
+                                <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
+                                    <span class="uppercase tracking-wider"><?php echo esc_html(get_field('retreat_cta_button_text') ?: 'Apply Now'); ?></span>
+                                    <?php echo $iconMap['ArrowRight']; ?>
+                                </a>
+                            <?php endif; ?>
                         </div>
 
                         <div class="mt-12 p-6 bg-[#faf8f5]/5 border border-[#faf8f5]/10 rounded-xl">
                             <p class="text-[#faf8f5]/60 font-light italic text-sm">
-                                "This retreat isn't just about learning to speak - it's about discovering the power of your voice and learning to use it with impact."
+                                <?php echo esc_html(get_field('retreat_quote') ?: '"This retreat isn\'t just about learning to speak - it\'s about discovering the power of your voice and learning to use it with impact."'); ?>
                             </p>
                         </div>
                     </div>

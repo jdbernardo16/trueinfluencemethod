@@ -31,19 +31,19 @@
 
             <div class="max-w-4xl mx-auto px-6 relative z-10">
                 <span class="block text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                    Apply / Work With Joanna
+                    <?php tim_esc_text(tim_get_field('apply_hero_badge', 'Apply / Work With Joanna')); ?>
                 </span>
 
                 <h1 class="font-serif text-4xl md:text-6xl mb-8 text-[#faf8f5]">
-                    Let's Find Out If This Is the Right Fit.
+                    <?php tim_esc_text(tim_get_field('apply_hero_heading', "Let's Find Out If This Is the Right Fit.")); ?>
                 </h1>
 
                 <p class="text-[#faf8f5]/80 text-xl font-light mb-12 max-w-3xl mx-auto">
-                    Joanna works with a limited number of private clients at any one time, and every corporate and group engagement is carefully considered. The inquiry form is the first step — not a commitment, just a conversation.
+                    <?php tim_esc_content(tim_get_field('apply_hero_description_1', 'Joanna works with a limited number of private clients at any one time, and every corporate and group engagement is carefully considered. The inquiry form is the first step — not a commitment, just a conversation.')); ?>
                 </p>
 
                 <p class="text-[#faf8f5]/80 text-xl font-light mb-12 max-w-3xl mx-auto">
-                    Fill it out honestly. Tell us where you are, where you want to go, and what feels most alive in your work right now. Joanna's team will review your submission and be in touch within 2 business days.
+                    <?php tim_esc_content(tim_get_field('apply_hero_description_2', 'Fill it out honestly. Tell us where you are, where you want to go, and what feels most alive in your work right now. Joanna\'s team will review your submission and be in touch within 2 business days.')); ?>
                 </p>
 
                 <!-- Contact Form -->
@@ -51,16 +51,16 @@
 
                 <!-- Additional Links -->
                 <div class="mt-12 flex flex-col md:flex-row items-center gap-6 justify-center">
-                    <a href="mailto:joanna@trueinfluencemethod.com"
+                    <a href="mailto:<?php echo esc_attr(tim_get_field('apply_email_address', 'joanna@trueinfluencemethod.com')); ?>"
                         class="text-xl md:text-2xl font-serif italic text-[#d4b478] hover:text-[#e8a838] transition-colors border-b border-transparent hover:border-[#e8a838] pb-1">
-                        joanna@trueinfluencemethod.com
+                        <?php tim_esc_text(tim_get_field('apply_email_address', 'joanna@trueinfluencemethod.com')); ?>
                     </a>
 
-                    <a href="https://calendly.com/joanna-trueinfluencemethod/private-training"
+                    <a href="<?php tim_esc_url(tim_get_field('apply_consultation_link', 'https://calendly.com/joanna-trueinfluencemethod/private-training')); ?>"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="px-6 py-3 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all">
-                        Book a Consultation →
+                        <?php tim_esc_text(tim_get_field('apply_consultation_button_text', 'Book a Consultation →')); ?>
                     </a>
                 </div>
             </div>
@@ -87,16 +87,16 @@
                     </div>
 
                     <h3 class="font-serif text-2xl text-[#faf8f5] mb-3">
-                        Application Submitted!
+                        <?php tim_esc_text(tim_get_field('apply_success_heading', 'Application Submitted!')); ?>
                     </h3>
 
                     <p class="text-[#faf8f5]/70 mb-6">
-                        Thank you for reaching out. Your application has been received, and we'll get back to you within 2 business days.
+                        <?php tim_esc_content(tim_get_field('apply_success_message', 'Thank you for reaching out. Your application has been received, and we\'ll get back to you within 2 business days.')); ?>
                     </p>
 
                     <button onclick="document.getElementById('success-modal').classList.add('hidden')"
                         class="px-8 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20">
-                        Close
+                        <?php tim_esc_text(tim_get_field('apply_success_button_text', 'Close')); ?>
                     </button>
                 </div>
             </div>

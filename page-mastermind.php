@@ -7,149 +7,69 @@
  * @package tim-wordpress
  */
 
-// Define mastermind features
-$mastermindFeatures = array(
-    array(
-        'title' => 'Self-Guided Video Trainings',
-        'description' => '4–6 expertly crafted video trainings per phase, designed for deep learning and practical application',
-        'icon' => 'Play'
-    ),
-    array(
-        'title' => 'True Influence Method Journal',
-        'description' => 'Strategic prompts accompanying each training to deepen reflection and integrate learning',
-        'icon' => 'BookOpen'
-    ),
-    array(
-        'title' => 'Community Message Board',
-        'description' => 'Connect with fellow students, share insights, and receive peer support throughout your journey',
-        'icon' => 'Users'
-    ),
-    array(
-        'title' => 'Quarterly Retreat Speaking Slot',
-        'description' => 'Reserved opportunity to deliver your talk at our exclusive quarterly retreat events',
-        'icon' => 'Mic'
-    ),
-    array(
-        'title' => 'Rubric-Based Advancement',
-        'description' => 'Clear, measurable criteria to track progress and qualify for the next phase',
-        'icon' => 'TrendingUp'
-    ),
-    array(
-        'title' => 'Flexible Upgrade Path',
-        'description' => 'Students seeking deeper transformation can upgrade to Private Client at any time',
-        'icon' => 'Crown'
-    )
-);
+// Define mastermind features from ACF
+$mastermindFeatures = array();
+if (have_rows('mastermind_features')) {
+    while (have_rows('mastermind_features')) {
+        the_row();
+        $mastermindFeatures[] = array(
+            'title' => get_sub_field('feature_title'),
+            'description' => get_sub_field('feature_description'),
+            'icon' => get_sub_field('feature_icon')
+        );
+    }
+}
 
-// Define program phases
-$programPhases = array(
-    array(
-        'phase' => 1,
-        'title' => 'Foundation Phase',
-        'theme' => 'Discover Your Story',
-        'duration' => '30 Days',
-        'trainings' => array(
-            'Naming Your Story',
-            'The Truth Behind Your Work',
-            'Your Defining Moment',
-            'Finding Your Voice',
-            'Introduction to Presence'
-        ),
-        'focus' => 'Uncover the authentic narrative that defines your leadership and message',
-        'color' => 'from-purple-900/20 to-purple-900/5',
-        'border' => 'border-purple-500/30',
-        'accent' => 'text-purple-400'
-    ),
-    array(
-        'phase' => 2,
-        'title' => 'Development Phase',
-        'theme' => 'Craft Your Message',
-        'duration' => '30 Days',
-        'trainings' => array(
-            'Structuring Your Talk',
-            'The Emotional Arc',
-            'Opening with Impact',
-            'Closing with Power',
-            'Story Integration',
-            'Voice and Delivery Basics'
-        ),
-        'focus' => 'Transform your story into a compelling, structured message that resonates',
-        'color' => 'from-blue-900/20 to-blue-900/5',
-        'border' => 'border-blue-500/30',
-        'accent' => 'text-blue-400'
-    ),
-    array(
-        'phase' => 3,
-        'title' => 'Mastery Phase',
-        'theme' => 'Own Your Stage',
-        'duration' => '30 Days',
-        'trainings' => array(
-            'Commanding Presence',
-            'Reading the Room',
-            'Handling Q&A with Confidence',
-            'Authentic Connection',
-            'Advanced Delivery Techniques'
-        ),
-        'focus' => 'Master the art of delivery and connect authentically with any audience',
-        'color' => 'from-green-900/20 to-green-900/5',
-        'border' => 'border-green-500/30',
-        'accent' => 'text-green-400'
-    )
-);
+// Define program phases from ACF
+$programPhases = array();
+if (have_rows('mastermind_program_phases')) {
+    while (have_rows('mastermind_program_phases')) {
+        the_row();
+        $trainings = array();
+        if (have_rows('phase_trainings')) {
+            while (have_rows('phase_trainings')) {
+                the_row();
+                $trainings[] = get_sub_field('training_title');
+            }
+        }
+        $programPhases[] = array(
+            'phase' => get_sub_field('phase_number'),
+            'title' => get_sub_field('phase_title'),
+            'theme' => get_sub_field('phase_theme'),
+            'duration' => get_sub_field('phase_duration'),
+            'trainings' => $trainings,
+            'focus' => get_sub_field('phase_focus'),
+            'color' => get_sub_field('phase_color'),
+            'border' => get_sub_field('phase_border'),
+            'accent' => get_sub_field('phase_accent')
+        );
+    }
+}
 
-// Define what's included
-$whatsIncluded = array(
-    array(
-        'title' => 'Complete Video Library',
-        'description' => 'Access to all 15+ expert video trainings across three phases, available on-demand',
-        'icon' => 'Play'
-    ),
-    array(
-        'title' => 'Digital Journal System',
-        'description' => 'Interactive journal with guided prompts for each training to deepen your learning',
-        'icon' => 'BookOpen'
-    ),
-    array(
-        'title' => 'Private Community',
-        'description' => 'Exclusive access to our message board for peer connection and support',
-        'icon' => 'Users'
-    ),
-    array(
-        'title' => 'Retreat Speaking Opportunity',
-        'description' => 'Reserved slot to present at our quarterly retreat with real-time feedback',
-        'icon' => 'Mic'
-    ),
-    array(
-        'title' => 'Progress Tracking',
-        'description' => 'Clear rubrics and milestones to measure your growth and advancement',
-        'icon' => 'TrendingUp'
-    ),
-    array(
-        'title' => 'Lifetime Access',
-        'description' => 'Retain access to all materials even after program completion',
-        'icon' => 'CheckCircle2'
-    )
-);
+// Define what's included from ACF
+$whatsIncluded = array();
+if (have_rows('mastermind_included_items')) {
+    while (have_rows('mastermind_included_items')) {
+        the_row();
+        $whatsIncluded[] = array(
+            'title' => get_sub_field('included_item_title'),
+            'description' => get_sub_field('included_item_description'),
+            'icon' => get_sub_field('included_item_icon')
+        );
+    }
+}
 
-// Define advancement criteria
-$advancementCriteria = array(
-    array(
-        'title' => 'Complete All Trainings',
-        'description' => 'Watch and engage with all video trainings in your current phase'
-    ),
-    array(
-        'title' => 'Journal Submissions',
-        'description' => 'Submit thoughtful responses to journal prompts for each training'
-    ),
-    array(
-        'title' => 'Community Engagement',
-        'description' => 'Participate actively in the message board with peers'
-    ),
-    array(
-        'title' => 'Self-Assessment',
-        'description' => 'Complete the phase rubric to demonstrate understanding and application'
-    )
-);
+// Define advancement criteria from ACF
+$advancementCriteria = array();
+if (have_rows('mastermind_advancement_criteria')) {
+    while (have_rows('mastermind_advancement_criteria')) {
+        the_row();
+        $advancementCriteria[] = array(
+            'title' => get_sub_field('criterion_title'),
+            'description' => get_sub_field('criterion_description')
+        );
+    }
+}
 
 // Icon mapping to SVG
 $iconMap = array(
@@ -187,24 +107,31 @@ $iconMap = array(
             <!-- Hero Section -->
             <section class="relative min-h-[80vh] flex items-center">
                 <div class="absolute inset-0">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/carousel/img1.webp" alt="90-Day Mastermind" class="w-full h-full object-cover opacity-30" />
+                    <?php
+                    $hero_image = get_field('mastermind_hero_image');
+                    if ($hero_image) {
+                        echo '<img src="' . esc_url($hero_image['url']) . '" alt="' . esc_attr($hero_image['alt']) . '" class="w-full h-full object-cover opacity-30" />';
+                    } else {
+                        echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/carousel/img1.webp" alt="90-Day Mastermind" class="w-full h-full object-cover opacity-30" />';
+                    }
+                    ?>
                     <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/70 via-[#0f203d]/50 to-[#0f203d]"></div>
                 </div>
                 <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-12 text-center">
                     <div class="mb-6">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase">
-                            Self-Guided Transformation
+                            <?php echo esc_html(get_field('mastermind_hero_badge') ?: 'Self-Guided Transformation'); ?>
                         </span>
                     </div>
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-[#faf8f5] mb-6">
-                        90-Day Mastermind
+                        <?php echo esc_html(get_field('mastermind_hero_heading') ?: '90-Day Mastermind'); ?>
                     </h1>
                     <p class="text-lg md:text-xl text-[#faf8f5]/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
-                        A structured journey of self-discovery and mastery. Transform your story, craft your message, and own your stage—at your own pace.
+                        <?php echo wp_kses_post(get_field('mastermind_hero_description') ?: 'A structured journey of self-discovery and mastery. Transform your story, craft your message, and own your stage—at your own pace.'); ?>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
-                            <span class="uppercase tracking-wider">Begin Your Journey</span>
+                            <span class="uppercase tracking-wider"><?php echo esc_html(get_field('mastermind_hero_cta_text') ?: 'Begin Your Journey'); ?></span>
                             <?php echo $iconMap['ArrowRight']; ?>
                         </a>
                     </div>
@@ -222,22 +149,29 @@ $iconMap = array(
                     <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
                         <div>
                             <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                                The Program
+                                <?php echo esc_html(get_field('mastermind_overview_badge') ?: 'The Program'); ?>
                             </span>
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
-                                Self-Study. Self-Advancement.
+                                <?php echo esc_html(get_field('mastermind_overview_heading') ?: 'Self-Study. Self-Advancement.'); ?>
                             </h2>
                             <p class="text-lg text-[#0f203d]/80 font-light max-w-3xl mb-8">
-                                The 90-Day Mastermind is designed for leaders who value autonomy and structure. Progress through three carefully crafted phases, each building on the last, as you discover, develop, and master your authentic voice.
+                                <?php echo wp_kses_post(get_field('mastermind_overview_description') ?: 'The 90-Day Mastermind is designed for leaders who value autonomy and structure. Progress through three carefully crafted phases, each building on the last, as you discover, develop, and master your authentic voice.'); ?>
                             </p>
                             <div class="inline-block bg-[#d4b478]/10 border border-[#d4b478]/30 rounded-full px-6 py-3">
                                 <span class="text-[#d4b478] font-medium">
-                                    Your Journey, Your Timeline
+                                    <?php echo esc_html(get_field('mastermind_overview_tagline') ?: 'Your Journey, Your Timeline'); ?>
                                 </span>
                             </div>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/carousel/img2.webp" alt="Mastermind Program" class="w-full h-auto object-cover" />
+                            <?php
+                            $overview_image = get_field('mastermind_overview_image');
+                            if ($overview_image) {
+                                echo '<img src="' . esc_url($overview_image['url']) . '" alt="' . esc_attr($overview_image['alt']) . '" class="w-full h-auto object-cover" />';
+                            } else {
+                                echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/carousel/img2.webp" alt="Mastermind Program" class="w-full h-auto object-cover" />';
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -264,13 +198,13 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            The Journey
+                            <?php echo esc_html(get_field('mastermind_phases_badge') ?: 'The Journey'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Three Phases to Mastery
+                            <?php echo esc_html(get_field('mastermind_phases_heading') ?: 'Three Phases to Mastery'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
-                            Each phase builds upon the last, creating a comprehensive path to authentic leadership communication
+                            <?php echo wp_kses_post(get_field('mastermind_phases_description') ?: 'Each phase builds upon the last, creating a comprehensive path to authentic leadership communication'); ?>
                         </p>
                     </div>
 
@@ -328,17 +262,24 @@ $iconMap = array(
                     <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
                         <div>
                             <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                                What You Receive
+                                <?php echo esc_html(get_field('mastermind_included_badge') ?: 'What You Receive'); ?>
                             </span>
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
-                                Everything You Need to Succeed
+                                <?php echo esc_html(get_field('mastermind_included_heading') ?: 'Everything You Need to Succeed'); ?>
                             </h2>
                             <p class="text-lg text-[#0f203d]/80 font-light max-w-2xl mb-8">
-                                A complete toolkit designed to support your transformation from start to finish
+                                <?php echo wp_kses_post(get_field('mastermind_included_description') ?: 'A complete toolkit designed to support your transformation from start to finish'); ?>
                             </p>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/carousel/img3.webp" alt="Mastermind Resources" class="w-full h-auto object-cover" />
+                            <?php
+                            $included_image = get_field('mastermind_included_image');
+                            if ($included_image) {
+                                echo '<img src="' . esc_url($included_image['url']) . '" alt="' . esc_attr($included_image['alt']) . '" class="w-full h-auto object-cover" />';
+                            } else {
+                                echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/carousel/img3.webp" alt="Mastermind Resources" class="w-full h-auto object-cover" />';
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -365,13 +306,13 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            How You Advance
+                            <?php echo esc_html(get_field('mastermind_advancement_badge') ?: 'How You Advance'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Earn Your Progress
+                            <?php echo esc_html(get_field('mastermind_advancement_heading') ?: 'Earn Your Progress'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
-                            Advancement is earned through engagement and demonstrated understanding. Each phase has clear criteria you must meet before moving forward.
+                            <?php echo wp_kses_post(get_field('mastermind_advancement_description') ?: 'Advancement is earned through engagement and demonstrated understanding. Each phase has clear criteria you must meet before moving forward.'); ?>
                         </p>
                     </div>
 
@@ -397,14 +338,14 @@ $iconMap = array(
                         <div class="flex items-center justify-center gap-3 mb-6">
                             <?php echo $iconMap['Award']; ?>
                             <h3 class="font-serif text-2xl md:text-3xl text-[#faf8f5]">
-                                The Rubric System
+                                <?php echo esc_html(get_field('mastermind_rubric_title') ?: 'The Rubric System'); ?>
                             </h3>
                         </div>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-3xl mx-auto leading-relaxed mb-6">
-                            Each phase concludes with a self-assessment rubric that measures your understanding and application of key concepts. This ensures you've genuinely integrated the learning before advancing—creating a foundation that builds confidence and capability.
+                            <?php echo wp_kses_post(get_field('mastermind_rubric_description') ?: 'Each phase concludes with a self-assessment rubric that measures your understanding and application of key concepts. This ensures you\'ve genuinely integrated the learning before advancing—creating a foundation that builds confidence and capability.'); ?>
                         </p>
                         <p class="text-[#d4b478] font-medium">
-                            Pass the rubric to unlock the next phase
+                            <?php echo esc_html(get_field('mastermind_rubric_note') ?: 'Pass the rubric to unlock the next phase'); ?>
                         </p>
                     </div>
                 </div>
@@ -416,113 +357,101 @@ $iconMap = array(
                     <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
                         <div>
                             <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                                Why This Works
+                                <?php echo esc_html(get_field('mastermind_why_badge') ?: 'Why This Works'); ?>
                             </span>
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
-                                A Proven Path to Transformation
+                                <?php echo esc_html(get_field('mastermind_why_heading') ?: 'A Proven Path to Transformation'); ?>
                             </h2>
                             <p class="text-lg text-[#0f203d]/80 font-light max-w-3xl mb-8">
-                                The 90-Day Mastermind combines structure, community, and accountability to create lasting change in how you communicate and lead.
+                                <?php echo wp_kses_post(get_field('mastermind_why_description') ?: 'The 90-Day Mastermind combines structure, community, and accountability to create lasting change in how you communicate and lead.'); ?>
                             </p>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/carousel/img4.webp" alt="Transformation Journey" class="w-full h-auto object-cover" />
+                            <?php
+                            $why_image = get_field('mastermind_why_image');
+                            if ($why_image) {
+                                echo '<img src="' . esc_url($why_image['url']) . '" alt="' . esc_attr($why_image['alt']) . '" class="w-full h-auto object-cover" />';
+                            } else {
+                                echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/carousel/img4.webp" alt="Transformation Journey" class="w-full h-auto object-cover" />';
+                            }
+                            ?>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                            </div>
-                            <h3 class="font-serif text-xl text-[#0f203d] mb-3">
-                                Structured Progression
-                            </h3>
-                            <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
-                                Each phase builds intentionally on the last, ensuring you develop foundational skills before advancing to more complex concepts.
-                            </p>
-                        </div>
+                        <?php
+                        $whyBenefits = array();
+                        if (have_rows('mastermind_why_benefits')) {
+                            while (have_rows('mastermind_why_benefits')) {
+                                the_row();
+                                $whyBenefits[] = array(
+                                    'title' => get_sub_field('benefit_title'),
+                                    'description' => get_sub_field('benefit_description'),
+                                    'icon' => get_sub_field('benefit_icon')
+                                );
+                            }
+                        }
 
-                        <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                </svg>
-                            </div>
-                            <h3 class="font-serif text-xl text-[#0f203d] mb-3">
-                                Peer Connection
-                            </h3>
-                            <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
-                                Join a community of like-minded leaders who share insights, provide feedback, and support each other's growth journey.
-                            </p>
-                        </div>
+                        // Default benefits if no ACF data
+                        if (empty($whyBenefits)) {
+                            $whyBenefits = array(
+                                array(
+                                    'title' => 'Structured Progression',
+                                    'description' => 'Each phase builds intentionally on the last, ensuring you develop foundational skills before advancing to more complex concepts.',
+                                    'icon' => 'Star'
+                                ),
+                                array(
+                                    'title' => 'Peer Connection',
+                                    'description' => 'Join a community of like-minded leaders who share insights, provide feedback, and support each other\'s growth journey.',
+                                    'icon' => 'Users'
+                                ),
+                                array(
+                                    'title' => 'Measurable Growth',
+                                    'description' => 'Clear rubrics and advancement criteria ensure you\'re genuinely integrating learning before moving forward.',
+                                    'icon' => 'TrendingUp'
+                                ),
+                                array(
+                                    'title' => 'Reflective Practice',
+                                    'description' => 'Guided journal prompts help you deepen understanding and connect training content to your unique leadership context.',
+                                    'icon' => 'BookOpen'
+                                ),
+                                array(
+                                    'title' => 'Real Application',
+                                    'description' => 'Quarterly retreat speaking opportunities give you a real stage to practice and receive authentic feedback.',
+                                    'icon' => 'Mic'
+                                ),
+                                array(
+                                    'title' => 'Flexible Pacing',
+                                    'description' => 'Self-guided format lets you progress at your own pace while maintaining structure and accountability.',
+                                    'icon' => 'Award'
+                                )
+                            );
+                        }
 
-                        <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                                    <polyline points="17 6 23 6 23 12" />
-                                </svg>
-                            </div>
-                            <h3 class="font-serif text-xl text-[#0f203d] mb-3">
-                                Measurable Growth
-                            </h3>
-                            <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
-                                Clear rubrics and advancement criteria ensure you're genuinely integrating learning before moving forward.
-                            </p>
-                        </div>
+                        // Icon SVG map
+                        $benefitIconMap = array(
+                            'Star' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>',
+                            'Users' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>',
+                            'TrendingUp' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>',
+                            'BookOpen' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>',
+                            'Mic' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="23" /><line x1="8" y1="23" x2="16" y2="23" /></svg>',
+                            'Award' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg>'
+                        );
 
-                        <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                                </svg>
+                        foreach ($whyBenefits as $benefit):
+                        ?>
+                            <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
+                                <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
+                                    <?php echo isset($benefitIconMap[$benefit['icon']]) ? $benefitIconMap[$benefit['icon']] : $benefitIconMap['Star']; ?>
+                                </div>
+                                <h3 class="font-serif text-xl text-[#0f203d] mb-3">
+                                    <?php echo esc_html($benefit['title']); ?>
+                                </h3>
+                                <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
+                                    <?php echo wp_kses_post($benefit['description']); ?>
+                                </p>
                             </div>
-                            <h3 class="font-serif text-xl text-[#0f203d] mb-3">
-                                Reflective Practice
-                            </h3>
-                            <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
-                                Guided journal prompts help you deepen understanding and connect training content to your unique leadership context.
-                            </p>
-                        </div>
-
-                        <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                                    <line x1="12" y1="19" x2="12" y2="23" />
-                                    <line x1="8" y1="23" x2="16" y2="23" />
-                                </svg>
-                            </div>
-                            <h3 class="font-serif text-xl text-[#0f203d] mb-3">
-                                Real Application
-                            </h3>
-                            <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
-                                Quarterly retreat speaking opportunities give you a real stage to practice and receive authentic feedback.
-                            </p>
-                        </div>
-
-                        <div class="bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-2xl p-8 hover:border-[#d4b478]/50 hover:bg-[#d4b478]/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="8" r="7" />
-                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                                </svg>
-                            </div>
-                            <h3 class="font-serif text-xl text-[#0f203d] mb-3">
-                                Flexible Pacing
-                            </h3>
-                            <p class="text-[#0f203d]/70 font-light text-sm leading-relaxed">
-                                Self-guided format lets you progress at your own pace while maintaining structure and accountability.
-                            </p>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </section>
@@ -532,13 +461,13 @@ $iconMap = array(
                 <div class="max-w-7xl mx-auto px-6 md:px-12">
                     <div class="text-center mb-16">
                         <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                            Your Options
+                            <?php echo esc_html(get_field('mastermind_upgrade_badge') ?: 'Your Options'); ?>
                         </span>
                         <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
-                            Want More?
+                            <?php echo esc_html(get_field('mastermind_upgrade_heading') ?: 'Want More?'); ?>
                         </h2>
                         <p class="text-lg text-[#faf8f5]/80 font-light max-w-2xl mx-auto">
-                            The Mastermind is a powerful foundation. When you're ready for deeper transformation, you can upgrade to Private Client at any time.
+                            <?php echo wp_kses_post(get_field('mastermind_upgrade_description') ?: 'The Mastermind is a powerful foundation. When you\'re ready for deeper transformation, you can upgrade to Private Client at any time.'); ?>
                         </p>
                     </div>
 
@@ -549,11 +478,32 @@ $iconMap = array(
                                     <?php echo $iconMap['Zap']; ?>
                                 </div>
                                 <h3 class="font-serif text-2xl text-[#faf8f5]">
-                                    90-Day Mastermind
+                                    <?php echo esc_html(get_field('mastermind_mastermind_title') ?: '90-Day Mastermind'); ?>
                                 </h3>
                             </div>
                             <ul class="space-y-3 mb-6">
-                                <?php foreach (['Self-guided video trainings', 'Interactive journal prompts', 'Community message board access', 'Quarterly retreat speaking slot', 'Rubric-based advancement'] as $item): ?>
+                                <?php
+                                $mastermindFeaturesList = array();
+                                if (have_rows('mastermind_mastermind_features')) {
+                                    while (have_rows('mastermind_mastermind_features')) {
+                                        the_row();
+                                        $mastermindFeaturesList[] = get_sub_field('mastermind_feature_text');
+                                    }
+                                }
+
+                                // Default features if no ACF data
+                                if (empty($mastermindFeaturesList)) {
+                                    $mastermindFeaturesList = array(
+                                        'Self-guided video trainings',
+                                        'Interactive journal prompts',
+                                        'Community message board access',
+                                        'Quarterly retreat speaking slot',
+                                        'Rubric-based advancement'
+                                    );
+                                }
+
+                                foreach ($mastermindFeaturesList as $item):
+                                ?>
                                     <li class="flex items-center gap-3 text-[#faf8f5]/80 text-sm">
                                         <?php echo $iconMap['CheckCircle2']; ?>
                                         <?php echo esc_html($item); ?>
@@ -561,7 +511,7 @@ $iconMap = array(
                                 <?php endforeach; ?>
                             </ul>
                             <p class="text-[#d4b478] font-medium">
-                                Self-paced, self-directed learning
+                                <?php echo esc_html(get_field('mastermind_mastermind_note') ?: 'Self-paced, self-directed learning'); ?>
                             </p>
                         </div>
 
@@ -571,11 +521,32 @@ $iconMap = array(
                                     <?php echo $iconMap['Crown']; ?>
                                 </div>
                                 <h3 class="font-serif text-2xl text-[#faf8f5]">
-                                    Upgrade to Private Client
+                                    <?php echo esc_html(get_field('mastermind_private_title') ?: 'Upgrade to Private Client'); ?>
                                 </h3>
                             </div>
                             <ul class="space-y-3 mb-6">
-                                <?php foreach (['Everything in Mastermind', 'Private 1:1 advisory sessions', 'Individualized training path', 'Personalized insights from Joanna', 'Auto-enrollment in Kajabi portal'] as $item): ?>
+                                <?php
+                                $privateFeaturesList = array();
+                                if (have_rows('mastermind_private_features')) {
+                                    while (have_rows('mastermind_private_features')) {
+                                        the_row();
+                                        $privateFeaturesList[] = get_sub_field('private_feature_text');
+                                    }
+                                }
+
+                                // Default features if no ACF data
+                                if (empty($privateFeaturesList)) {
+                                    $privateFeaturesList = array(
+                                        'Everything in Mastermind',
+                                        'Private 1:1 advisory sessions',
+                                        'Individualized training path',
+                                        'Personalized insights from Joanna',
+                                        'Auto-enrollment in Kajabi portal'
+                                    );
+                                }
+
+                                foreach ($privateFeaturesList as $item):
+                                ?>
                                     <li class="flex items-center gap-3 text-[#faf8f5]/80 text-sm">
                                         <?php echo $iconMap['CheckCircle2']; ?>
                                         <?php echo esc_html($item); ?>
@@ -583,7 +554,7 @@ $iconMap = array(
                                 <?php endforeach; ?>
                             </ul>
                             <p class="text-[#d4b478] font-medium">
-                                Upgrade available at any time
+                                <?php echo esc_html(get_field('mastermind_private_note') ?: 'Upgrade available at any time'); ?>
                             </p>
                         </div>
                     </div>
@@ -599,30 +570,37 @@ $iconMap = array(
                                 <?php echo $iconMap['Zap']; ?>
                             </div>
                             <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block mb-4">
-                                Your Transformation Begins
+                                <?php echo esc_html(get_field('mastermind_cta_badge') ?: 'Your Transformation Begins'); ?>
                             </span>
                             <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
-                                Ready to Find Your Voice?
+                                <?php echo esc_html(get_field('mastermind_cta_heading') ?: 'Ready to Find Your Voice?'); ?>
                             </h2>
                             <p class="text-lg text-[#0f203d]/80 font-light leading-relaxed mb-10 max-w-2xl">
-                                The 90-Day Mastermind gives you the structure, tools, and community to transform your story into powerful leadership communication. Begin your journey today.
+                                <?php echo wp_kses_post(get_field('mastermind_cta_description') ?: 'The 90-Day Mastermind gives you the structure, tools, and community to transform your story into powerful leadership communication. Begin your journey today.'); ?>
                             </p>
 
                             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
                                 <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
-                                    <span class="uppercase tracking-wider">Start Your Journey</span>
+                                    <span class="uppercase tracking-wider"><?php echo esc_html(get_field('mastermind_cta_button_text') ?: 'Start Your Journey'); ?></span>
                                     <?php echo $iconMap['ArrowRight']; ?>
                                 </a>
                             </div>
 
                             <div class="p-6 bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-xl">
                                 <p class="text-[#0f203d]/60 font-light italic text-sm">
-                                    "The path to authentic influence isn't found—it's forged through courage, practice, and the willingness to be seen."
+                                    "<?php echo esc_html(get_field('mastermind_cta_quote') ?: 'The path to authentic influence isn\'t found—it\'s forged through courage, practice, and the willingness to be seen.'); ?>"
                                 </p>
                             </div>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/joanna2.webp" alt="Joanna Horton McPherson" class="w-full h-auto object-cover" />
+                            <?php
+                            $cta_image = get_field('mastermind_cta_image');
+                            if ($cta_image) {
+                                echo '<img src="' . esc_url($cta_image['url']) . '" alt="' . esc_attr($cta_image['alt']) . '" class="w-full h-auto object-cover" />';
+                            } else {
+                                echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/joanna2.webp" alt="Joanna Horton McPherson" class="w-full h-auto object-cover" />';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

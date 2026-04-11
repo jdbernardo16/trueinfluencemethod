@@ -61,6 +61,19 @@ function tim_wordpress_register_acf_field_groups()
         'paths-section',
         'social-proof-section',
         'cta-section',
+        'about-page-fields',
+        'apply-page-fields',
+        'community-page-fields',
+        'corporate-page-fields',
+        'events-page-fields',
+        'faq-page-fields',
+        'journey-page-fields',
+        'mastermind-page-fields',
+        'private-training-page-fields',
+        'programs-page-fields',
+        'retreat-page-fields',
+        'success-stories-page-fields',
+        'vault-page-fields',
     ];
 
     foreach ($field_groups as $field_group) {

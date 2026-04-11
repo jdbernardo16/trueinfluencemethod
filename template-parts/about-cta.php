@@ -20,22 +20,33 @@
         <div class="mb-12">
             <div class="relative inline-block">
                 <div class="absolute inset-0 bg-[#d4b478] blur-[60px] opacity-20 rounded-full"></div>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icononly_transparent_nobuffer.png"
-                    alt="Logo"
+                <?php
+                $cta_logo = tim_get_image_field(
+                    'about_cta_logo_image',
+                    get_template_directory_uri() . '/assets/images/icononly_transparent_nobuffer.png',
+                    'Logo'
+                );
+                ?>
+                <img src="<?php echo esc_url($cta_logo['url']); ?>"
+                    alt="<?php echo esc_attr($cta_logo['alt']); ?>"
                     class="w-32 h-32 object-contain relative z-10" />
             </div>
         </div>
 
         <h2 class="font-serif text-4xl md:text-6xl text-[#faf8f5] mb-6">
-            Ready to Find Your Voice?
+            <?php tim_esc_text(tim_get_field('about_cta_heading', 'Ready to Find Your Voice?')); ?>
         </h2>
         <p class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
-            The first step is a conversation. Fill out Joanna's private client inquiry form and her team will be in touch to guide you toward the right path.
+            <?php tim_esc_content(tim_get_field('about_cta_description', 'The first step is a conversation. Fill out Joanna\'s private client inquiry form and her team will be in touch to guide you toward the right path.')); ?>
         </p>
 
-        <a href="<?php echo home_url('/apply/'); ?>"
+        <?php
+        $cta_button_link = tim_get_field('about_cta_button_link');
+        $cta_button_url = $cta_button_link ? get_permalink($cta_button_link) : home_url('/apply/');
+        ?>
+        <a href="<?php echo esc_url($cta_button_url); ?>"
             class="inline-flex items-center gap-3 px-10 py-5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/20 text-lg group">
-            Apply to Work With Joanna
+            <?php tim_esc_text(tim_get_field('about_cta_button_text', 'Apply to Work With Joanna')); ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
