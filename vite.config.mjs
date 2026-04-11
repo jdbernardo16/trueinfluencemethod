@@ -23,18 +23,18 @@ export default defineConfig(({ command }) => {
                 ],
                 output: {
                     entryFileNames: (chunkInfo) => {
-                        // Keep theme.js as is, hash others
+                        // Keep theme.js as is, put others in assets/
                         return chunkInfo.name === "theme"
                             ? "theme.js"
-                            : "[name]-[hash].js";
+                            : "assets/[name]-[hash].js";
                     },
-                    chunkFileNames: "[name]-[hash].js",
+                    chunkFileNames: "assets/[name]-[hash].js",
                     assetFileNames: (assetInfo) => {
-                        // Keep editor-style.css as is, hash others
+                        // Keep editor-style.css as is, put others in assets/
                         if (assetInfo.name === "editor-style.css") {
                             return "editor-style.css";
                         }
-                        return "[name]-[hash][extname]";
+                        return "assets/[name]-[hash][extname]";
                     },
                 },
             },
