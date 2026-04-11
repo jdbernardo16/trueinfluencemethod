@@ -41,7 +41,7 @@
     wp_nav_menu([
         'theme_location' => 'primary',
         'container' => false,
-        'menu_class' => 'flex flex-col space-y-6 text-center',
+        'menu_class' => 'flex flex-col space-y-6 text-center items-center',
         'walker' => new \TailPress\Walkers\PrimaryNavWalker([
             'mode' => 'mobile',
             'cta_class' => 'bg-[#d4b478] text-white text-xl uppercase tracking-widest px-8 py-3 rounded-full font-medium hover:bg-[#b37a1f] transition-colors',

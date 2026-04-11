@@ -65,6 +65,7 @@ jobs:
                       **/deploy-package/**
                       **/.DS_Store
                       **/Thumbs.db
+                      **/resources/**
 
             - name: Cleanup
               if: always()

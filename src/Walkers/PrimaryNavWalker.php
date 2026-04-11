@@ -59,6 +59,16 @@ class PrimaryNavWalker extends Walker_Nav_Menu
             return;
         }
 
+        // Build li class string
+        $li_classes = $classes;
+        $li_class_string = join(' ', apply_filters('nav_menu_css_class', array_filter($li_classes), $item, $args, $depth));
+        $li_class_string = $li_class_string ? ' class="' . esc_attr($li_class_string) . '"' : '';
+
+        // Output li tag (except in dropdown mode for top-level items with children)
+        if (!($this->config['mode'] === 'dropdown' && $depth === 0 && $has_children)) {
+            $output .= '<li' . $li_class_string . '>';
+        }
+
         // Build attributes
         $attributes = [];
         $attributes['title'] = !empty($item->attr_title) ? $item->attr_title : $item->title;
@@ -90,7 +100,7 @@ class PrimaryNavWalker extends Walker_Nav_Menu
             }
 
             if ($has_children) {
-                $class_string .= ' mobile-dropdown-toggle flex items-center gap-2 justify-center';
+                $class_string .= ' mobile-dropdown-toggle flex items-center gap-2 justify-center mx-auto';
             }
         } elseif ($this->config['mode'] === 'dropdown') {
             if ($depth === 0 && $has_children) {
@@ -218,7 +228,7 @@ class PrimaryNavWalker extends Walker_Nav_Menu
         if ($this->config['mode'] === 'desktop') {
             $classes[] = 'absolute top-full left-0 min-w-[200px] bg-[#0f203d]/95 backdrop-blur-sm border border-[#faf8f5]/10 shadow-xl rounded-lg py-2 hidden';
         } elseif ($this->config['mode'] === 'mobile') {
-            $classes[] = 'flex flex-col space-y-2 pl-4 hidden';
+            $classes[] = 'flex flex-col space-y-2 mt-2 hidden';
         } elseif ($this->config['mode'] === 'dropdown') {
             // Don't output ul in dropdown mode, we're using nav instead
             return;

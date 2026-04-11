@@ -220,13 +220,17 @@
         );
 
         mobileDropdownToggles.forEach((toggle) => {
-            toggle.addEventListener("click", () => {
+            toggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
                 const dropdownId = toggle.getAttribute("data-dropdown");
 
                 if (!dropdownId) return;
 
                 // Find the parent menu item and its sub-menu
                 const parentItem = toggle.closest(".menu-item-has-children");
+
                 if (parentItem) {
                     const linksContainer =
                         parentItem.querySelector(".sub-menu");
