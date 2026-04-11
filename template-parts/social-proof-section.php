@@ -5,26 +5,55 @@
  * Based on SocialProofSection.vue
  */
 
-$testimonials = array(
-    array(
-        'quote' => "Working with Joanna has been nothing short of life-changing.",
-        'author' => "A. Robinson",
-        'type' => "Private Client",
-        'image' => get_template_directory_uri() . '/assets/images/carousel/img1.webp'
-    ),
-    array(
-        'quote' => "A game changer in coaching. Her process is nothing short of transformative.",
-        'author' => "Sarah Chen",
-        'type' => "Private Client",
-        'image' => get_template_directory_uri() . '/assets/images/carousel/img2.webp'
-    ),
-    array(
-        'quote' => "We knew training would be good, but got far more than we expected.",
-        'author' => "Michael Torres",
-        'type' => "Corporate Client",
-        'image' => get_template_directory_uri() . '/assets/images/carousel/img3.webp'
-    )
-);
+// Get ACF fields with fallbacks
+$social_proof_badge_text = get_field('social_proof_badge_text') ?: 'Trusted by Leaders';
+
+// Get testimonials from repeater
+$testimonials = [];
+if (have_rows('testimonials')) {
+    while (have_rows('testimonials')) {
+        the_row();
+        $testimonial_image = get_sub_field('testimonial_image');
+        $testimonials[] = [
+            'quote' => get_sub_field('testimonial_quote') ?: "Working with Joanna has been nothing short of life-changing.",
+            'author' => get_sub_field('testimonial_author') ?: 'A. Robinson',
+            'type' => get_sub_field('testimonial_type') ?: 'Private Client',
+            'image' => $testimonial_image ? $testimonial_image['url'] : get_template_directory_uri() . '/assets/images/carousel/img1.webp',
+        ];
+    }
+}
+
+// Fallback testimonials if none are set
+if (empty($testimonials)) {
+    $testimonials = [
+        [
+            'quote' => "Working with Joanna has been nothing short of life-changing.",
+            'author' => "A. Robinson",
+            'type' => "Private Client",
+            'image' => get_template_directory_uri() . '/assets/images/carousel/img1.webp'
+        ],
+        [
+            'quote' => "A game changer in coaching. Her process is nothing short of transformative.",
+            'author' => "Sarah Chen",
+            'type' => "Private Client",
+            'image' => get_template_directory_uri() . '/assets/images/carousel/img2.webp'
+        ],
+        [
+            'quote' => "We knew training would be good, but got far more than we expected.",
+            'author' => "Michael Torres",
+            'type' => "Corporate Client",
+            'image' => get_template_directory_uri() . '/assets/images/carousel/img3.webp'
+        ]
+    ];
+}
+
+// Get stats
+$stats_leaders_number = get_field('stats_leaders_number') ?: '100+';
+$stats_leaders_label = get_field('stats_leaders_label') ?: 'Leaders Transformed';
+$stats_satisfaction_number = get_field('stats_satisfaction_number') ?: '98%';
+$stats_satisfaction_label = get_field('stats_satisfaction_label') ?: 'Client Satisfaction';
+$stats_years_number = get_field('stats_years_number') ?: '5+';
+$stats_years_label = get_field('stats_years_label') ?: 'Years Experience';
 ?>
 
 <section class="py-20 bg-[#0f203d] relative overflow-hidden">
@@ -39,7 +68,7 @@ $testimonials = array(
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
-                Trusted by Leaders
+                <?php echo esc_html($social_proof_badge_text); ?>
             </span>
         </div>
 
@@ -51,18 +80,18 @@ $testimonials = array(
 
         <div class="mt-16 flex items-center justify-center gap-8 flex-wrap">
             <div class="text-center">
-                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1">100+</p>
-                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider">Leaders Transformed</p>
+                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1"><?php echo esc_html($stats_leaders_number); ?></p>
+                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider"><?php echo esc_html($stats_leaders_label); ?></p>
             </div>
             <div class="w-px h-12 bg-[#faf8f5]/10 hidden md:block"></div>
             <div class="text-center">
-                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1">98%</p>
-                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider">Client Satisfaction</p>
+                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1"><?php echo esc_html($stats_satisfaction_number); ?></p>
+                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider"><?php echo esc_html($stats_satisfaction_label); ?></p>
             </div>
             <div class="w-px h-12 bg-[#faf8f5]/10 hidden md:block"></div>
             <div class="text-center">
-                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1">5+</p>
-                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider">Years Experience</p>
+                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1"><?php echo esc_html($stats_years_number); ?></p>
+                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider"><?php echo esc_html($stats_years_label); ?></p>
             </div>
         </div>
     </div>

@@ -250,3 +250,18 @@ function add_categories_to_custom_post_types()
     register_taxonomy_for_object_type('category', 'tips');
 }
 add_action('init', 'add_categories_to_custom_post_types');
+
+/**
+ * Load ACF Field Groups
+ */
+function tim_wordpress_load_acf_fields()
+{
+    // Only load if ACF is active
+    if (!class_exists('ACF')) {
+        return;
+    }
+
+    // Load ACF setup and field groups
+    require_once get_template_directory() . '/acf/acf-setup.php';
+}
+add_action('acf/init', 'tim_wordpress_load_acf_fields', 5);

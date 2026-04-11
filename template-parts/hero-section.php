@@ -5,9 +5,44 @@
  * Based on HeroSection.vue
  */
 
-$video_poster = get_template_directory_uri() . '/assets/images/carousel/img1.webp';
-$video_source = get_template_directory_uri() . '/assets/videos/video.mp4';
-$logo_image = get_template_directory_uri() . '/assets/images/icononly_transparent_nobuffer.png';
+// Get ACF fields with fallbacks
+$video_poster = get_field('hero_video_poster');
+if ($video_poster) {
+    $video_poster_url = $video_poster['url'];
+} else {
+    $video_poster_url = get_template_directory_uri() . '/assets/images/carousel/img1.webp';
+}
+
+$video_source = get_field('hero_video_source') ?: get_template_directory_uri() . '/assets/videos/video.mp4';
+
+$logo_image = get_field('hero_logo_image');
+if ($logo_image) {
+    $logo_image_url = $logo_image['url'];
+    $logo_image_alt = $logo_image['alt'] ?: 'Logo Mark';
+} else {
+    $logo_image_url = get_template_directory_uri() . '/assets/images/icononly_transparent_nobuffer.png';
+    $logo_image_alt = 'Logo Mark';
+}
+
+$hero_heading = get_field('hero_heading') ?: 'True Influence Method™️ — Joanna Horton McPherson';
+$hero_quote = get_field('hero_quote') ?: 'Your Voice Is Your Leadership.';
+$hero_description = get_field('hero_description') ?: "You've built something real. Now it's time to speak about it in a way that moves rooms, earns trust, and creates a legacy that outlasts the work itself.";
+
+$hero_primary_cta_text = get_field('hero_primary_cta_text') ?: 'Apply to Work With Joanna';
+$hero_primary_cta_link = get_field('hero_primary_cta_link');
+if ($hero_primary_cta_link && is_array($hero_primary_cta_link)) {
+    $hero_primary_cta_link_url = $hero_primary_cta_link['url'];
+} else {
+    $hero_primary_cta_link_url = '/apply';
+}
+
+$hero_secondary_cta_text = get_field('hero_secondary_cta_text') ?: 'Explore Programs →';
+$hero_secondary_cta_link = get_field('hero_secondary_cta_link');
+if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
+    $hero_secondary_cta_link_url = $hero_secondary_cta_link['url'];
+} else {
+    $hero_secondary_cta_link_url = '/programs';
+}
 ?>
 
 <section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
@@ -17,7 +52,7 @@ $logo_image = get_template_directory_uri() . '/assets/images/icononly_transparen
         loop
         playsinline
         class="absolute inset-0 w-full h-full object-cover"
-        poster="<?php echo esc_url($video_poster); ?>"
+        poster="<?php echo esc_url($video_poster_url); ?>"
         onerror="this.style.display='none';">
         <source src="<?php echo esc_url($video_source); ?>" type="video/mp4" />
     </video>
@@ -34,42 +69,40 @@ $logo_image = get_template_directory_uri() . '/assets/images/icononly_transparen
             <div class="relative">
                 <div class="absolute inset-0 bg-[#d4b478] blur-[60px] opacity-10 rounded-full animate-pulse"></div>
                 <img
-                    src="<?php echo esc_url($logo_image); ?>"
-                    alt="Logo Mark"
+                    src="<?php echo esc_url($logo_image_url); ?>"
+                    alt="<?php echo esc_attr($logo_image_alt); ?>"
                     class="w-32 h-32 md:w-40 md:h-40 object-contain relative z-10 animate-float-slow" />
             </div>
         </div>
 
         <h1 class="text-[#d4b478] text-2xl md:text-4xl font-medium tracking-[0.2em] uppercase mb-4 relative">
             <span class="absolute -left-8 top-1/2 -translate-y-1/2 w-6 h-px bg-[#d4b478]/40 hidden md:block"></span>
-            True Influence Method™️ — Joanna Horton McPherson
+            <?php echo esc_html($hero_heading); ?>
             <span class="absolute -right-8 top-1/2 -translate-y-1/2 w-6 h-px bg-[#d4b478]/40 hidden md:block"></span>
         </h1>
 
         <p class="text-[#faf8f5] font-serif italic text-xl md:text-3xl mb-8 font-light relative inline-block">
             <span class="absolute -top-3 -left-4 text-[#d4b478]/20 text-5xl font-serif">"</span>
-            Your Voice Is Your Leadership.
+            <?php echo esc_html($hero_quote); ?>
             <span class="absolute -bottom-3 -right-4 text-[#d4b478]/20 text-5xl font-serif">"</span>
         </p>
 
-        <p class="text-[#faf8f5]/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
-            You've built something real. Now it's time to speak about it in
-            a way that moves rooms, earns trust, and creates a legacy that
-            outlasts the work itself.
-        </p>
+        <div class="text-[#faf8f5]/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
+            <?php echo wp_kses_post($hero_description); ?>
+        </div>
 
         <div class="flex flex-col sm:flex-row gap-4">
-            <a href="<?php echo esc_url(home_url('/apply')); ?>" class="group px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 text-center relative overflow-hidden">
+            <a href="<?php echo esc_url($hero_primary_cta_link_url); ?>" class="group px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 text-center relative overflow-hidden">
                 <span class="relative z-10 flex items-center gap-2">
-                    Apply to Work With Joanna
+                    <?php echo esc_html($hero_primary_cta_text); ?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </span>
             </a>
-            <a href="<?php echo esc_url(home_url('/programs')); ?>" class="px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all text-center">
-                Explore Programs →
+            <a href="<?php echo esc_url($hero_secondary_cta_link_url); ?>" class="px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all text-center">
+                <?php echo esc_html($hero_secondary_cta_text); ?>
             </a>
         </div>
     </div>

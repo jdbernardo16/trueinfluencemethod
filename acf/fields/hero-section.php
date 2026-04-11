@@ -1,0 +1,226 @@
+<?php
+
+/**
+ * Hero Section ACF Field Group
+ *
+ * Registers ACF fields for the hero section on the front page.
+ *
+ * @package tim-wordpress
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group([
+        'key' => 'group_hero_section',
+        'title' => 'Hero Section',
+        'fields' => [
+            [
+                'key' => 'field_hero_video_poster',
+                'label' => 'Video Poster Image',
+                'name' => 'hero_video_poster',
+                'type' => 'image',
+                'instructions' => 'The poster image displayed before the video loads.',
+                'required' => 0,
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_video_source',
+                'label' => 'Video Source URL',
+                'name' => 'hero_video_source',
+                'type' => 'url',
+                'instructions' => 'The URL of the video file (MP4 format recommended).',
+                'required' => 0,
+                'default_value' => '',
+                'placeholder' => 'https://example.com/video.mp4',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_logo_image',
+                'label' => 'Logo Image',
+                'name' => 'hero_logo_image',
+                'type' => 'image',
+                'instructions' => 'The logo image displayed in the hero section.',
+                'required' => 0,
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_heading',
+                'label' => 'Main Heading',
+                'name' => 'hero_heading',
+                'type' => 'text',
+                'instructions' => 'The main heading text displayed in the hero section.',
+                'required' => 0,
+                'default_value' => 'True Influence Method™️ — Joanna Horton McPherson',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_quote',
+                'label' => 'Quote Text',
+                'name' => 'hero_quote',
+                'type' => 'text',
+                'instructions' => 'The quote text displayed below the heading.',
+                'required' => 0,
+                'default_value' => 'Your Voice Is Your Leadership.',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_description',
+                'label' => 'Description',
+                'name' => 'hero_description',
+                'type' => 'textarea',
+                'instructions' => 'The description text displayed below the quote.',
+                'required' => 0,
+                'default_value' => "You've built something real. Now it's time to speak about it in a way that moves rooms, earns trust, and creates a legacy that outlasts the work itself.",
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_primary_cta_text',
+                'label' => 'Primary CTA Button Text',
+                'name' => 'hero_primary_cta_text',
+                'type' => 'text',
+                'instructions' => 'The text for the primary call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Apply to Work With Joanna',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_primary_cta_link',
+                'label' => 'Primary CTA Link',
+                'name' => 'hero_primary_cta_link',
+                'type' => 'page_link',
+                'instructions' => 'Select the page for the primary call-to-action button.',
+                'required' => 0,
+                'post_type' => ['page'],
+                'taxonomy' => [],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_secondary_cta_text',
+                'label' => 'Secondary CTA Button Text',
+                'name' => 'hero_secondary_cta_text',
+                'type' => 'text',
+                'instructions' => 'The text for the secondary call-to-action button.',
+                'required' => 0,
+                'default_value' => 'Explore Programs →',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_hero_secondary_cta_link',
+                'label' => 'Secondary CTA Link',
+                'name' => 'hero_secondary_cta_link',
+                'type' => 'page_link',
+                'instructions' => 'Select the page for the secondary call-to-action button.',
+                'required' => 0,
+                'post_type' => ['page'],
+                'taxonomy' => [],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'front-page.php',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => [],
+        'active' => true,
+        'description' => 'Configure the hero section content for the front page.',
+    ]);
+}
