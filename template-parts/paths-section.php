@@ -7,38 +7,29 @@
 
 // Get ACF fields with fallbacks
 $paths_badge_text = get_field('paths_badge_text') ?: 'Ways to Work Together';
-$paths_heading = get_field('paths_heading') ?: 'One Method. Three Paths.';
-$paths_description = get_field('paths_description') ?: "Whether you're a CEO ready for private mastery, a rising leader joining a powerful group, or an organization building a culture of courageous communication — there is a path for you.";
+$paths_heading = get_field('paths_heading') ?: 'One Method. 3 Levels of Commitment.';
+$paths_description = get_field('paths_description') ?: "Transformation is priceless. Your investment simply reflects how committed you are to the work.";
 
 // Get paths from repeater
 $paths = [];
 if (have_rows('paths_items')) {
     while (have_rows('paths_items')) {
         the_row();
-        $path_features = [];
-        if (have_rows('path_features')) {
-            while (have_rows('path_features')) {
-                the_row();
-                $path_features[] = get_sub_field('feature_text');
-            }
-        }
 
         $cta_link = get_sub_field('path_cta_link');
         if ($cta_link && is_array($cta_link)) {
             $cta_link_url = $cta_link['url'];
         } else {
-            $cta_link_url = '/apply';
+            $cta_link_url = '/programs';
         }
 
         $paths[] = [
             'icon' => get_sub_field('path_icon') ?: 'user',
-            'title' => get_sub_field('path_title') ?: 'Private Training',
-            'description' => get_sub_field('path_description') ?: 'For founders and CEOs who are ready for the deepest, most transformative work. One-on-one with Joanna.',
-            'price' => get_sub_field('path_price') ?: 'From $20,000',
-            'cta' => get_sub_field('path_cta_text') ?: 'Apply for Private Training',
+            'title' => get_sub_field('path_title') ?: 'Private Client',
+            'description' => get_sub_field('path_description') ?: 'One-on-one work with Joanna.',
+            'role' => get_sub_field('path_role') ?: 'Client',
+            'cta' => get_sub_field('path_cta_text') ?: 'Apply →',
             'cta_link' => $cta_link_url,
-            'badge' => get_sub_field('path_badge') ?: 'Exclusive',
-            'features' => $path_features ?: ['One-on-one sessions with Joanna', 'Customized curriculum', 'Priority support', 'Direct access to Joanna'],
         ];
     }
 }
@@ -47,43 +38,38 @@ if (have_rows('paths_items')) {
 if (empty($paths)) {
     $paths = [
         [
-            'icon' => 'user',
-            'title' => 'Private Training',
-            'description' => 'For founders and CEOs who are ready for the deepest, most transformative work. One-on-one with Joanna.',
-            'price' => 'From $20,000',
-            'cta' => 'Apply for Private Training',
-            'cta_link' => '/apply',
-            'badge' => 'Exclusive',
-            'features' => ['One-on-one sessions with Joanna', 'Customized curriculum', 'Priority support', 'Direct access to Joanna']
+            'icon' => 'book',
+            'title' => '90-day Mastermind',
+            'description' => 'Self-study training + quarterly retreat. For leaders beginning the method at their own pace.',
+            'role' => 'Student',
+            'cta' => 'Find My Program',
+            'cta_link' => '/programs',
         ],
         [
             'icon' => 'users',
-            'title' => 'Speak & Rise (Group)',
-            'description' => 'A group training experience for leaders who want to find their voice and develop their story alongside a community of peers.',
-            'price' => 'From $6,000',
-            'cta' => 'Join Speak & Rise',
-            'cta_link' => '/apply',
-            'badge' => 'Community',
-            'features' => ['Small group cohorts', 'Peer learning', 'Practice sessions', 'Community access']
+            'title' => 'Cohort',
+            'description' => 'Live group training with Joanna. For students ready to train directly with Joanna and peers.',
+            'role' => 'Student',
+            'cta' => 'Find My Program',
+            'cta_link' => '/programs',
         ],
         [
-            'icon' => 'building',
-            'title' => 'Corporate Programs',
-            'description' => 'Bring the True Influence Method™️ to your leadership team or organization.',
-            'price' => 'Custom Pricing',
-            'cta' => 'Inquire for Your Team',
-            'cta_link' => '/contact',
-            'badge' => 'Team',
-            'features' => ['Team workshops', 'Leadership development', 'Custom solutions', 'Scalable programs']
-        ]
+            'icon' => 'user',
+            'title' => 'Private Client',
+            'description' => 'One-on-one work with Joanna. For leaders ready for the deepest level of transformation. Application required.',
+            'role' => 'Client',
+            'cta' => 'Apply',
+            'cta_link' => '/apply',
+        ],
     ];
 }
 
-// Icon mapping to dashicons
+// Icon mapping
 $icon_map = [
     'user' => 'dashicons-admin-users',
     'users' => 'dashicons-groups',
     'building' => 'dashicons-building',
+    'book' => 'dashicons-book',
 ];
 ?>
 
@@ -101,7 +87,7 @@ $icon_map = [
                 <?php echo esc_html($paths_heading); ?>
             </h2>
 
-            <div class="text-[#0f203d]/70 text-lg max-w-3xl mx-auto leading-relaxed">
+            <div class="text-[#0f203d]/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
                 <?php echo wp_kses_post($paths_description); ?>
             </div>
         </div>

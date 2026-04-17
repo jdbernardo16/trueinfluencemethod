@@ -48,7 +48,7 @@ if (empty($testimonials)) {
 }
 
 // Get stats
-$stats_leaders_number = get_field('stats_leaders_number') ?: '100+';
+$stats_leaders_number = get_field('stats_leaders_number') ?: '10,000+';
 $stats_leaders_label = get_field('stats_leaders_label') ?: 'Leaders Transformed';
 $stats_satisfaction_number = get_field('stats_satisfaction_number') ?: '98%';
 $stats_satisfaction_label = get_field('stats_satisfaction_label') ?: 'Client Satisfaction';

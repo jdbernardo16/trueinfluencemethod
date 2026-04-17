@@ -7,9 +7,9 @@
 
 // Get ACF fields with fallbacks
 $intro_badge_text = get_field('intro_badge_text') ?: 'The Work';
-$intro_heading = get_field('intro_heading') ?: "You Don't Need a Better Script. You Need Your True Story.";
-$intro_description_1 = get_field('intro_description_1') ?: "Most leaders know what they do. Very few can say it in a way that makes people lean in, trust them, and follow. That gap — between your impact and your ability to articulate it — is exactly where Joanna works.";
-$intro_description_2 = get_field('intro_description_2') ?: "The True Influence Method™️ is not speaking coaching. It's a deep, structured process that surfaces the truth behind your work, shapes it into a message that is unmistakably yours, and trains you to deliver it with the kind of authority and openness that changes rooms.";
+$intro_heading_line_1 = get_field('intro_heading_line_1') ?: "You're not lacking talent.";
+$intro_heading_line_2 = get_field('intro_heading_line_2') ?: "You're lacking the language for it.";
+$intro_description = get_field('intro_description') ?: "The leaders who train here already have results. What they haven't done yet is fully own the story behind their work. That gap between impact and articulation is what the True Influence Method™ solves.";
 
 $intro_main_image = get_field('intro_main_image');
 if ($intro_main_image) {
@@ -20,43 +20,10 @@ if ($intro_main_image) {
     $intro_main_image_alt = 'Joanna working with client';
 }
 
-$intro_stats_number = get_field('intro_stats_number') ?: '100+';
+$intro_stats_number = get_field('intro_stats_number') ?: '10,000+';
 $intro_stats_label = get_field('intro_stats_label') ?: 'Leaders Transformed';
-
-// Get features from repeater
-$features = [];
-if (have_rows('intro_features')) {
-    while (have_rows('intro_features')) {
-        the_row();
-        $feature_image = get_sub_field('feature_image');
-        $features[] = [
-            'image' => $feature_image ? $feature_image['url'] : get_template_directory_uri() . '/assets/images/carousel/img2.webp',
-            'title' => get_sub_field('feature_title') ?: 'Personal',
-            'subtitle' => get_sub_field('feature_subtitle') ?: '1-on-1 Focus',
-        ];
-    }
-}
-
-// Fallback features if none are set
-if (empty($features)) {
-    $features = [
-        [
-            'image' => get_template_directory_uri() . '/assets/images/carousel/img2.webp',
-            'title' => 'Personal',
-            'subtitle' => '1-on-1 Focus',
-        ],
-        [
-            'image' => get_template_directory_uri() . '/assets/images/carousel/img3.webp',
-            'title' => 'Proven',
-            'subtitle' => 'Tested Method',
-        ],
-        [
-            'image' => get_template_directory_uri() . '/assets/images/carousel/img4.webp',
-            'title' => 'Transformative',
-            'subtitle' => 'Lasting Impact',
-        ],
-    ];
-}
+$intro_stats_years = get_field('intro_stats_years') ?: '30+';
+$intro_stats_years_label = get_field('intro_stats_years_label') ?: 'Years of Work';
 ?>
 
 <section class="py-24 md:py-32 bg-[#0f203d] relative overflow-hidden">
@@ -71,30 +38,43 @@ if (empty($features)) {
                     <?php echo esc_html($intro_badge_text); ?>
                 </span>
 
-                <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8 relative">
+                <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-[#faf8f5] mb-8 relative">
                     <span class="absolute -top-6 left-0 w-16 h-px bg-[#d4b478]/40"></span>
-                    <?php echo esc_html($intro_heading); ?>
+                    <span class="block text-[#faf8f5]/90"><?php echo esc_html($intro_heading_line_1); ?></span>
+                    <span class="block mt-2 text-[#d4b478] italic"><?php echo esc_html($intro_heading_line_2); ?></span>
                     <span class="absolute -bottom-6 left-0 w-16 h-px bg-[#d4b478]/40"></span>
                 </h2>
 
-                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed mb-6">
-                    <?php echo wp_kses_post($intro_description_1); ?>
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed mb-12 max-w-xl mx-auto lg:mx-0">
+                    <?php echo wp_kses_post($intro_description); ?>
                 </div>
 
-                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed mb-12">
-                    <?php echo wp_kses_post($intro_description_2); ?>
-                </div>
-
-                <div class="flex items-center gap-6 flex-wrap">
-                    <?php foreach ($features as $index => $feature) : ?>
-                        <div class="flex items-center gap-3">
-                            <img src="<?php echo esc_url($feature['image']); ?>" alt="<?php echo esc_attr($feature['title']); ?>" class="w-14 h-14 rounded-full object-cover border-2 border-[#d4b478]/30" />
-                            <div class="text-left">
-                                <p class="text-[#d4b478] font-semibold"><?php echo esc_html($feature['title']); ?></p>
-                                <p class="text-[#faf8f5]/60 text-sm"><?php echo esc_html($feature['subtitle']); ?></p>
-                            </div>
+                <div class="flex items-center gap-8 flex-wrap justify-center lg:justify-start">
+                    <div class="flex items-center gap-3">
+                        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-[#d4b478]/10 border border-[#d4b478]/20">
+                            <svg class="w-5 h-5 text-[#d4b478]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </span>
+                        <div class="text-left">
+                            <p class="text-[#d4b478] font-serif text-2xl font-bold"><?php echo esc_html($intro_stats_number); ?></p>
+                            <p class="text-[#faf8f5]/60 text-sm tracking-wide uppercase"><?php echo esc_html($intro_stats_label); ?></p>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+
+                    <div class="w-px h-12 bg-[#d4b478]/20 hidden sm:block"></div>
+
+                    <div class="flex items-center gap-3">
+                        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-[#d4b478]/10 border border-[#d4b478]/20">
+                            <svg class="w-5 h-5 text-[#d4b478]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </span>
+                        <div class="text-left">
+                            <p class="text-[#d4b478] font-serif text-2xl font-bold"><?php echo esc_html($intro_stats_years); ?></p>
+                            <p class="text-[#faf8f5]/60 text-sm tracking-wide uppercase"><?php echo esc_html($intro_stats_years_label); ?></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

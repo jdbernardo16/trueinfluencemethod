@@ -25,10 +25,11 @@ if ($logo_image) {
 }
 
 $hero_heading = get_field('hero_heading') ?: 'True Influence Method™️ — Joanna Horton McPherson';
-$hero_quote = get_field('hero_quote') ?: 'Your Voice Is Your Leadership.';
-$hero_description = get_field('hero_description') ?: "You've built something real. Now it's time to speak about it in a way that moves rooms, earns trust, and creates a legacy that outlasts the work itself.";
+$hero_quote = get_field('hero_quote') ?: 'Transformation Is Priceless.';
+$hero_description = get_field('hero_description') ?: "You’ve built something real. You’ve earned your place at the table. Now it’s time to speak about your work in a way that moves rooms, earns trust, and creates a legacy that outlasts everything you’ve built so far.
+";
 
-$hero_primary_cta_text = get_field('hero_primary_cta_text') ?: 'Apply to Work With Joanna';
+$hero_primary_cta_text = get_field('hero_primary_cta_text') ?: 'Find My Program →';
 $hero_primary_cta_link = get_field('hero_primary_cta_link');
 if ($hero_primary_cta_link && is_array($hero_primary_cta_link)) {
     $hero_primary_cta_link_url = $hero_primary_cta_link['url'];
@@ -36,7 +37,7 @@ if ($hero_primary_cta_link && is_array($hero_primary_cta_link)) {
     $hero_primary_cta_link_url = '/apply';
 }
 
-$hero_secondary_cta_text = get_field('hero_secondary_cta_text') ?: 'Explore Programs →';
+$hero_secondary_cta_text = get_field('hero_secondary_cta_text') ?: 'Explore the Method →';
 $hero_secondary_cta_link = get_field('hero_secondary_cta_link');
 if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
     $hero_secondary_cta_link_url = $hero_secondary_cta_link['url'];
@@ -87,7 +88,7 @@ if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
             <span class="absolute -bottom-3 -right-4 text-[#d4b478]/20 text-5xl font-serif">"</span>
         </p>
 
-        <div class="text-[#faf8f5]/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
+        <div class="text-[#faf8f5]/80 text-lg md:text-lg max-w-2xl mb-12 leading-relaxed">
             <?php echo wp_kses_post($hero_description); ?>
         </div>
 

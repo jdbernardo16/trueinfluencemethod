@@ -105,7 +105,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'type' => 'text',
                 'instructions' => 'The quote text displayed below the heading.',
                 'required' => 0,
-                'default_value' => 'Your Voice Is Your Leadership.',
+                'default_value' => 'Transformation Is Priceless.',
                 'placeholder' => '',
                 'prepend' => '',
                 'append' => '',
