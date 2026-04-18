@@ -48,10 +48,10 @@ if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
 
 <section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
     <video
+        playsinline
         autoplay
         muted
         loop
-        playsinline
         class="absolute inset-0 w-full h-full object-cover"
         poster="<?php echo esc_url($video_poster_url); ?>"
         onerror="this.style.display='none';">
