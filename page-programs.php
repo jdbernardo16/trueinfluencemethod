@@ -145,7 +145,7 @@
                                 'path_access' => 'Retreat only',
                                 'path_role' => 'Student',
                                 'path_cta_text' => 'Find My Program →',
-                                'path_cta_link' => home_url('/apply/'),
+                                'path_cta_link' => home_url('/programs/mastermind'),
                                 'path_highlight' => false,
                             ],
                             [
@@ -161,7 +161,7 @@
                                 'path_access' => 'Monthly + retreat',
                                 'path_role' => 'Student',
                                 'path_cta_text' => 'Find My Program →',
-                                'path_cta_link' => home_url('/apply/'),
+                                'path_cta_link' => home_url('/programs/corporate'),
                                 'path_highlight' => false,
                             ],
                             [
@@ -176,7 +176,7 @@
                                 'path_access' => 'Direct 1:1',
                                 'path_role' => 'Private Client',
                                 'path_cta_text' => 'Apply to Become a Private Client →',
-                                'path_cta_link' => home_url('/apply/'),
+                                'path_cta_link' => home_url('/programs/private-training'),
                                 'path_highlight' => true,
                             ],
                         ];

@@ -43,7 +43,7 @@ if (empty($paths)) {
             'description' => 'Self-study training + quarterly retreat. For leaders beginning the method at their own pace.',
             'role' => 'Student',
             'cta' => 'Find My Program',
-            'cta_link' => '/programs',
+            'cta_link' => '/programs/mastermind',
         ],
         [
             'icon' => 'users',
@@ -51,7 +51,7 @@ if (empty($paths)) {
             'description' => 'Live group training with Joanna. For students ready to train directly with Joanna and peers.',
             'role' => 'Student',
             'cta' => 'Find My Program',
-            'cta_link' => '/programs',
+            'cta_link' => '/programs/corporate',
         ],
         [
             'icon' => 'user',
@@ -59,7 +59,7 @@ if (empty($paths)) {
             'description' => 'One-on-one work with Joanna. For leaders ready for the deepest level of transformation. Application required.',
             'role' => 'Client',
             'cta' => 'Apply',
-            'cta_link' => '/apply',
+            'cta_link' => '/programs/private-training',
         ],
     ];
 }
