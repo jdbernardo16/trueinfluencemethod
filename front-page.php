@@ -26,6 +26,7 @@
         <?php get_template_part('template-parts/hero-section'); ?>
         <?php get_template_part('template-parts/intro-section'); ?>
         <?php get_template_part('template-parts/about-joanna-section'); ?>
+        <?php get_template_part('template-parts/partners-section'); ?>
         <?php get_template_part('template-parts/paths-section'); ?>
         <?php get_template_part('template-parts/social-proof-section'); ?>
         <?php get_template_part('template-parts/cta-section'); ?>

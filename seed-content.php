@@ -407,6 +407,119 @@ function seed_blog_content()
 }
 
 /**
+ * Seed Programs Page content
+ *
+ * Populates ACF fields for the Programs page with default Three Paths + Set My Price content.
+ */
+function seed_programs_page_content()
+{
+    $results = array(
+        'success' => array(),
+        'errors' => array(),
+        'skipped' => array(),
+    );
+
+    // Find the Programs page (uses page-programs.php template)
+    $programs_page = get_pages(array(
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'page-programs.php',
+        'number' => 1,
+    ));
+
+    if (empty($programs_page)) {
+        // Try by title
+        $programs_page = get_page_by_title('Programs');
+    }
+
+    if (empty($programs_page)) {
+        $results['errors'][] = 'Programs page not found. Create a page with the Programs Page template first.';
+        return $results;
+    }
+
+    $page_id = $programs_page[0]->ID ?? $programs_page->ID;
+
+    // Check if already seeded
+    $already_seeded = get_field('programs_paths_badge', $page_id);
+    if ($already_seeded) {
+        $results['skipped'][] = 'Programs page already has Three Paths content.';
+        return $results;
+    }
+
+    // Hero fields
+    update_field('programs_hero_badge', 'Programs', $page_id);
+    update_field('programs_hero_heading', 'Three Offers. One Method. Transformation at Every Level.', $page_id);
+    update_field('programs_hero_description', 'Joanna offers three distinct paths into True Influence Method™️ — each designed for a different context, depth, and investment. All three are grounded in same rigorous process. All three create lasting change.', $page_id);
+
+    // Three Paths section fields
+    update_field('programs_paths_badge', 'Three Paths', $page_id);
+    update_field('programs_paths_heading', 'One Method. Three Paths. You Choose Your Level of Commitment.', $page_id);
+    update_field('programs_paths_description', 'Transformation is priceless. But your investment needs to match the demand on your attention, energy, and focus — or you won\'t show up fully. That\'s the truth of why this works.', $page_id);
+
+    // Three Paths repeater data
+    $paths_data = array(
+        array(
+            'path_label'   => 'Path 1',
+            'path_title'   => 'Mastermind',
+            'path_subtitle' => 'Self-Study + Retreat',
+            'path_who_for' => 'Leaders who are ready to begin at their own pace',
+            'path_features' => array(
+                array('feature_text' => '90-day self-guided training'),
+                array('feature_text' => 'Quarterly in-person retreat'),
+                array('feature_text' => 'Expert feedback'),
+                array('feature_text' => 'Peer network'),
+            ),
+            'path_access'  => 'Retreat only',
+            'path_role'    => 'Student',
+            'path_cta_text' => 'Find My Program →',
+            'path_cta_link' => home_url('/apply/'),
+            'path_highlight' => false,
+        ),
+        array(
+            'path_label'   => 'Path 2',
+            'path_title'   => 'Cohort',
+            'path_subtitle' => 'Group Training with Joanna',
+            'path_who_for' => '9–10/10 commitment',
+            'path_features' => array(
+                array('feature_text' => 'Everything in Mastermind'),
+                array('feature_text' => 'Monthly live group calls'),
+                array('feature_text' => 'Speaker eligibility'),
+            ),
+            'path_access'  => 'Monthly + retreat',
+            'path_role'    => 'Student',
+            'path_cta_text' => 'Find My Program →',
+            'path_cta_link' => home_url('/apply/'),
+            'path_highlight' => false,
+        ),
+        array(
+            'path_label'   => 'Path 3',
+            'path_title'   => 'Private Client',
+            'path_subtitle' => 'Apply Only',
+            'path_who_for' => '10/10 leaders',
+            'path_features' => array(
+                array('feature_text' => 'One-on-one training'),
+                array('feature_text' => 'Everything in Cohort'),
+            ),
+            'path_access'  => 'Direct 1:1',
+            'path_role'    => 'Private Client',
+            'path_cta_text' => 'Apply to Become a Private Client →',
+            'path_cta_link' => home_url('/apply/'),
+            'path_highlight' => true,
+        ),
+    );
+    update_field('programs_paths', $paths_data, $page_id);
+
+    // Set My Price section fields
+    update_field('programs_setmyprice_heading', 'Not sure which path is right for you? Let\'s find out together.', $page_id);
+    update_field('programs_setmyprice_description', 'Joanna\'s training is worth more than $1,000,000 for clients who are 10/10 committed. But the price isn\'t the filter — your commitment is.', $page_id);
+    update_field('programs_setmyprice_cta_text', 'Find My Program + Set My Price →', $page_id);
+    update_field('programs_setmyprice_cta_link', home_url('/apply/'), $page_id);
+
+    $results['success'][] = 'Programs page (ID: ' . $page_id . ') seeded with Three Paths + Set My Price content.';
+
+    return $results;
+}
+
+/**
  * Main seeder function - call this to seed all content
  * 
  * Usage: seed_landing_page_content();
@@ -420,6 +533,7 @@ function seed_landing_page_content()
         'tips' => seed_tips_content(),
         'media' => seed_media_content(),
         'blog' => seed_blog_content(),
+        'programs_page' => seed_programs_page_content(),
     );
 
     return $results;

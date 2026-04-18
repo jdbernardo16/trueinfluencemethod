@@ -181,7 +181,7 @@ $iconMap = array(
                                 <?php echo $iconMap[$block['icon']]; ?>
                             </div>
                             <h3 class="font-serif text-xl text-[#faf8f5] mb-2"><?php echo esc_html($block['title']); ?></h3>
-                            <p class="text-[#faf8f5]/70 text-sm"><?php echo esc_html($block['description']); ?></p>
+                            <p class="text-[#faf8f5]/70 text-sm"><?php echo esc_html($block['desc']); ?></p>
                         </div>
                     <?php endforeach; ?>
                 </div>

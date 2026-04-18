@@ -587,9 +587,9 @@ $iconMap = array(
                             </div>
 
                             <div class="p-6 bg-[#0f203d]/5 border border-[#0f203d]/10 rounded-xl">
-                                <p class="text-[#0f203d]/60 font-light italic text-sm">
-                                    "<?php echo esc_html(get_field('mastermind_cta_quote') ?: 'The path to authentic influence isn\'t found—it\'s forged through courage, practice, and the willingness to be seen.'); ?>"
-                                </p>
+                                <div class="text-[#0f203d]/60 font-light italic text-sm">
+                                    <?php echo get_field('mastermind_cta_quote'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="relative rounded-2xl overflow-hidden shadow-2xl">

@@ -10,6 +10,9 @@ require_once get_template_directory() . '/src/Walkers/PrimaryNavWalker.php';
 // Require ACF helper functions
 require_once get_template_directory() . '/acf/helpers/acf-helpers.php';
 
+// Yoast SEO Integration
+require_once get_template_directory() . '/includes/seo.php';
+
 function tailpress(): TailPress\Framework\Theme
 {
     return TailPress\Framework\Theme::instance()
@@ -63,6 +66,11 @@ function tim_wordpress_enqueue_scripts()
         filemtime(get_template_directory() . '/resources/js/theme.js'),
         true
     );
+
+    // Localize script for AJAX
+    wp_localize_script('tim-wordpress-theme', 'timInquiry', [
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+    ]);
 }
 add_action('wp_enqueue_scripts', 'tim_wordpress_enqueue_scripts');
 
@@ -272,3 +280,337 @@ function tim_wordpress_load_acf_fields()
     require_once get_template_directory() . '/acf/acf-setup.php';
 }
 add_action('acf/init', 'tim_wordpress_load_acf_fields', 5);
+
+/**
+ * Handle Inquiry Form Submission (AJAX)
+ */
+function tim_handle_inquiry_form()
+{
+    // Verify nonce
+    if (!isset($_POST['tim_inquiry_nonce_field']) || !wp_verify_nonce($_POST['tim_inquiry_nonce_field'], 'tim_inquiry_nonce')) {
+        wp_send_json_error(['message' => 'Security verification failed. Please refresh the page and try again.']);
+    }
+
+    // Sanitize and validate required fields
+    $name = sanitize_text_field($_POST['inquiry_name'] ?? '');
+    $email = sanitize_email($_POST['inquiry_email'] ?? '');
+    $phone = sanitize_text_field($_POST['inquiry_phone'] ?? '');
+    $inquiry_type = sanitize_text_field($_POST['inquiry_type'] ?? '');
+    $company = sanitize_text_field($_POST['inquiry_company'] ?? '');
+    $message = sanitize_textarea_field($_POST['inquiry_message'] ?? '');
+    $referral = sanitize_text_field($_POST['inquiry_referral'] ?? '');
+
+    // Validate required fields
+    $errors = [];
+    if (empty($name)) {
+        $errors['inquiry_name'] = 'Please enter your full name.';
+    }
+    if (empty($email) || !is_email($email)) {
+        $errors['inquiry_email'] = 'Please enter a valid email address.';
+    }
+    if (empty($inquiry_type)) {
+        $errors['inquiry_type'] = 'Please select what you are interested in.';
+    }
+    if (empty($message)) {
+        $errors['inquiry_message'] = 'Please tell us about yourself and what you\'re looking for.';
+    }
+
+    if (!empty($errors)) {
+        wp_send_json_error(['message' => 'Please fill in all required fields.', 'errors' => $errors]);
+    }
+
+    // Get notification email from ACF or fall back to admin email
+    $notification_email = function_exists('get_field') ? get_field('apply_notification_email') : '';
+    if (empty($notification_email)) {
+        $notification_email = get_option('admin_email');
+    }
+
+    // Prepare email content
+    $subject = sprintf('New Inquiry from %s — %s', $name, $inquiry_type);
+    $email_body = "New inquiry submitted through the website.\n\n";
+    $email_body .= "=== CONTACT DETAILS ===\n";
+    $email_body .= "Name: {$name}\n";
+    $email_body .= "Email: {$email}\n";
+    if (!empty($phone)) {
+        $email_body .= "Phone: {$phone}\n";
+    }
+    if (!empty($company)) {
+        $email_body .= "Company/Organization: {$company}\n";
+    }
+    $email_body .= "\n=== INQUIRY DETAILS ===\n";
+    $email_body .= "Interest: {$inquiry_type}\n";
+    if (!empty($referral)) {
+        $email_body .= "Referral Source: {$referral}\n";
+    }
+    $email_body .= "\n=== MESSAGE ===\n";
+    $email_body .= "{$message}\n";
+    $email_body .= "\n---\n";
+    $email_body .= "Submitted: " . current_time('F j, Y \a\t g:i a') . "\n";
+    $email_body .= "IP Address: " . $_SERVER['REMOTE_ADDR'] . "\n";
+
+    $headers = [
+        'From: True Influence Method <' . get_option('admin_email') . '>',
+        'Reply-To: ' . $name . ' <' . $email . '>',
+        'Content-Type: text/plain; charset=UTF-8',
+    ];
+
+    // Send email
+    $email_sent = wp_mail($notification_email, $subject, $email_body, $headers);
+
+    if (!$email_sent) {
+        wp_send_json_error(['message' => 'Something went wrong. Please try again or email us directly.']);
+    }
+
+    wp_send_json_success(['message' => 'Your inquiry has been submitted successfully! We\'ll be in touch within 2 business days.']);
+}
+// Handle both logged-in and non-logged-in users
+add_action('wp_ajax_tim_submit_inquiry', 'tim_handle_inquiry_form');
+add_action('wp_ajax_nopriv_tim_submit_inquiry', 'tim_handle_inquiry_form');
+
+/**
+ * Contact Form 7 — Dynamically populate the "inquiry_type" select from ACF
+ *
+ * Uses the wpcf7_form_tag filter to inject options from the ACF repeater
+ * field "apply_inquiry_types" on the Apply page.
+ */
+function tim_cf7_dynamic_inquiry_type($tag)
+{
+    // Only modify the field named "inquiry_type"
+    if ($tag['name'] !== 'inquiry_type') {
+        return $tag;
+    }
+
+    // Get the Apply page ID (looks for the page using the "Apply Page" template)
+    $apply_page_id = 0;
+    $pages = get_pages([
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'page-apply.php',
+        'number' => 1,
+    ]);
+    if (!empty($pages)) {
+        $apply_page_id = $pages[0]->ID;
+    }
+
+    // Build options from ACF repeater or fallback defaults
+    $options = [];
+    if ($apply_page_id && function_exists('have_rows') && have_rows('apply_inquiry_types', $apply_page_id)) {
+        while (have_rows('apply_inquiry_types', $apply_page_id)) {
+            the_row();
+            $label = get_sub_field('type_label');
+            if ($label) {
+                $options[] = $label;
+            }
+        }
+    }
+
+    // Fallback defaults if no ACF data
+    if (empty($options)) {
+        $options = [
+            'Private Training (1-on-1 with Joanna)',
+            'Speak & Rise Mastermind',
+            'Corporate Programs & Workshops',
+            'Retreat Experience',
+            'General Inquiry',
+        ];
+    }
+
+    // Rebuild the tag values
+    $tag['values'] = [];
+    $tag['labels'] = [];
+
+    // Add a placeholder first option (empty value)
+    $tag['values'][] = '';
+    $tag['labels'][] = 'Select an option...';
+
+    foreach ($options as $option) {
+        $tag['values'][] = $option;
+        $tag['labels'][] = $option;
+    }
+
+    // Mark first option as placeholder
+    if (!empty($tag['labels'])) {
+        $tag['options'][] = 'first_as_label';
+    }
+
+    return $tag;
+}
+add_filter('wpcf7_form_tag', 'tim_cf7_dynamic_inquiry_type', 10, 1);
+
+/**
+ * Contact Form 7 — Ensure the "Apply Page Inquiry Form" exists
+ *
+ * Programmatically creates the CF7 form on first run so the user
+ * doesn't have to manually set it up in the WordPress admin.
+ * Stores the form ID in the `tim_cf7_apply_form_id` option.
+ *
+ * @return int|null  The CF7 form post ID, or null if CF7 is not active.
+ */
+function tim_ensure_cf7_apply_form()
+{
+    // Check if Contact Form 7 is active
+    if (!post_type_exists('wpcf7_contact_form')) {
+        return null;
+    }
+
+    // Build the form template (use & directly, not &amp;)
+    $form_template = <<<HTML
+<label class="cf7-label">Full Name <span class="cf7-required">*</span>
+    [text* inquiry_name placeholder "Your full name"]
+</label>
+
+<div class="cf7-row">
+    <label class="cf7-label">Email Address <span class="cf7-required">*</span>
+        [email* inquiry_email placeholder "you@example.com"]
+    </label>
+
+    <label class="cf7-label">Phone Number
+        [tel inquiry_phone placeholder "+1 (555) 000-0000"]
+    </label>
+</div>
+
+<label class="cf7-label">What are you most interested in? <span class="cf7-required">*</span>
+    [select* inquiry_type first_as_label "Select an option..." "Private Training (1-on-1 with Joanna)" "Speak & Rise Mastermind" "Corporate Programs & Workshops" "Retreat Experience" "General Inquiry"]
+</label>
+
+<label class="cf7-label">Company / Organization
+    [text inquiry_company placeholder "Your company or organization"]
+</label>
+
+<label class="cf7-label">Tell us about yourself & what you're looking for <span class="cf7-required">*</span>
+    [textarea* inquiry_message 40x5 placeholder "Share where you are in your journey, what feels most alive in your work right now, and what you'd like to explore..."]
+</label>
+
+<label class="cf7-label">How did you hear about us?
+    [select inquiry_referral first_as_label "Select an option..." "Personal Referral" "Social Media" "Google Search" "Speaking Event / Workshop" "Podcast / Media Appearance" "Other"]
+</label>
+
+<p class="cf7-privacy-note">Your information is kept strictly private and confidential. By submitting this form, you agree to be contacted by Joanna's team regarding your inquiry.</p>
+
+[submit class:cf7-submit-btn "Submit Your Inquiry"]
+HTML;
+
+    // Build the HTML email body
+    $mail_body = <<<'MAILHTML'
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">
+
+  <!-- Header -->
+  <div style="background-color: #0f203d; padding: 30px 40px; text-align: center;">
+    <h1 style="margin: 0; color: #faf8f5; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 400;">True Influence Method</h1>
+    <div style="width: 60px; height: 2px; background-color: #d4b478; margin: 15px auto 0;"></div>
+    <p style="margin: 10px 0 0; color: rgba(250,248,245,0.7); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">New Inquiry Received</p>
+  </div>
+
+  <!-- Content -->
+  <div style="padding: 30px 40px;">
+
+    <!-- Contact Details -->
+    <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Contact Details</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>Name</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_name]</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Email</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;"><a href="mailto:[inquiry_email]" style="color: #d4b478;">[inquiry_email]</a></td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Phone</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_phone]</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Company</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_company]</td>
+      </tr>
+    </table>
+
+    <!-- Inquiry Details -->
+    <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Inquiry Details</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>Interest</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_type]</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Referral Source</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_referral]</td>
+      </tr>
+    </table>
+
+    <!-- Message -->
+    <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Message</h2>
+    <div style="background-color: #f9f9f9; border-left: 4px solid #d4b478; padding: 15px 20px; margin-bottom: 25px; border-radius: 0 4px 4px 0;">
+      <p style="margin: 0; color: #333; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">[inquiry_message]</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div style="background-color: #f5f5f5; padding: 20px 40px; border-top: 1px solid #e5e5e5;">
+    <p style="margin: 0; color: #999; font-size: 12px; text-align: center;">
+      Submitted: [_date] at [_time]<br>
+      This inquiry was submitted through the True Influence Method website.
+    </p>
+  </div>
+
+</div>
+</body>
+MAILHTML;
+
+    // Build the mail configuration
+    $mail = [
+        'active'             => true,
+        'subject'            => 'New Inquiry from [inquiry_name] — [inquiry_type]',
+        'sender'             => 'True Influence Method <[admin_email]>',
+        'recipient'          => get_option('admin_email'),
+        'body'               => $mail_body,
+        'additional_headers' => 'Reply-To: [inquiry_name] <[inquiry_email]>',
+        'attachments'        => '',
+        'use_html'           => true,
+        'exclude_blank'      => false,
+    ];
+
+    // Default CF7 messages
+    $messages = [
+        'mail_sent_ok'     => 'Thank you for your message. It has been sent.',
+        'mail_sent_ng'     => 'There was an error trying to send your message. Please try again later.',
+        'validation_error' => 'One or more fields have an error. Please check and try again.',
+        'spam'             => 'There was an error trying to send your message. Please try again later.',
+        'mail_failed'      => 'There was an error trying to send your message. Please try again later.',
+        'accept_terms'     => 'You must accept the terms and conditions before sending your message.',
+        'invalid_required' => 'The field is required.',
+        'invalid_too_long' => 'The field is too long.',
+        'invalid_too_short' => 'The field is too short.',
+    ];
+
+    // Check if we already created the form
+    $form_id = get_option('tim_cf7_apply_form_id', 0);
+    $form_exists = $form_id && get_post_status($form_id) === 'publish';
+
+    if (!$form_exists) {
+        // Insert the CF7 form post
+        $form_id = wp_insert_post([
+            'post_title'   => 'Apply Page Inquiry Form',
+            'post_status'  => 'publish',
+            'post_type'    => 'wpcf7_contact_form',
+            'post_content' => '',
+        ]);
+
+        if (is_wp_error($form_id)) {
+            return null;
+        }
+
+        // Store the form ID so we don't recreate it
+        update_option('tim_cf7_apply_form_id', $form_id);
+    }
+
+    // Always update CF7 post meta so code changes are reflected immediately
+    update_post_meta($form_id, '_form', $form_template);
+    update_post_meta($form_id, '_mail', $mail);
+    update_post_meta($form_id, '_messages', $messages);
+    update_post_meta($form_id, '_additional_settings', '');
+
+    return (int) $form_id;
+}
+add_action('after_setup_theme', 'tim_ensure_cf7_apply_form', 20);

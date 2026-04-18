@@ -69,7 +69,7 @@ $is_premium = $args['icon'] === 'user' && strpos($args['cta'], 'Apply') !== fals
             <?php echo esc_html($args['description']); ?>
         </p>
 
-        <a href="<?php echo esc_url(home_url($args['cta_link'])); ?>" class="inline-flex items-center gap-2 w-full justify-center px-6 py-3 <?php echo $is_premium ? 'bg-[#d4b478] hover:bg-[#0f203d] text-[#0f203d] hover:text-[#faf8f5]' : 'bg-[#0f203d] hover:bg-[#d4b478] text-[#faf8f5]'; ?> font-semibold rounded-lg transition-all duration-300">
+        <a href="<?php echo esc_url($args['cta_link']); ?>" class="inline-flex items-center gap-2 w-full justify-center px-6 py-3 <?php echo $is_premium ? 'bg-[#d4b478] hover:bg-[#0f203d] text-[#0f203d] hover:text-[#faf8f5]' : 'bg-[#0f203d] hover:bg-[#d4b478] text-[#faf8f5]'; ?> font-semibold rounded-lg transition-all duration-300">
             <?php echo esc_html($args['cta']); ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                 <line x1="5" y1="12" x2="19" y2="12"></line>

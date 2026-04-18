@@ -58,7 +58,7 @@ if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
         <source src="<?php echo esc_url($video_source); ?>" type="video/mp4" />
     </video>
 
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/70 via-[#0f203d]/80 to-[#0f203d]/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/50 via-[#0f203d]/60 to-[#0f203d]/70"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#0f203d]/50 to-[#0f203d]/90"></div>
 
     <div class="absolute inset-0 overflow-hidden" id="particles-container">
@@ -96,10 +96,7 @@ if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
             <a href="<?php echo esc_url($hero_primary_cta_link_url); ?>" class="group px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 text-center relative overflow-hidden">
                 <span class="relative z-10 flex items-center gap-2">
                     <?php echo esc_html($hero_primary_cta_text); ?>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+
                 </span>
             </a>
             <a href="<?php echo esc_url($hero_secondary_cta_link_url); ?>" class="px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all text-center">

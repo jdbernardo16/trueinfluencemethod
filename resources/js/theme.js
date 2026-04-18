@@ -348,6 +348,49 @@
     };
 
     // ============================================
+    // Contact Form 7 — Event Handlers
+    // ============================================
+    const initInquiryForm = function () {
+        const successModal = document.getElementById("success-modal");
+
+        // Listen for CF7 mail sent event — show the success modal
+        document.addEventListener(
+            "wpcf7mailsent",
+            function (event) {
+                // Hide the CF7 response output since we use our own modal
+                var responseOutput = event.target.querySelector(
+                    ".wpcf7-response-output",
+                );
+                if (responseOutput) {
+                    responseOutput.style.display = "none";
+                }
+
+                if (successModal) {
+                    successModal.classList.remove("hidden");
+                }
+            },
+            false,
+        );
+
+        // Scroll to first invalid field on validation error
+        document.addEventListener(
+            "wpcf7invalid",
+            function (event) {
+                var firstInvalid =
+                    event.target.querySelector(".wpcf7-not-valid");
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                    });
+                    firstInvalid.focus();
+                }
+            },
+            false,
+        );
+    };
+
+    // ============================================
     // Initialize All Features
     // ============================================
     const init = function () {
@@ -359,6 +402,7 @@
         initFAQAccordion();
         initParticles();
         initNewsletterForm();
+        initInquiryForm();
     };
 
     // Run initialization when DOM is ready

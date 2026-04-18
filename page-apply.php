@@ -46,8 +46,28 @@
                     <?php tim_esc_content(tim_get_field('apply_hero_description_2', 'Fill it out honestly. Tell us where you are, where you want to go, and what feels most alive in your work right now. Joanna\'s team will review your submission and be in touch within 2 business days.')); ?>
                 </p>
 
-                <!-- Contact Form -->
-                <?php echo do_shortcode('[contact-form-7 id="apply-form" title="Apply Form"]'); ?>
+                <!-- Inquiry Form (Contact Form 7) -->
+                <div id="tim-inquiry-form" class="max-w-2xl mx-auto text-left">
+                    <?php
+                    // Ensure the CF7 form exists (creates it if not)
+                    $cf7_form_id = tim_ensure_cf7_apply_form();
+
+                    if ($cf7_form_id):
+                        echo do_shortcode('[contact-form-7 id="' . esc_attr($cf7_form_id) . '" html_id="tim-cf7-form"]');
+                    else:
+                    ?>
+                        <?php if (current_user_can('manage_options')): ?>
+                            <div class="text-center py-8 px-6 bg-red-500/10 border border-red-500/20 rounded-lg">
+                                <p class="text-red-400 font-semibold mb-2">⚠️ Contact Form 7 Not Available</p>
+                                <p class="text-[#faf8f5]/70 text-sm">Please ensure the Contact Form 7 plugin is activated.</p>
+                            </div>
+                        <?php else: ?>
+                            <div class="text-center py-8 px-6 bg-[#faf8f5]/5 border border-[#d4b478]/20 rounded-lg">
+                                <p class="text-[#faf8f5]/70">The application form is being updated. Please try again later or contact us directly at <a href="mailto:<?php echo esc_attr(tim_get_field('apply_email_address', 'joanna@trueinfluencemethod.com')); ?>" class="text-[#d4b478] hover:text-[#e8a838]"><?php tim_esc_text(tim_get_field('apply_email_address', 'joanna@trueinfluencemethod.com')); ?></a>.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
 
                 <!-- Additional Links -->
                 <div class="mt-12 flex flex-col md:flex-row items-center gap-6 justify-center">

@@ -2,7 +2,7 @@
 
 /**
  * Template Name: Programs Page
- * Description: Programs page template with Private Training, Speak & Rise, and Corporate Programs
+ * Description: Programs page template with Three Paths and Set My Price App
  *
  * @package tim-wordpress
  */
@@ -38,247 +38,228 @@
             </div>
         </section>
 
-        <!-- Private Training -->
+        <!-- Three Paths -->
         <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d]">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <span class="block text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                        <?php echo esc_html(get_field('programs_private_badge') ?: 'Flagship Offer · Private Clients'); ?>
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="inline-flex items-center gap-2 bg-[#0f203d]/5 border border-[#d4b478]/20 text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full mb-8">
+                        <span class="w-2 h-2 bg-[#d4b478] rounded-full"></span>
+                        <?php echo esc_html(get_field('programs_paths_badge') ?: 'Three Paths'); ?>
                     </span>
-                    <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d]">
-                        <?php echo esc_html(get_field('programs_private_heading') ?: 'Private Training: The Deepest Work Joanna Does.'); ?>
+                    <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-6">
+                        <?php echo esc_html(get_field('programs_paths_heading') ?: 'One Method. Three Paths. You Choose Your Level of Commitment.'); ?>
                     </h2>
-                </div>
-                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
-                    <?php echo wp_kses_post(get_field('programs_private_description_1') ?: 'Designed for founders, CEOs, and executives who are ready to own their message, develop their signature story, and step fully into thought leadership. This is one-on-one, high-touch, and entirely bespoke.'); ?>
-                </div>
-                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
-                    <?php echo wp_kses_post(get_field('programs_private_description_2') ?: 'Private clients work directly with Joanna in a structured 90-day engagement — and join her exclusive quarterly Mastermind & Retreat throughout the time they work together.'); ?>
+                    <div class="text-[#0f203d]/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                        <?php echo wp_kses_post(get_field('programs_paths_description') ?: 'Transformation is priceless. But your investment needs to match the demand on your attention, energy, and focus — or you won\'t show up fully. That\'s the truth of why this works.'); ?>
+                    </div>
                 </div>
 
-                <h3 class="font-serif text-2xl text-[#d4b478] mb-8 text-center"><?php echo esc_html(get_field('programs_private_levels_heading') ?: 'Three Levels of Private Training:'); ?></h3>
-
-                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="grid md:grid-cols-3 gap-8">
                     <?php
-                    $private_levels = get_field('programs_private_levels');
-                    if ($private_levels) :
-                        foreach ($private_levels as $level) :
-                            set_query_var('program_level', $level['level_name'] ?: 'Level');
-                            set_query_var('program_title', $level['level_title'] ?: 'Program Title');
-                            set_query_var('program_price', $level['level_price'] ?: '$0');
-                            set_query_var('program_description', $level['level_description'] ?: 'Program description goes here.');
-                            set_query_var('program_link', home_url('/apply/'));
-                            get_template_part('template-parts/program-card');
+                    $paths = get_field('programs_paths');
+                    if ($paths) :
+                        foreach ($paths as $path) :
+                            $is_highlighted = !empty($path['path_highlight']);
+                            $cta_link = !empty($path['path_cta_link']) ? $path['path_cta_link'] : home_url('/apply/');
+                            $features = $path['path_features'];
+                    ?>
+                            <div class="relative flex flex-col rounded-2xl overflow-hidden <?php echo $is_highlighted ? 'bg-[#0f203d] text-[#faf8f5] border-2 border-[#d4b478] shadow-xl shadow-[#d4b478]/10' : 'bg-white border border-[#0f203d]/10 shadow-md'; ?>">
+                                <?php if ($is_highlighted) : ?>
+                                    <div class="absolute top-0 left-0 right-0 h-1 bg-[#d4b478]"></div>
+                                <?php endif; ?>
+
+                                <div class="p-8 flex-grow flex flex-col">
+                                    <!-- Path Label Badge -->
+                                    <span class="inline-block self-start text-xs font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-full mb-4 <?php echo $is_highlighted ? 'bg-[#d4b478]/20 text-[#d4b478]' : 'bg-[#0f203d]/5 text-[#0f203d]/60'; ?>">
+                                        <?php echo esc_html($path['path_label'] ?: 'Path'); ?>
+                                    </span>
+
+                                    <!-- Title & Subtitle -->
+                                    <h3 class="font-serif text-2xl <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?> mb-1">
+                                        <?php echo esc_html($path['path_title'] ?: 'Program'); ?>
+                                    </h3>
+                                    <p class="text-sm <?php echo $is_highlighted ? 'text-[#d4b478]' : 'text-[#d4b478]'; ?> font-medium mb-4">
+                                        <?php echo esc_html($path['path_subtitle'] ?: ''); ?>
+                                    </p>
+
+                                    <!-- Who It's For -->
+                                    <p class="text-sm <?php echo $is_highlighted ? 'text-[#faf8f5]/70' : 'text-[#0f203d]/60'; ?> mb-6">
+                                        <?php echo esc_html($path['path_who_for'] ?: ''); ?>
+                                    </p>
+
+                                    <!-- Features List -->
+                                    <?php if ($features) : ?>
+                                        <ul class="space-y-3 mb-8 flex-grow">
+                                            <?php foreach ($features as $feature) : ?>
+                                                <li class="flex items-start">
+                                                    <svg class="w-5 h-5 text-[#d4b478] mr-3 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                                    </svg>
+                                                    <span class="<?php echo $is_highlighted ? 'text-[#faf8f5]/80' : 'text-[#0f203d]/80'; ?> text-sm">
+                                                        <?php echo esc_html($feature['feature_text']); ?>
+                                                    </span>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+
+                                    <!-- Access & Role -->
+                                    <div class="flex items-center gap-4 mb-6 pt-6 border-t <?php echo $is_highlighted ? 'border-[#faf8f5]/10' : 'border-[#0f203d]/10'; ?>">
+                                        <div>
+                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Access</span>
+                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
+                                                <?php echo esc_html($path['path_access'] ?: ''); ?>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Role</span>
+                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
+                                                <?php echo esc_html($path['path_role'] ?: ''); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- CTA Button -->
+                                    <a href="<?php echo esc_url($cta_link); ?>"
+                                        class="inline-block text-center w-full px-6 py-3 rounded-lg font-semibold transition-all <?php echo $is_highlighted ? 'bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] hover:shadow-lg hover:shadow-[#d4b478]/20' : 'bg-[#0f203d] hover:bg-[#0f203d]/90 text-[#faf8f5]'; ?>">
+                                        <?php echo esc_html($path['path_cta_text'] ?: 'Find My Program →'); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php
                         endforeach;
                     else :
-                        // Default fallback if no levels are set
-                        $default_levels = [
-                            ['level_name' => 'Beginning', 'level_title' => 'Tell Your Story', 'level_price' => '$20,000', 'level_description' => 'Four private training sessions focused on bravery and clarity of your leadership message. This is where you identify the defining moment behind your work and develop a voice that represents it confidently.'],
-                            ['level_name' => 'Intermediate', 'level_title' => 'Move the Room', 'level_price' => '$35,000', 'level_description' => 'Everything in the Beginning level, plus 6 additional trainings focused on developing your signature talk so you can speak clearly and powerfully in rooms, at events, and in leadership settings.'],
-                            ['level_name' => 'Advanced', 'level_title' => 'Master Your Message', 'level_price' => '$45,000', 'level_description' => 'Everything above, plus 4 delivery trainings so your message lands with emotional resonance and real influence when you speak — helping you stand out and build your brand as a thought leader.'],
+                        // Default fallback paths
+                        $default_paths = [
+                            [
+                                'path_label' => 'Path 1',
+                                'path_title' => 'Mastermind',
+                                'path_subtitle' => 'Self-Study + Retreat',
+                                'path_who_for' => 'Leaders who are ready to begin at their own pace',
+                                'path_features' => [
+                                    ['feature_text' => '90-day self-guided training'],
+                                    ['feature_text' => 'Quarterly in-person retreat'],
+                                    ['feature_text' => 'Expert feedback'],
+                                    ['feature_text' => 'Peer network'],
+                                ],
+                                'path_access' => 'Retreat only',
+                                'path_role' => 'Student',
+                                'path_cta_text' => 'Find My Program →',
+                                'path_cta_link' => home_url('/apply/'),
+                                'path_highlight' => false,
+                            ],
+                            [
+                                'path_label' => 'Path 2',
+                                'path_title' => 'Cohort',
+                                'path_subtitle' => 'Group Training with Joanna',
+                                'path_who_for' => '9–10/10 commitment',
+                                'path_features' => [
+                                    ['feature_text' => 'Everything in Mastermind'],
+                                    ['feature_text' => 'Monthly live group calls'],
+                                    ['feature_text' => 'Speaker eligibility'],
+                                ],
+                                'path_access' => 'Monthly + retreat',
+                                'path_role' => 'Student',
+                                'path_cta_text' => 'Find My Program →',
+                                'path_cta_link' => home_url('/apply/'),
+                                'path_highlight' => false,
+                            ],
+                            [
+                                'path_label' => 'Path 3',
+                                'path_title' => 'Private Client',
+                                'path_subtitle' => 'Apply Only',
+                                'path_who_for' => '10/10 leaders',
+                                'path_features' => [
+                                    ['feature_text' => 'One-on-one training'],
+                                    ['feature_text' => 'Everything in Cohort'],
+                                ],
+                                'path_access' => 'Direct 1:1',
+                                'path_role' => 'Private Client',
+                                'path_cta_text' => 'Apply to Become a Private Client →',
+                                'path_cta_link' => home_url('/apply/'),
+                                'path_highlight' => true,
+                            ],
                         ];
-                        foreach ($default_levels as $level) :
-                            set_query_var('program_level', $level['level_name']);
-                            set_query_var('program_title', $level['level_title']);
-                            set_query_var('program_price', $level['level_price']);
-                            set_query_var('program_description', $level['level_description']);
-                            set_query_var('program_link', home_url('/apply/'));
-                            get_template_part('template-parts/program-card');
+
+                        foreach ($default_paths as $path) :
+                            $is_highlighted = !empty($path['path_highlight']);
+                        ?>
+                            <div class="relative flex flex-col rounded-2xl overflow-hidden <?php echo $is_highlighted ? 'bg-[#0f203d] text-[#faf8f5] border-2 border-[#d4b478] shadow-xl shadow-[#d4b478]/10' : 'bg-white border border-[#0f203d]/10 shadow-md'; ?>">
+                                <?php if ($is_highlighted) : ?>
+                                    <div class="absolute top-0 left-0 right-0 h-1 bg-[#d4b478]"></div>
+                                <?php endif; ?>
+
+                                <div class="p-8 flex-grow flex flex-col">
+                                    <span class="inline-block self-start text-xs font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-full mb-4 <?php echo $is_highlighted ? 'bg-[#d4b478]/20 text-[#d4b478]' : 'bg-[#0f203d]/5 text-[#0f203d]/60'; ?>">
+                                        <?php echo esc_html($path['path_label']); ?>
+                                    </span>
+
+                                    <h3 class="font-serif text-2xl <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?> mb-1">
+                                        <?php echo esc_html($path['path_title']); ?>
+                                    </h3>
+                                    <p class="text-sm text-[#d4b478] font-medium mb-4">
+                                        <?php echo esc_html($path['path_subtitle']); ?>
+                                    </p>
+
+                                    <p class="text-sm <?php echo $is_highlighted ? 'text-[#faf8f5]/70' : 'text-[#0f203d]/60'; ?> mb-6">
+                                        <?php echo esc_html($path['path_who_for']); ?>
+                                    </p>
+
+                                    <ul class="space-y-3 mb-8 flex-grow">
+                                        <?php foreach ($path['path_features'] as $feature) : ?>
+                                            <li class="flex items-start">
+                                                <svg class="w-5 h-5 text-[#d4b478] mr-3 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                                <span class="<?php echo $is_highlighted ? 'text-[#faf8f5]/80' : 'text-[#0f203d]/80'; ?> text-sm">
+                                                    <?php echo esc_html($feature['feature_text']); ?>
+                                                </span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+
+                                    <div class="flex items-center gap-4 mb-6 pt-6 border-t <?php echo $is_highlighted ? 'border-[#faf8f5]/10' : 'border-[#0f203d]/10'; ?>">
+                                        <div>
+                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Access</span>
+                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
+                                                <?php echo esc_html($path['path_access']); ?>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Role</span>
+                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
+                                                <?php echo esc_html($path['path_role']); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <a href="<?php echo esc_url($path['path_cta_link']); ?>"
+                                        class="inline-block text-center w-full px-6 py-3 rounded-lg font-semibold transition-all <?php echo $is_highlighted ? 'bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] hover:shadow-lg hover:shadow-[#d4b478]/20' : 'bg-[#0f203d] hover:bg-[#0f203d]/90 text-[#faf8f5]'; ?>">
+                                        <?php echo esc_html($path['path_cta_text']); ?>
+                                    </a>
+                                </div>
+                            </div>
+                    <?php
                         endforeach;
                     endif;
                     ?>
                 </div>
-
-                <!-- All private clients receive -->
-                <div class="bg-[#faf8f5]/50 p-8 rounded-lg max-w-3xl mx-auto mb-8">
-                    <h4 class="font-serif text-xl text-[#0f203d] mb-4"><?php echo esc_html(get_field('programs_private_benefits_heading') ?: 'All private clients receive:'); ?></h4>
-                    <ul class="space-y-3">
-                        <?php
-                        $benefits = get_field('programs_private_benefits');
-                        if ($benefits) :
-                            foreach ($benefits as $benefit) :
-                        ?>
-                                <li class="flex items-start">
-                                    <svg class="w-5 h-5 text-[#d4b478] mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span class="text-[#0f203d]/80"><?php echo esc_html($benefit['benefit_text']); ?></span>
-                                </li>
-                            <?php
-                            endforeach;
-                        else :
-                            // Default fallback
-                            $default_benefits = [
-                                'Direct access to Joanna throughout engagement',
-                                'Invitation to quarterly Mastermind & Retreat experiences',
-                                'A lifetime messaging foundation they own completely',
-                                'Access to The Vault — Joanna\'s members\' resource library',
-                            ];
-                            foreach ($default_benefits as $benefit) :
-                            ?>
-                                <li class="flex items-start">
-                                    <svg class="w-5 h-5 text-[#d4b478] mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    <span class="text-[#0f203d]/80"><?php echo esc_html($benefit); ?></span>
-                                </li>
-                        <?php
-                            endforeach;
-                        endif;
-                        ?>
-                    </ul>
-                </div>
-
-                <div class="text-center">
-                    <a href="<?php echo home_url('/apply/'); ?>"
-                        class="inline-block px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20">
-                        <?php echo esc_html(get_field('programs_private_cta_text') ?: 'Apply for Private Training →'); ?>
-                    </a>
-                </div>
             </div>
         </section>
 
-        <!-- Speak & Rise -->
+        <!-- Set My Price App -->
         <section class="py-24 md:py-32 bg-[#0f203d]">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <span class="block text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                        <?php echo esc_html(get_field('programs_speak_badge') ?: 'Group Training · Speak & Rise'); ?>
-                    </span>
-                    <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
-                        <?php echo esc_html(get_field('programs_speak_heading') ?: 'Speak & Rise: Find Your Voice. Tell Your Story. Lead Your Room.'); ?>
-                    </h2>
-                </div>
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-8">
+                    <?php echo esc_html(get_field('programs_setmyprice_heading') ?: 'Not sure which path is right for you? Let\'s find out together.'); ?>
+                </h2>
                 <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
-                    <?php echo wp_kses_post(get_field('programs_speak_description_1') ?: 'Speak & Rise is Joanna\'s group training experience — a powerful, community-driven program for leaders who are ready to develop their story, sharpen their message, and step into their voice alongside a group of peers doing the same brave work.'); ?>
+                    <?php echo wp_kses_post(get_field('programs_setmyprice_description') ?: 'Joanna\'s training is worth more than $1,000,000 for clients who are 10/10 committed. But the price isn\'t the filter — your commitment is.'); ?>
                 </div>
-                <div class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
-                    <?php echo wp_kses_post(get_field('programs_speak_description_2') ?: 'It is the most accessible entry point into True Influence Method™️ — and it is anything but ordinary.'); ?>
-                </div>
-
-                <!-- What's Included -->
-                <div class="grid md:grid-cols-2 gap-6 mb-12">
-                    <div class="bg-[#faf8f5]/5 p-6 rounded-lg">
-                        <h4 class="font-serif text-lg text-[#d4b478] mb-2"><?php echo esc_html(get_field('programs_speak_included_heading') ?: 'What\'s Included:'); ?></h4>
-                        <ul class="space-y-2 text-[#faf8f5]/80">
-                            <?php
-                            $included_items = get_field('programs_speak_included_items');
-                            if ($included_items) :
-                                foreach ($included_items as $item) :
-                            ?>
-                                    <li class="flex items-center">
-                                        <svg class="w-4 h-4 text-[#d4b478] mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <?php echo esc_html($item['item_text']); ?>
-                                    </li>
-                                <?php
-                                endforeach;
-                            else :
-                                // Default fallback
-                                $default_items = [
-                                    'Live group training sessions with Joanna',
-                                    'Story development and message clarity framework',
-                                    'Real-time feedback and structured peer accountability',
-                                    'Access to The Vault — resource library, tools & replays',
-                                    '90-Day Mastermind & Retreat option',
-                                ];
-                                foreach ($default_items as $item) :
-                                ?>
-                                    <li class="flex items-center">
-                                        <svg class="w-4 h-4 text-[#d4b478] mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <?php echo esc_html($item); ?>
-                                    </li>
-                            <?php
-                                endforeach;
-                            endif;
-                            ?>
-                        </ul>
-                    </div>
-                    <div class="bg-[#d4b478]/10 p-6 rounded-lg flex flex-col justify-center items-center text-center">
-                        <p class="text-[#d4b478] text-sm font-medium mb-2"><?php echo esc_html(get_field('programs_speak_investment_label') ?: 'Investment:'); ?></p>
-                        <p class="text-[#d4b478] text-4xl font-serif mb-4"><?php echo esc_html(get_field('programs_speak_investment_price') ?: 'From $6,000'); ?></p>
-                        <p class="text-[#faf8f5]/80 text-sm mb-6"><?php echo esc_html(get_field('programs_speak_investment_note') ?: '90-Day Mastermind & Retreat'); ?></p>
-                        <a href="<?php echo home_url('/apply/'); ?>"
-                            class="inline-block px-6 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all">
-                            <?php echo esc_html(get_field('programs_speak_cta_text') ?: 'Join Speak & Rise →'); ?>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Corporate Programs -->
-        <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d]">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <span class="block text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                        <?php echo esc_html(get_field('programs_corporate_badge') ?: 'Organizations & Teams'); ?>
-                    </span>
-                    <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-8">
-                        <?php echo esc_html(get_field('programs_corporate_heading') ?: 'Corporate Programs: Bring True Influence to Your Organization.'); ?>
-                    </h2>
-                </div>
-                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
-                    <?php echo wp_kses_post(get_field('programs_corporate_description_1') ?: 'Joanna works with leadership teams, executive groups, and organizations who want to build a culture of courageous, clear, and authentic communication. Every corporate engagement is fully customized — designed around your team\'s specific context, goals, and communication challenges.'); ?>
-                </div>
-                <div class="text-[#0f203d]/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
-                    <?php echo wp_kses_post(get_field('programs_corporate_description_2') ?: 'Whether you are preparing leaders for high-stakes presentations, building a stronger executive voice across your organization, or embedding a communication methodology at scale — Joanna\'s corporate work delivers transformation that is immediately felt and lasting in impact.'); ?>
-                </div>
-
-                <!-- Corporate offerings -->
-                <div class="grid md:grid-cols-2 gap-6 mb-12">
-                    <div class="bg-[#0f203d] p-6 rounded-lg">
-                        <h4 class="font-serif text-lg text-[#d4b478] mb-4"><?php echo esc_html(get_field('programs_corporate_offerings_heading') ?: 'Corporate offerings include:'); ?></h4>
-                        <ul class="space-y-2 text-[#faf8f5]/80">
-                            <?php
-                            $offerings = get_field('programs_corporate_offerings');
-                            if ($offerings) :
-                                foreach ($offerings as $offering) :
-                            ?>
-                                    <li class="flex items-center">
-                                        <svg class="w-4 h-4 text-[#d4b478] mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <?php echo esc_html($offering['offering_text']); ?>
-                                    </li>
-                                <?php
-                                endforeach;
-                            else :
-                                // Default fallback
-                                $default_offerings = [
-                                    'Custom leadership communication workshops and intensives',
-                                    'Executive presence and message clarity training',
-                                    'Team storytelling and messaging alignment sessions',
-                                    'Keynote delivery and board-level speaking preparation',
-                                    'True Influence License — for organizations who want to embed methodology in-house with their own facilitators',
-                                ];
-                                foreach ($default_offerings as $offering) :
-                                ?>
-                                    <li class="flex items-center">
-                                        <svg class="w-4 h-4 text-[#d4b478] mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <?php echo esc_html($offering); ?>
-                                    </li>
-                            <?php
-                                endforeach;
-                            endif;
-                            ?>
-                        </ul>
-                    </div>
-                    <div class="bg-[#0f203d] p-6 rounded-lg flex flex-col justify-center items-center text-center">
-                        <p class="text-[#faf8f5]/80 text-lg mb-6"><?php echo esc_html(get_field('programs_corporate_investment_label') ?: 'Investment:'); ?></p>
-                        <p class="text-[#d4b478] text-4xl font-serif mb-2"><?php echo esc_html(get_field('programs_corporate_investment_price') ?: 'Custom Pricing'); ?></p>
-                        <p class="text-[#faf8f5]/60 text-sm mb-6"><?php echo esc_html(get_field('programs_corporate_investment_note') ?: 'Based on scope and team size'); ?></p>
-                        <a href="<?php echo home_url('/apply/'); ?>"
-                            class="inline-block px-6 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all">
-                            <?php echo esc_html(get_field('programs_corporate_cta_text') ?: 'Inquire for Your Organization →'); ?>
-                        </a>
-                    </div>
-                </div>
+                <a href="<?php echo esc_url(get_field('programs_setmyprice_cta_link') ?: home_url('/apply/')); ?>"
+                    class="inline-block px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 text-lg">
+                    <?php echo esc_html(get_field('programs_setmyprice_cta_text') ?: 'Find My Program + Set My Price →'); ?>
+                </a>
             </div>
         </section>
     </div>
