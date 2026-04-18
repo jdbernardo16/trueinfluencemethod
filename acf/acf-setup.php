@@ -56,6 +56,7 @@ function tim_wordpress_register_acf_field_groups()
 {
     // Load all field group files
     $field_groups = [
+        'seo-fields',
         'hero-section',
         'intro-section',
         'paths-section',

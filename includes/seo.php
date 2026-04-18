@@ -103,6 +103,224 @@ function tim_fallback_meta_tags(): void
 add_action('wp_head', 'tim_fallback_meta_tags', 1);
 
 /* ========================================================================== */
+/* G) ACF SEO Meta Fields                                                     */
+/* ========================================================================== */
+
+/**
+ * Output ACF-based SEO meta tags for singular pages/posts.
+ *
+ * Reads custom SEO fields from ACF and outputs appropriate meta tags.
+ * When Yoast SEO is active, only outputs robots overrides.
+ * When Yoast is not active, outputs full meta tags (description, canonical,
+ * Open Graph, Twitter Card).
+ */
+function tim_acf_seo_meta(): void
+{
+    // Only run on singular pages/posts.
+    if (!is_singular() && !is_front_page()) {
+        return;
+    }
+
+    // Get the current post ID.
+    $post_id = get_the_ID();
+    if (!$post_id) {
+        return;
+    }
+
+    // Check if ACF is active.
+    if (!function_exists('get_field')) {
+        return;
+    }
+
+    // Read consolidated ACF SEO fields.
+    $seo_title            = get_field('seo_title', $post_id);
+    $seo_description      = get_field('seo_description', $post_id);
+    $seo_image            = get_field('seo_image', $post_id);
+    $seo_canonical_url    = get_field('seo_canonical_url', $post_id);
+    $seo_robots_noindex   = get_field('seo_robots_noindex', $post_id);
+    $seo_robots_nofollow  = get_field('seo_robots_nofollow', $post_id);
+    $seo_og_type          = get_field('seo_og_type', $post_id);
+    $seo_twitter_card_type = get_field('seo_twitter_card_type', $post_id);
+
+    // Check if Yoast is active.
+    $yoast_active = defined('WPSEO_VERSION');
+
+    // Build effective values (single source for all purposes).
+    $effective_title       = $seo_title ?: get_the_title($post_id);
+    $effective_description = $seo_description ?: '';
+    $effective_image       = $seo_image ?: '';
+
+    // If no SEO fields are filled at all, don't output anything
+    // (let existing fallbacks handle it).
+    $has_custom_seo = $seo_title || $seo_description || $seo_canonical_url ||
+        $seo_robots_noindex || $seo_robots_nofollow || $seo_image;
+
+    if (!$has_custom_seo) {
+        return;
+    }
+
+    echo "\n<!-- ACF SEO Meta -->\n";
+
+    if (!$yoast_active) {
+        // --- Yoast NOT active: Output all meta tags ---
+
+        // Meta description.
+        if ($effective_description) {
+            echo '<meta name="description" content="' . esc_attr($effective_description) . '">' . "\n";
+        }
+
+        // Canonical URL.
+        if ($seo_canonical_url) {
+            echo '<link rel="canonical" href="' . esc_url($seo_canonical_url) . '">' . "\n";
+        }
+
+        // Robots.
+        $robots = [];
+        if ($seo_robots_noindex) {
+            $robots[] = 'noindex';
+        }
+        if ($seo_robots_nofollow) {
+            $robots[] = 'nofollow';
+        }
+        if (!empty($robots)) {
+            echo '<meta name="robots" content="' . esc_attr(implode(', ', $robots)) . '">' . "\n";
+        }
+
+        // Open Graph.
+        echo '<meta property="og:title" content="' . esc_attr($effective_title) . '">' . "\n";
+        if ($effective_description) {
+            echo '<meta property="og:description" content="' . esc_attr($effective_description) . '">' . "\n";
+        }
+        echo '<meta property="og:type" content="' . esc_attr($seo_og_type ?: 'website') . '">' . "\n";
+        echo '<meta property="og:url" content="' . esc_url(get_permalink($post_id)) . '">' . "\n";
+        if ($effective_image) {
+            echo '<meta property="og:image" content="' . esc_url($effective_image) . '">' . "\n";
+        }
+        echo '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '">' . "\n";
+
+        // Twitter Card.
+        echo '<meta name="twitter:card" content="' . esc_attr($seo_twitter_card_type ?: 'summary_large_image') . '">' . "\n";
+        echo '<meta name="twitter:title" content="' . esc_attr($effective_title) . '">' . "\n";
+        if ($effective_description) {
+            echo '<meta name="twitter:description" content="' . esc_attr($effective_description) . '">' . "\n";
+        }
+        if ($effective_image) {
+            echo '<meta name="twitter:image" content="' . esc_url($effective_image) . '">' . "\n";
+        }
+    } else {
+        // --- Yoast IS active: Only output robots overrides ---
+        $robots = [];
+        if ($seo_robots_noindex) {
+            $robots[] = 'noindex';
+        }
+        if ($seo_robots_nofollow) {
+            $robots[] = 'nofollow';
+        }
+        if (!empty($robots)) {
+            echo '<meta name="robots" content="' . esc_attr(implode(', ', $robots)) . '">' . "\n";
+        }
+    }
+
+    echo "<!-- / ACF SEO Meta -->\n";
+}
+
+/**
+ * Override document title with ACF SEO title.
+ *
+ * @param array $title The document title parts.
+ * @return array Modified title parts.
+ */
+function tim_acf_seo_document_title(array $title): array
+{
+    if (!is_singular() && !is_front_page()) {
+        return $title;
+    }
+
+    $post_id = get_the_ID();
+    if (!$post_id || !function_exists('get_field')) {
+        return $title;
+    }
+
+    $seo_title = get_field('seo_title', $post_id);
+    if ($seo_title) {
+        $title['title'] = $seo_title;
+    }
+
+    return $title;
+}
+
+/**
+ * Feed ACF SEO title to Yoast as default.
+ *
+ * @param string $title The current Yoast title.
+ * @return string Modified title.
+ */
+function tim_acf_yoast_title(string $title): string
+{
+    if (!is_singular() && !is_front_page()) {
+        return $title;
+    }
+    $post_id = get_the_ID();
+    if (!$post_id || !function_exists('get_field')) {
+        return $title;
+    }
+    $seo_title = get_field('seo_title', $post_id);
+    return $seo_title ?: $title;
+}
+
+/**
+ * Feed ACF SEO description to Yoast as default.
+ *
+ * @param string $description The current Yoast meta description.
+ * @return string Modified description.
+ */
+function tim_acf_yoast_description(string $description): string
+{
+    if (!is_singular() && !is_front_page()) {
+        return $description;
+    }
+    $post_id = get_the_ID();
+    if (!$post_id || !function_exists('get_field')) {
+        return $description;
+    }
+    $seo_description = get_field('seo_description', $post_id);
+    return $seo_description ?: $description;
+}
+
+/**
+ * Feed ACF social sharing image to Yoast as default.
+ *
+ * @param string $image The current Yoast OG image URL.
+ * @return string Modified image URL.
+ */
+function tim_acf_yoast_og_image(string $image): string
+{
+    if (!is_singular() && !is_front_page()) {
+        return $image;
+    }
+    $post_id = get_the_ID();
+    if (!$post_id || !function_exists('get_field')) {
+        return $image;
+    }
+    $seo_image = get_field('seo_image', $post_id);
+    return $seo_image ?: $image;
+}
+
+// Hook ACF SEO meta output.
+add_action('wp_head', 'tim_acf_seo_meta', 2);
+
+// Override document title when theme supports title-tag.
+add_filter('document_title_parts', 'tim_acf_seo_document_title', 20);
+
+// Yoast integration filters (only if Yoast is active).
+if (defined('WPSEO_VERSION')) {
+    add_filter('wpseo_title', 'tim_acf_yoast_title', 20);
+    add_filter('wpseo_metadesc', 'tim_acf_yoast_description', 20);
+    add_filter('wpseo_opengraph_image', 'tim_acf_yoast_og_image', 20);
+    add_filter('wpseo_twitter_image', 'tim_acf_yoast_og_image', 20);
+}
+
+/* ========================================================================== */
 /* B) Open Graph Image Defaults                                               */
 /* ========================================================================== */
 
