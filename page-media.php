@@ -77,9 +77,9 @@ $media = new WP_Query([
                     <?php echo esc_html(tim_get_field('media_hero_heading', 'Media Features & Interviews')); ?>
                 </h1>
 
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-                    <?php echo esc_html(tim_get_field('media_hero_description', 'Joanna has been featured in leading publications and podcasts, sharing her expertise on leadership communication and authentic influence with audiences worldwide.')); ?>
-                </p>
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
+                    <?php echo tim_get_field('media_hero_description', 'Joanna has been featured in leading publications and podcasts, sharing her expertise on leadership communication and authentic influence with audiences worldwide.'); ?>
+                </div>
 
                 <?php
                 $cta_link = tim_get_field('media_hero_cta_link', '');
@@ -109,9 +109,9 @@ $media = new WP_Query([
                         <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                             <?php echo esc_html(tim_get_field('media_featured_heading', 'Latest Media Appearances')); ?>
                         </h2>
-                        <p class="text-[#0f203d]/70 text-lg max-w-2xl mx-auto">
-                            <?php echo esc_html(tim_get_field('media_featured_description', 'See where Joanna has been featured recently, sharing her insights on leadership and communication.')); ?>
-                        </p>
+                        <div class="text-[#0f203d]/70 text-lg max-w-2xl mx-auto">
+                            <?php echo tim_get_field('media_featured_description', 'See where Joanna has been featured recently, sharing her insights on leadership and communication.'); ?>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-8">
@@ -136,9 +136,9 @@ $media = new WP_Query([
                     <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                         <?php echo esc_html(tim_get_field('media_grid_heading', 'Full Media Archive')); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/70 text-lg max-w-2xl mx-auto">
-                        <?php echo esc_html(tim_get_field('media_grid_description', 'Browse all of Joanna\'s media features, interviews, and guest appearances.')); ?>
-                    </p>
+                    <div class="text-[#faf8f5]/70 text-lg max-w-2xl mx-auto">
+                        <?php echo tim_get_field('media_grid_description', 'Browse all of Joanna\'s media features, interviews, and guest appearances.'); ?>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

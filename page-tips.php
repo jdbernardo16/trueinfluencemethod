@@ -77,9 +77,9 @@ $tips = new WP_Query([
                     <?php echo esc_html(tim_get_field('tips_hero_heading', 'Speaking Tips That Actually Work')); ?>
                 </h1>
 
-                <p class="text-[#faf8f5]/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-                    <?php echo esc_html(tim_get_field('tips_hero_description', 'Practical, actionable tips you can implement today. No fluff, no theory — just real strategies that help you speak with confidence and authenticity.')); ?>
-                </p>
+                <div class="text-[#faf8f5]/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
+                    <?php echo tim_get_field('tips_hero_description', 'Practical, actionable tips you can implement today. No fluff, no theory — just real strategies that help you speak with confidence and authenticity.'); ?>
+                </div>
 
                 <?php
                 $cta_link = tim_get_field('tips_hero_cta_link', '');
@@ -109,9 +109,9 @@ $tips = new WP_Query([
                         <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
                             <?php echo esc_html(tim_get_field('tips_quick_heading', 'Try These Today')); ?>
                         </h2>
-                        <p class="text-[#0f203d]/70 text-lg max-w-2xl mx-auto">
-                            <?php echo esc_html(tim_get_field('tips_quick_description', 'Simple, actionable tips you can implement right now to improve your speaking.')); ?>
-                        </p>
+                        <div class="text-[#0f203d]/70 text-lg max-w-2xl mx-auto">
+                            <?php echo tim_get_field('tips_quick_description', 'Simple, actionable tips you can implement right now to improve your speaking.'); ?>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -136,9 +136,9 @@ $tips = new WP_Query([
                     <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                         <?php echo esc_html(tim_get_field('tips_grid_heading', 'Explore All Tips')); ?>
                     </h2>
-                    <p class="text-[#faf8f5]/70 text-lg max-w-2xl mx-auto">
-                        <?php echo esc_html(tim_get_field('tips_grid_description', 'Browse our complete collection of speaking tips and strategies.')); ?>
-                    </p>
+                    <div class="text-[#faf8f5]/70 text-lg max-w-2xl mx-auto">
+                        <?php echo tim_get_field('tips_grid_description', 'Browse our complete collection of speaking tips and strategies.'); ?>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
