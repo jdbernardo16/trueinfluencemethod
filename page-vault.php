@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="<?php echo esc_url(get_field('vault_hero_primary_cta_link') ?: home_url('/vault-registration/')); ?>"
+                    <a href="<?php echo esc_url(get_field('vault_hero_primary_cta_link') ?: '#vault-registration'); ?>"
                         class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
                         <span class="uppercase tracking-wider">
                             <?php echo esc_html(get_field('vault_hero_primary_cta_text') ?: 'Register Now'); ?>
@@ -297,49 +297,84 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="py-20 md:py-28 relative overflow-hidden">
-            <div class="absolute inset-0">
-                <img src="<?php echo get_field('vault_cta_background_image') ?: get_template_directory_uri() . '/assets/images/carousel/img7.webp'; ?>"
-                    alt="Background"
-                    class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/95 via-[#0f203d]/90 to-[#0f203d]/95"></div>
-            </div>
-            <div class="absolute inset-0">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#d4b478]/5 rounded-full blur-[150px]"></div>
-            </div>
-            <div class="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
-                <div class="p-12 md:p-16 bg-[#0f203d]/90 backdrop-blur-sm border border-[#faf8f5]/20 rounded-3xl">
-                    <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">
-                        <?php echo esc_html(get_field('vault_cta_badge') ?: 'Complimentary'); ?>
-                    </span>
-                    <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6 leading-tight">
-                        <?php echo esc_html(get_field('vault_cta_heading') ?: 'Ready to Enter The Vault?'); ?>
-                    </h2>
-                    <div class="text-[#faf8f5]/80 font-light leading-relaxed text-lg mb-8">
-                        <?php echo wp_kses_post(get_field('vault_cta_description') ?: 'Join our next First Friday gathering and take the first step toward unlocking your authentic voice in a supportive community of women leaders.'); ?>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="<?php echo esc_url(get_field('vault_cta_primary_cta_link') ?: home_url('/vault-registration/')); ?>"
-                            class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-                            <span class="uppercase tracking-wider">
-                                <?php echo esc_html(get_field('vault_cta_primary_cta_text') ?: 'Register Now'); ?>
-                            </span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="<?php echo esc_url(get_field('vault_cta_secondary_cta_link') ?: home_url('/')); ?>"
-                            class="text-[#faf8f5]/70 hover:text-[#d4b478] transition-colors text-sm font-medium tracking-wide uppercase">
-                            <?php echo esc_html(get_field('vault_cta_secondary_cta_text') ?: 'Explore Other Offerings'); ?>
-                        </a>
-                    </div>
-                    <p class="mt-8 text-[#faf8f5]/50 text-sm">
-                        <?php echo esc_html(get_field('vault_cta_time_info') ?: 'First Fridays at 12 PM MST • Free for all women leaders'); ?>
-                    </p>
+        <!-- Registration Form Section -->
+        <section id="vault-registration" class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d] text-center relative overflow-hidden scroll-mt-20">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-[#d4b478]/5 rounded-full blur-[120px]"></div>
+
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <span class="block text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase mb-6">
+                    <?php echo esc_html(get_field('vault_cta_badge') ?: 'Complimentary'); ?>
+                </span>
+
+                <h2 class="font-serif text-4xl md:text-6xl text-[#0f203d] mb-8 leading-tight">
+                    <?php echo esc_html(get_field('vault_cta_heading') ?: 'Ready to Enter The Vault?'); ?>
+                </h2>
+
+                <p class="text-[#0f203d]/70 text-xl font-light mb-6 max-w-3xl mx-auto">
+                    <?php echo wp_kses_post(get_field('vault_cta_description') ?: 'Join our next First Friday gathering and take the first step toward unlocking your authentic voice in a supportive community of women leaders.'); ?>
+                </p>
+
+                <p class="text-[#0f203d]/50 text-lg font-light mb-12">
+                    <?php echo esc_html(get_field('vault_cta_time_info') ?: 'First Fridays at 12 PM MST • Free for all women leaders'); ?>
+                </p>
+
+                <!-- Vault Registration Form (Contact Form 7) -->
+                <div id="vault-registration-form" class="max-w-2xl mx-auto text-left">
+                    <?php
+                    $cf7_form_id = tim_ensure_cf7_vault_form();
+
+                    if ($cf7_form_id):
+                        echo do_shortcode('[contact-form-7 id="' . esc_attr($cf7_form_id) . '" html_id="tim-vault-cf7-form"]');
+                    else:
+                    ?>
+                        <?php if (current_user_can('manage_options')): ?>
+                            <div class="text-center py-8 px-6 bg-red-500/10 border border-red-500/20 rounded-lg">
+                                <p class="text-red-400 font-semibold mb-2">Contact Form 7 Not Available</p>
+                                <p class="text-[#0f203d]/70 text-sm">Please ensure the Contact Form 7 plugin is activated.</p>
+                            </div>
+                        <?php else: ?>
+                            <div class="text-center py-8 px-6 bg-white border border-[#0f203d]/10 rounded-lg">
+                                <p class="text-[#0f203d]/70">The registration form is being updated. Please try again later.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 hidden">
+            <div class="bg-[#0f203d] border border-[#d4b478]/30 rounded-2xl p-8 max-w-md w-full shadow-2xl relative">
+                <button onclick="document.getElementById('success-modal').classList.add('hidden')"
+                    class="absolute top-4 right-4 text-[#faf8f5]/60 hover:text-[#d4b478] transition-colors"
+                    aria-label="Close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" x2="6" y1="6" y2="18"></line>
+                        <line x1="6" x2="18" y1="6" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-[#d4b478]/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-[#d4b478]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+
+                    <h3 class="font-serif text-2xl text-[#faf8f5] mb-3">You're In!</h3>
+
+                    <p class="text-[#faf8f5]/70 mb-6">
+                        Thank you for registering for The Vault. You'll receive a confirmation email shortly with details about the next session. We can't wait to see you there!
+                    </p>
+
+                    <button onclick="document.getElementById('success-modal').classList.add('hidden')"
+                        class="px-8 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <?php get_footer(); ?>

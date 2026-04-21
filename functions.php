@@ -614,3 +614,228 @@ MAILHTML;
     return (int) $form_id;
 }
 add_action('after_setup_theme', 'tim_ensure_cf7_apply_form', 20);
+
+/**
+ * Contact Form 7 — Ensure the "Vault Registration Form" exists
+ *
+ * Programmatically creates the CF7 form on first run.
+ * Stores the form ID in the `tim_cf7_vault_form_id` option.
+ * Includes both admin notification and user auto-responder emails.
+ *
+ * @return int|null  The CF7 form post ID, or null if CF7 is not active.
+ */
+function tim_ensure_cf7_vault_form()
+{
+    if (!post_type_exists('wpcf7_contact_form')) {
+        return null;
+    }
+
+    $form_template = <<<HTML
+<div class="cf7-row">
+    <label class="cf7-label">First Name <span class="cf7-required">*</span>
+        [text* vault_first_name placeholder "Your first name"]
+    </label>
+
+    <label class="cf7-label">Last Name <span class="cf7-required">*</span>
+        [text* vault_last_name placeholder "Your last name"]
+    </label>
+</div>
+
+<div class="cf7-row">
+    <label class="cf7-label">Email Address <span class="cf7-required">*</span>
+        [email* vault_email placeholder "you@example.com"]
+    </label>
+
+    <label class="cf7-label">Mobile Number
+        [tel vault_mobile placeholder "+1 (555) 000-0000"]
+    </label>
+</div>
+
+<label class="cf7-label">What best describes you? <span class="cf7-required">*</span>
+    [select* vault_role first_as_label "Select an option..." "Executive / Senior Leader" "Entrepreneur / Business Owner" "Speaker / Coach / Consultant" "Mid-Career Professional" "Nonprofit / Education Leader" "Healthcare Professional" "Attorney / Legal Professional" "Other"]
+</label>
+
+<label class="cf7-label">What is your biggest speaking challenge right now? <span class="cf7-required">*</span>
+    [textarea* vault_challenge 40x4 placeholder "Share what feels most challenging about speaking, presenting, or finding your voice..."]
+</label>
+
+[acceptance vault_consent use_label_element] I agree to receive updates and leadership content from Joanna Horton McPherson.
+
+[submit class:cf7-submit-btn "Register for The Vault"]
+HTML;
+
+    $mail_body = <<<'MAILHTML'
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">
+
+  <div style="background-color: #0f203d; padding: 30px 40px; text-align: center;">
+    <h1 style="margin: 0; color: #faf8f5; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 400;">True Influence Method</h1>
+    <div style="width: 60px; height: 2px; background-color: #d4b478; margin: 15px auto 0;"></div>
+    <p style="margin: 10px 0 0; color: rgba(250,248,245,0.7); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">New Vault Registration</p>
+  </div>
+
+  <div style="padding: 30px 40px;">
+
+    <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Registration Details</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>First Name</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[vault_first_name]</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Last Name</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[vault_last_name]</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Email</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;"><a href="mailto:[vault_email]" style="color: #d4b478;">[vault_email]</a></td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Mobile</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[vault_mobile]</td>
+      </tr>
+    </table>
+
+    <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Speaking Profile</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>Role / Description</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">[vault_role]</td>
+      </tr>
+    </table>
+
+    <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Biggest Speaking Challenge</h2>
+    <div style="background-color: #f9f9f9; border-left: 4px solid #d4b478; padding: 15px 20px; margin-bottom: 25px; border-radius: 0 4px 4px 0;">
+      <p style="margin: 0; color: #333; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">[vault_challenge]</p>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>Consent</strong></td>
+        <td style="padding: 8px 0; color: #333; font-size: 14px;">Accepted updates and leadership content</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div style="background-color: #f5f5f5; padding: 20px 40px; border-top: 1px solid #e5e5e5;">
+    <p style="margin: 0; color: #999; font-size: 12px; text-align: center;">
+      Submitted: [_date] at [_time]<br>
+      This registration was submitted through The Vault page on the True Influence Method website.
+    </p>
+  </div>
+
+</div>
+</body>
+MAILHTML;
+
+    $mail = [
+        'active'             => true,
+        'subject'            => 'New Vault Registration: [vault_first_name] [vault_last_name] — [vault_role]',
+        'sender'             => 'True Influence Method <[admin_email]>',
+        'recipient'          => get_option('admin_email'),
+        'body'               => $mail_body,
+        'additional_headers' => 'Reply-To: [vault_first_name] [vault_last_name] <[vault_email]>',
+        'attachments'        => '',
+        'use_html'           => true,
+        'exclude_blank'      => false,
+    ];
+
+    $user_mail_body = <<<'USERMAIL'
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">
+
+  <div style="background-color: #0f203d; padding: 30px 40px; text-align: center;">
+    <h1 style="margin: 0; color: #faf8f5; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 400;">Welcome to The Vault</h1>
+    <div style="width: 60px; height: 2px; background-color: #d4b478; margin: 15px auto 0;"></div>
+    <p style="margin: 10px 0 0; color: rgba(250,248,245,0.7); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Your Registration is Confirmed</p>
+  </div>
+
+  <div style="padding: 30px 40px;">
+    <p style="margin: 0 0 20px; color: #333; font-size: 16px; line-height: 1.6;">Dear [vault_first_name],</p>
+
+    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">Thank you for registering for <strong>The Vault</strong> — Joanna Horton McPherson's complimentary monthly safe space for women leaders.</p>
+
+    <div style="background-color: #f9f9f5; border: 1px solid #e5e5dd; border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+      <h3 style="margin: 0 0 12px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 16px;">What Happens Next?</h3>
+      <ul style="margin: 0; padding-left: 20px; color: #333; font-size: 14px; line-height: 1.8;">
+        <li>You'll receive details about the next Vault session (First Fridays at 12 PM MST)</li>
+        <li>Joanna's team will send you a Zoom link and any preparation materials</li>
+        <li>You'll be added to The Vault community for ongoing updates</li>
+      </ul>
+    </div>
+
+    <div style="background-color: #0f203d; border-radius: 8px; padding: 20px; margin-bottom: 25px; text-align: center;">
+      <p style="margin: 0 0 5px; color: #d4b478; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Next Session</p>
+      <p style="margin: 0; color: #faf8f5; font-family: Georgia, 'Times New Roman', serif; font-size: 18px;">First Friday at 12 PM MST</p>
+    </div>
+
+    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">We're so glad you're taking this step toward unlocking your authentic voice. The Vault is a judgment-free space where your story matters and your voice is celebrated.</p>
+
+    <p style="margin: 0 0 5px; color: #333; font-size: 14px; line-height: 1.6;">With warmth,</p>
+    <p style="margin: 0; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 16px;"><strong>Joanna Horton McPherson</strong></p>
+    <p style="margin: 5px 0 0; color: #999; font-size: 13px;">True Influence Method</p>
+  </div>
+
+  <div style="background-color: #f5f5f5; padding: 20px 40px; border-top: 1px solid #e5e5e5;">
+    <p style="margin: 0; color: #999; font-size: 12px; text-align: center;">
+      You're receiving this because you registered for The Vault.<br>
+      True Influence Method — Authentic Voice. Bold Leadership.
+    </p>
+  </div>
+
+</div>
+</body>
+USERMAIL;
+
+    $mail_2 = [
+        'active'             => true,
+        'subject'            => 'Welcome to The Vault — Your Registration is Confirmed!',
+        'sender'             => 'Joanna Horton McPherson <[admin_email]>',
+        'recipient'          => '[vault_email]',
+        'body'               => $user_mail_body,
+        'additional_headers' => 'Reply-To: True Influence Method <' . get_option('admin_email') . '>',
+        'attachments'        => '',
+        'use_html'           => true,
+        'exclude_blank'      => false,
+    ];
+
+    $messages = [
+        'mail_sent_ok'     => 'Thank you for registering! You\'ll receive a confirmation email shortly with details about The Vault.',
+        'mail_sent_ng'     => 'There was an error submitting your registration. Please try again later.',
+        'validation_error' => 'Please fill in all required fields correctly.',
+        'spam'             => 'There was an error submitting your registration. Please try again later.',
+        'mail_failed'      => 'There was an error submitting your registration. Please try again later.',
+        'accept_terms'     => 'Please accept the consent checkbox to continue.',
+        'invalid_required' => 'This field is required.',
+        'invalid_too_long' => 'The field is too long.',
+        'invalid_too_short' => 'The field is too short.',
+    ];
+
+    $form_id = get_option('tim_cf7_vault_form_id', 0);
+    $form_exists = $form_id && get_post_status($form_id) === 'publish';
+
+    if (!$form_exists) {
+        $form_id = wp_insert_post([
+            'post_title'   => 'Vault Registration Form',
+            'post_status'  => 'publish',
+            'post_type'    => 'wpcf7_contact_form',
+            'post_content' => '',
+        ]);
+
+        if (is_wp_error($form_id)) {
+            return null;
+        }
+
+        update_option('tim_cf7_vault_form_id', $form_id);
+    }
+
+    update_post_meta($form_id, '_form', $form_template);
+    update_post_meta($form_id, '_mail', $mail);
+    update_post_meta($form_id, '_mail_2', $mail_2);
+    update_post_meta($form_id, '_messages', $messages);
+    update_post_meta($form_id, '_additional_settings', '');
+
+    return (int) $form_id;
+}
+add_action('after_setup_theme', 'tim_ensure_cf7_vault_form', 20);
