@@ -571,6 +571,65 @@ MAILHTML;
         'exclude_blank'      => false,
     ];
 
+    $user_mail_body = <<<'USERMAIL'
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5;">
+
+  <div style="background-color: #0f203d; padding: 30px 40px; text-align: center;">
+    <h1 style="margin: 0; color: #faf8f5; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 400;">True Influence Method</h1>
+    <div style="width: 60px; height: 2px; background-color: #d4b478; margin: 15px auto 0;"></div>
+    <p style="margin: 10px 0 0; color: rgba(250,248,245,0.7); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Your Inquiry Has Been Received</p>
+  </div>
+
+  <div style="padding: 30px 40px;">
+    <p style="margin: 0 0 20px; color: #333; font-size: 16px; line-height: 1.6;">Dear [inquiry_name],</p>
+
+    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">Thank you for reaching out. Your inquiry has been received, and we truly appreciate your interest in working with Joanna.</p>
+
+    <div style="background-color: #f9f9f5; border: 1px solid #e5e5dd; border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+      <h3 style="margin: 0 0 12px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 16px;">What Happens Next?</h3>
+      <ul style="margin: 0; padding-left: 20px; color: #333; font-size: 14px; line-height: 1.8;">
+        <li>Joanna's team will review your submission carefully</li>
+        <li>You'll hear back within <strong>2 business days</strong></li>
+        <li>If it feels like a fit, we'll schedule a personal conversation</li>
+      </ul>
+    </div>
+
+    <div style="background-color: #0f203d; border-radius: 8px; padding: 20px; margin-bottom: 25px; text-align: center;">
+      <p style="margin: 0 0 5px; color: #d4b478; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Your Submission</p>
+      <p style="margin: 0; color: #faf8f5; font-size: 14px;">[inquiry_type]</p>
+    </div>
+
+    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">In the meantime, if you'd like to get a head start, feel free to <a href="https://calendly.com/joanna-trueinfluencemethod/private-training" style="color: #d4b478;">book a consultation</a> or reply directly to this email with any additional questions.</p>
+
+    <p style="margin: 0 0 5px; color: #333; font-size: 14px; line-height: 1.6;">With warmth,</p>
+    <p style="margin: 0; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 16px;"><strong>Joanna Horton McPherson</strong></p>
+    <p style="margin: 5px 0 0; color: #999; font-size: 13px;">True Influence Method</p>
+  </div>
+
+  <div style="background-color: #f5f5f5; padding: 20px 40px; border-top: 1px solid #e5e5e5;">
+    <p style="margin: 0; color: #999; font-size: 12px; text-align: center;">
+      You're receiving this because you submitted an inquiry through the True Influence Method website.<br>
+      Authentic Voice. Bold Leadership.
+    </p>
+  </div>
+
+</div>
+</body>
+USERMAIL;
+
+    $mail_2 = [
+        'active'             => true,
+        'subject'            => 'Your Inquiry Has Been Received — True Influence Method',
+        'sender'             => 'Joanna Horton McPherson <[admin_email]>',
+        'recipient'          => '[inquiry_email]',
+        'body'               => $user_mail_body,
+        'additional_headers' => 'Reply-To: True Influence Method <' . get_option('admin_email') . '>',
+        'attachments'        => '',
+        'use_html'           => true,
+        'exclude_blank'      => false,
+    ];
+
     // Default CF7 messages
     $messages = [
         'mail_sent_ok'     => 'Thank you for your message. It has been sent.',
@@ -608,6 +667,7 @@ MAILHTML;
     // Always update CF7 post meta so code changes are reflected immediately
     update_post_meta($form_id, '_form', $form_template);
     update_post_meta($form_id, '_mail', $mail);
+    update_post_meta($form_id, '_mail_2', $mail_2);
     update_post_meta($form_id, '_messages', $messages);
     update_post_meta($form_id, '_additional_settings', '');
 
