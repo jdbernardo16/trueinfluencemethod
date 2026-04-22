@@ -334,16 +334,66 @@
     // ============================================
     const initNewsletterForm = function () {
         const form = document.getElementById("newsletter-form");
+        const modal = document.getElementById("newsletter-success-modal");
+        const modalTitle = document.getElementById("newsletter-modal-title");
+        const modalMessage = document.getElementById("newsletter-modal-message");
         if (!form) return;
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-            const email = form.querySelector('input[type="email"]').value;
+            const emailInput = form.querySelector('input[type="email"]');
+            const email = emailInput ? emailInput.value.trim() : '';
+            const nonceInput = form.querySelector('input[name="tim_newsletter_nonce_field"]');
+            const nonce = nonceInput ? nonceInput.value : '';
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.textContent : 'Subscribe';
 
-            // Here you would typically send the email to your newsletter service
-            // For now, we'll just show an alert
-            alert("Thank you for subscribing! We'll be in touch soon.");
-            form.reset();
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+            }
+
+            const formData = new FormData();
+            formData.append('action', window.timInquiry && window.timInquiry.newsletterAction ? window.timInquiry.newsletterAction : 'tim_subscribe_newsletter');
+            formData.append('email', email);
+            formData.append('tim_newsletter_nonce_field', nonce);
+
+            fetch(window.timInquiry && window.timInquiry.ajaxUrl ? window.timInquiry.ajaxUrl : '/wp-admin/admin-ajax.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    form.reset();
+                    if (modal) {
+                        const isAlreadySubscribed = data.data && data.data.message && data.data.message.toLowerCase().includes('already subscribed');
+                        if (modalTitle) {
+                            modalTitle.textContent = isAlreadySubscribed ? "Already Subscribed" : "You're Subscribed!";
+                        }
+                        if (modalMessage) {
+                            modalMessage.textContent = data.data && data.data.message ? data.data.message : "Thank you for joining the True Influence Method community.";
+                        }
+                        modal.classList.remove('hidden');
+                    }
+                } else {
+                    alert(data.data && data.data.message ? data.data.message : 'Something went wrong. Please try again.');
+                }
+            })
+            .catch(function () {
+                alert('Something went wrong. Please try again.');
+            })
+            .finally(function () {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
         });
     };
 

@@ -34,7 +34,7 @@ function tim_wordpress_acf_settings()
         add_filter('acf/settings/show_admin', '__return_false');
     }
 
-    // Add ACF options page (optional, for global settings)
+    // Add ACF options page for global settings
     if (function_exists('acf_add_options_page')) {
         acf_add_options_page([
             'page_title' => 'Theme Settings',
@@ -43,7 +43,16 @@ function tim_wordpress_acf_settings()
             'capability' => 'edit_theme_options',
             'position' => 60,
             'icon_url' => 'dashicons-admin-generic',
-            'redirect' => false,
+            'redirect' => true,
+        ]);
+
+        // Footer sub-page
+        acf_add_options_sub_page([
+            'page_title' => 'Footer Settings',
+            'menu_title' => 'Footer',
+            'parent_slug' => 'theme-settings',
+            'menu_slug' => 'theme-settings-footer',
+            'capability' => 'edit_theme_options',
         ]);
     }
 }
@@ -76,6 +85,7 @@ function tim_wordpress_register_acf_field_groups()
         'private-training-page-fields',
         'programs-page-fields',
         'retreat-page-fields',
+        'footer-fields',
         'success-stories-page-fields',
         'tips-page-fields',
         'vault-page-fields',

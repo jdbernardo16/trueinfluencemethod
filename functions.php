@@ -13,6 +13,9 @@ require_once get_template_directory() . '/acf/helpers/acf-helpers.php';
 // Yoast SEO Integration
 require_once get_template_directory() . '/includes/seo.php';
 
+// Newsletter Subscription System
+require_once get_template_directory() . '/includes/newsletter.php';
+
 function tailpress(): TailPress\Framework\Theme
 {
     return TailPress\Framework\Theme::instance()
@@ -70,6 +73,8 @@ function tim_wordpress_enqueue_scripts()
     // Localize script for AJAX
     wp_localize_script('tim-wordpress-theme', 'timInquiry', [
         'ajaxUrl' => admin_url('admin-ajax.php'),
+        'newsletterNonce' => wp_create_nonce('tim_newsletter_nonce'),
+        'newsletterAction' => 'tim_subscribe_newsletter',
     ]);
 }
 add_action('wp_enqueue_scripts', 'tim_wordpress_enqueue_scripts');

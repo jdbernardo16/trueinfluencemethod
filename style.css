@@ -1,11 +1,15 @@
 /*
-Theme Name: tim-wordpress
-Theme URI: https://github.com/tailpress/tailpress
-Author: Jaydee Bernardo
-Author URI: https://tailpress.io
-Description: A WordPress theme made with TailPress.
-Version: 0.1.0
+Theme Name: True Influence Method
+Theme URI: https://trueinfluencemethod.com/
+Author: Joanna Horton McPherson
+Author URI: https://trueinfluencemethod.com/about/about-joanna/
+Description: The official WordPress theme for True Influence Method™ — Transforming leadership through the power of voice. Founded by Harvard-educated master coach Joanna Horton McPherson, the True Influence Method helps CEOs, founders, and executives speak at the level they already lead. "Transformation is priceless."
+Version: 1.0.0
 License: MIT
 License URI: https://github.com/tailpress/tailpress/blob/master/LICENSE
-Text Domain: tim_wordpress
+Text Domain: tim-wordpress
+Tags: one-column, custom-logo, custom-menu, featured-images, theme-options, block-styles
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 8.0
 */
