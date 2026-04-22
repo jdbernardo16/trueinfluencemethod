@@ -453,7 +453,7 @@ add_filter('wpcf7_form_tag', 'tim_cf7_dynamic_inquiry_type', 10, 1);
 function tim_ensure_cf7_apply_form()
 {
     // Check if Contact Form 7 is active
-    if (!post_type_exists('wpcf7_contact_form')) {
+    if (!function_exists('wpcf7') || !post_type_exists('wpcf7_contact_form')) {
         return null;
     }
 
@@ -678,7 +678,7 @@ USERMAIL;
 
     return (int) $form_id;
 }
-add_action('after_setup_theme', 'tim_ensure_cf7_apply_form', 20);
+add_action('init', 'tim_ensure_cf7_apply_form', 20);
 
 /**
  * Contact Form 7 — Ensure the "Vault Registration Form" exists
@@ -691,7 +691,8 @@ add_action('after_setup_theme', 'tim_ensure_cf7_apply_form', 20);
  */
 function tim_ensure_cf7_vault_form()
 {
-    if (!post_type_exists('wpcf7_contact_form')) {
+    // Check if Contact Form 7 is active
+    if (!function_exists('wpcf7') || !post_type_exists('wpcf7_contact_form')) {
         return null;
     }
 
@@ -903,4 +904,77 @@ USERMAIL;
 
     return (int) $form_id;
 }
-add_action('after_setup_theme', 'tim_ensure_cf7_vault_form', 20);
+add_action('init', 'tim_ensure_cf7_vault_form', 20);
+
+
+/**
+ * Manual trigger for CF7 form creation (for debugging/UAT)
+ * 
+ * Usage: Call this function manually if forms don't auto-create.
+ * Can be called via WP-CLI, custom admin page, or temporary code.
+ * 
+ * @return array Results of form creation attempts
+ */
+function tim_create_cf7_forms_manually() {
+    $results = array(
+        'apply_form' => null,
+        'vault_form' => null,
+        'errors' => array(),
+        'messages' => array()
+    );
+    
+    // Check if CF7 is active
+    if (!function_exists('wpcf7') || !post_type_exists('wpcf7_contact_form')) {
+        $results['errors'][] = 'Contact Form 7 plugin is not active.';
+        return $results;
+    }
+    
+    // Create Apply Page Inquiry Form
+    $apply_form_id = tim_ensure_cf7_apply_form();
+    if ($apply_form_id) {
+        $results['apply_form'] = $apply_form_id;
+        $results['messages'][] = 'Apply Page Inquiry Form created (ID: ' . $apply_form_id . ')';
+    } else {
+        $results['errors'][] = 'Failed to create Apply Page Inquiry Form';
+    }
+    
+    // Create Vault Registration Form
+    $vault_form_id = tim_ensure_cf7_vault_form();
+    if ($vault_form_id) {
+        $results['vault_form'] = $vault_form_id;
+        $results['messages'][] = 'Vault Registration Form created (ID: ' . $vault_form_id . ')';
+    } else {
+        $results['errors'][] = 'Failed to create Vault Registration Form';
+    }
+    
+    return $results;
+}
+
+// Optional: Add admin notice if forms don't exist
+function tim_check_cf7_forms_admin_notice() {
+    // Only show to admins
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    
+    // Check if CF7 is active
+    if (!function_exists('wpcf7') || !post_type_exists('wpcf7_contact_form')) {
+        return;
+    }
+    
+    // Check if forms exist
+    $apply_form_id = get_option('tim_cf7_apply_form_id', 0);
+    $vault_form_id = get_option('tim_cf7_vault_form_id', 0);
+    
+    $apply_exists = $apply_form_id && get_post_status($apply_form_id) === 'publish';
+    $vault_exists = $vault_form_id && get_post_status($vault_form_id) === 'publish';
+    
+    if (!$apply_exists || !$vault_exists) {
+        echo '<div class="notice notice-warning">';
+        echo '<p><strong>TIM Theme:</strong> Contact Form 7 forms are missing. ';
+        echo 'Please ensure Contact Form 7 plugin is active and visit any page to auto-create forms, ';
+        echo 'or re-activate the theme.</p>';
+        echo '</div>';
+    }
+}
+add_action('admin_notices', 'tim_check_cf7_forms_admin_notice');
