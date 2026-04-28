@@ -3,6 +3,7 @@
 /**
  * Social Proof Section Template Part
  * Based on SocialProofSection.vue
+ * Features animated ticker/counter boxes that count up on scroll.
  */
 
 // Get ACF fields with fallbacks
@@ -47,13 +48,33 @@ if (empty($testimonials)) {
     ];
 }
 
-// Get stats
-$stats_leaders_number = get_field('stats_leaders_number') ?: '10,000+';
-$stats_leaders_label = get_field('stats_leaders_label') ?: 'Leaders Transformed';
-$stats_satisfaction_number = get_field('stats_satisfaction_number') ?: '98%';
-$stats_satisfaction_label = get_field('stats_satisfaction_label') ?: 'Client Satisfaction';
-$stats_years_number = get_field('stats_years_number') ?: '5+';
-$stats_years_label = get_field('stats_years_label') ?: 'Years Experience';
+// Get stats - 4 metrics with separate number, prefix, suffix, and label
+$metrics = [
+    [
+        'number'    => get_field('stats_years_number') ?: '30',
+        'prefix'    => '',
+        'suffix'    => get_field('stats_years_suffix') ?: '+',
+        'label'     => get_field('stats_years_label') ?: 'Years of Impact',
+    ],
+    [
+        'number'    => get_field('stats_leaders_number') ?: '10000',
+        'prefix'    => '',
+        'suffix'    => get_field('stats_leaders_suffix') ?: '+',
+        'label'     => get_field('stats_leaders_label') ?: 'Leaders Transformed',
+    ],
+    [
+        'number'    => get_field('stats_revenue_number') ?: '42',
+        'prefix'    => get_field('stats_revenue_prefix') ?: '$',
+        'suffix'    => get_field('stats_revenue_suffix') ?: 'M+',
+        'label'     => get_field('stats_revenue_label') ?: 'Revenue Generated',
+    ],
+    [
+        'number'    => get_field('stats_stages_number') ?: '1100',
+        'prefix'    => '',
+        'suffix'    => get_field('stats_stages_suffix') ?: '+',
+        'label'     => get_field('stats_stages_label') ?: 'Stages Appeared On',
+    ],
+];
 ?>
 
 <section class="py-20 bg-[#0f203d] relative overflow-hidden">
@@ -78,21 +99,111 @@ $stats_years_label = get_field('stats_years_label') ?: 'Years Experience';
             <?php endforeach; ?>
         </div>
 
-        <div class="mt-16 flex items-center justify-center gap-8 flex-wrap">
-            <div class="text-center">
-                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1"><?php echo esc_html($stats_leaders_number); ?></p>
-                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider"><?php echo esc_html($stats_leaders_label); ?></p>
-            </div>
-            <div class="w-px h-12 bg-[#faf8f5]/10 hidden md:block"></div>
-            <div class="text-center">
-                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1"><?php echo esc_html($stats_satisfaction_number); ?></p>
-                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider"><?php echo esc_html($stats_satisfaction_label); ?></p>
-            </div>
-            <div class="w-px h-12 bg-[#faf8f5]/10 hidden md:block"></div>
-            <div class="text-center">
-                <p class="text-4xl font-serif font-semibold text-[#d4b478] mb-1"><?php echo esc_html($stats_years_number); ?></p>
-                <p class="text-[#faf8f5]/60 text-sm uppercase tracking-wider"><?php echo esc_html($stats_years_label); ?></p>
-            </div>
+        <!-- Animated Metrics / Stats Boxes -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8" id="social-proof-metrics">
+            <?php foreach ($metrics as $index => $metric) :
+                $raw_number = intval(preg_replace('/[^0-9]/', '', $metric['number']));
+                if ($raw_number === 0) {
+                    $raw_number = intval($metric['number']);
+                }
+            ?>
+                <div class="stat-box text-center p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm transition-transform duration-300 hover:scale-105">
+                    <p class="text-3xl md:text-4xl font-serif font-semibold text-[#d4b478] mb-2">
+                        <?php if (!empty($metric['prefix'])) : ?>
+                            <span class="stat-prefix"><?php echo esc_html($metric['prefix']); ?></span>
+                        <?php endif; ?>
+                        <span class="stat-counter"
+                            data-target="<?php echo esc_attr($raw_number); ?>"
+                            data-duration="2000">0</span>
+                        <?php if (!empty($metric['suffix'])) : ?>
+                            <span class="stat-suffix"><?php echo esc_html($metric['suffix']); ?></span>
+                        <?php endif; ?>
+                    </p>
+                    <p class="text-[#faf8f5]/60 text-xs md:text-sm uppercase tracking-wider"><?php echo esc_html($metric['label']); ?></p>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
+
+<script>
+    (function() {
+        'use strict';
+
+        /**
+         * Animated counter — numbers count up when the metrics section
+         * scrolls into the viewport using IntersectionObserver.
+         */
+        function animateCounter(el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            var duration = parseInt(el.getAttribute('data-duration'), 10) || 2000;
+            if (isNaN(target) || target === 0) {
+                el.textContent = target;
+                return;
+            }
+
+            var start = 0;
+            var startTime = null;
+
+            function easeOutQuart(t) {
+                return 1 - Math.pow(1 - t, 4);
+            }
+
+            function formatNumber(n) {
+                return n.toLocaleString('en-US');
+            }
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var easedProgress = easeOutQuart(progress);
+                var current = Math.floor(easedProgress * target);
+
+                el.textContent = formatNumber(current);
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    el.textContent = formatNumber(target);
+                }
+            }
+
+            window.requestAnimationFrame(step);
+        }
+
+        function initCounters() {
+            var counters = document.querySelectorAll('#social-proof-metrics .stat-counter');
+            if (!counters.length) return;
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3
+                });
+
+                counters.forEach(function(counter) {
+                    observer.observe(counter);
+                });
+            } else {
+                // Fallback: just show final numbers immediately
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-target'), 10);
+                    counter.textContent = target.toLocaleString('en-US');
+                });
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCounters);
+        } else {
+            initCounters();
+        }
+    })();
+</script>

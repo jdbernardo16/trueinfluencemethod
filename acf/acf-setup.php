@@ -68,6 +68,7 @@ function tim_wordpress_register_acf_field_groups()
         'seo-fields',
         'hero-section',
         'intro-section',
+        'about-joanna-section',
         'paths-section',
         'social-proof-section',
         'cta-section',

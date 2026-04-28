@@ -7,8 +7,8 @@
 
 // Get ACF fields with fallbacks
 $intro_badge_text = get_field('intro_badge_text') ?: 'The Work';
-$intro_heading_line_1 = get_field('intro_heading_line_1') ?: "You're not lacking talent.";
-$intro_heading_line_2 = get_field('intro_heading_line_2') ?: "You're lacking the language for it.";
+$intro_heading_line_1 = get_field('intro_heading_line_1') ?: "You don't need confidence.";
+$intro_heading_line_2 = get_field('intro_heading_line_2') ?: "You need clarity.";
 $intro_description = get_field('intro_description') ?: "The leaders who train here already have results. What they haven't done yet is fully own the story behind their work. That gap between impact and articulation is what the True Influence Method™ solves.";
 
 $intro_main_image = get_field('intro_main_image');
@@ -83,11 +83,11 @@ $intro_stats_years_label = get_field('intro_stats_years_label') ?: 'Years of Wor
                     <img src="<?php echo esc_url($intro_main_image_url); ?>" alt="<?php echo esc_attr($intro_main_image_alt); ?>" class="w-full h-[500px] object-cover" />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/50 to-transparent"></div>
                 </div>
-
+                <!-- 
                 <div class="absolute -bottom-6 -right-6 bg-[#d4b478] text-[#0f203d] p-6 rounded-xl shadow-2xl">
                     <p class="font-serif text-3xl font-bold"><?php echo esc_html($intro_stats_number); ?></p>
                     <p class="text-sm font-medium"><?php echo esc_html($intro_stats_label); ?></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

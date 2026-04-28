@@ -82,11 +82,11 @@ if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
             <span class="absolute -right-8 top-1/2 -translate-y-1/2 w-6 h-px bg-[#d4b478]/40 hidden md:block"></span>
         </h1>
 
-        <p class="text-[#faf8f5] font-serif italic text-xl md:text-3xl mb-8 font-light relative inline-block">
+        <!-- <p class="text-[#faf8f5] font-serif italic text-xl md:text-3xl mb-8 font-light relative inline-block">
             <span class="absolute -top-3 -left-4 text-[#d4b478]/20 text-5xl font-serif">"</span>
             <?php echo esc_html($hero_quote); ?>
             <span class="absolute -bottom-3 -right-4 text-[#d4b478]/20 text-5xl font-serif">"</span>
-        </p>
+        </p> -->
 
         <div class="text-[#faf8f5]/80 text-lg md:text-lg max-w-2xl mb-12 leading-relaxed">
             <?php echo wp_kses_post($hero_description); ?>

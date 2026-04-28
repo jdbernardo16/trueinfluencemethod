@@ -19,7 +19,7 @@ $args = wp_parse_args($args, array(
     'title' => '',
     'description' => '',
     'role' => '',
-    'cta' => 'Find My Program',
+    'cta' => 'Join Now',
     'cta_link' => '/programs',
 ));
 
@@ -49,9 +49,9 @@ $is_premium = $args['icon'] === 'user' && strpos($args['cta'], 'Apply') !== fals
         <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/80 to-transparent"></div>
 
         <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-            <span class="text-xs font-semibold tracking-wider uppercase text-[#0f203d] bg-[#d4b478] px-3 py-1 rounded-full">
+            <!-- <span class="text-xs font-semibold tracking-wider uppercase text-[#0f203d] bg-[#d4b478] px-3 py-1 rounded-full">
                 <?php echo esc_html($args['role']); ?>
-            </span>
+            </span> -->
             <?php if ($is_premium) : ?>
                 <span class="text-xs font-semibold tracking-wider uppercase text-[#d4b478] bg-[#0f203d] px-3 py-1 rounded-full">
                     Most Exclusive

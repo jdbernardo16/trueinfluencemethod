@@ -7,8 +7,8 @@
 
 // Get ACF fields with fallbacks
 $paths_badge_text = get_field('paths_badge_text') ?: 'Ways to Work Together';
-$paths_heading = get_field('paths_heading') ?: 'One Method. 3 Levels of Commitment.';
-$paths_description = get_field('paths_description') ?: "Transformation is priceless. Your investment simply reflects how committed you are to the work.";
+$paths_heading = get_field('paths_heading') ?: 'Choose Your Path to Transformation';
+$paths_description = get_field('paths_description') ?: "Transformation is Priceless. Choose the experience that fits your needs.";
 
 // Get paths from repeater
 $paths = [];
@@ -40,23 +40,23 @@ if (empty($paths)) {
         [
             'icon' => 'book',
             'title' => '90-day Mastermind',
-            'description' => 'Self-study training + quarterly retreat. For leaders beginning the method at their own pace.',
+            'description' => 'Best for leaders who want to move at their own pace and prioritize access',
             'role' => 'Student',
-            'cta' => 'Find My Program',
+            'cta' => 'Join Now',
             'cta_link' => '/programs/mastermind',
         ],
         [
             'icon' => 'users',
             'title' => 'Cohort',
-            'description' => 'Live group training with Joanna. For students ready to train directly with Joanna and peers.',
+            'description' => 'Best for leaders who want a professional network, a polished talk, and featured stage appearances',
             'role' => 'Student',
-            'cta' => 'Find My Program',
+            'cta' => 'Join Now',
             'cta_link' => '/programs/corporate',
         ],
         [
             'icon' => 'user',
             'title' => 'Private Client',
-            'description' => 'One-on-one work with Joanna. For leaders ready for the deepest level of transformation. Application required.',
+            'description' => 'Best for leaders who are ready for fast results and want the highest level of access to Joanna',
             'role' => 'Client',
             'cta' => 'Apply',
             'cta_link' => '/programs/private-training',
