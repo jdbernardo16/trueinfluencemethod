@@ -1122,7 +1122,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'type' => 'url',
                 'instructions' => 'The URL for the CTA button.',
                 'required' => 0,
-                'default_value' => '/#contact',
+                'default_value' => '/apply',
                 'placeholder' => '',
                 'wrapper' => [
                     'width' => '',

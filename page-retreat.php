@@ -422,7 +422,7 @@ $iconMap = array(
                                     <?php echo $iconMap['ArrowRight']; ?>
                                 </a>
                             <?php else : ?>
-                                <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
+                                <a href="<?php echo home_url('/apply'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
                                     <span class="uppercase tracking-wider"><?php echo esc_html(get_field('retreat_cta_button_text') ?: 'Apply Now'); ?></span>
                                     <?php echo $iconMap['ArrowRight']; ?>
                                 </a>

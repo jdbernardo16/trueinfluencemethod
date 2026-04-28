@@ -130,7 +130,7 @@ $iconMap = array(
                         <?php echo wp_kses_post(get_field('mastermind_hero_description') ?: 'A structured journey of self-discovery and mastery. Transform your story, craft your message, and own your stage—at your own pace.'); ?>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
+                        <a href="<?php echo home_url('/apply'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
                             <span class="uppercase tracking-wider"><?php echo esc_html(get_field('mastermind_hero_cta_text') ?: 'Begin Your Journey'); ?></span>
                             <?php echo $iconMap['ArrowRight']; ?>
                         </a>
@@ -580,7 +580,7 @@ $iconMap = array(
                             </div>
 
                             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
-                                <a href="<?php echo home_url('/#contact'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
+                                <a href="<?php echo home_url('/apply'); ?>" class="inline-flex items-center gap-2 bg-[#d4b478] hover:bg-[#b87d1f] text-[#0f203d] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer">
                                     <span class="uppercase tracking-wider"><?php echo esc_html(get_field('mastermind_cta_button_text') ?: 'Start Your Journey'); ?></span>
                                     <?php echo $iconMap['ArrowRight']; ?>
                                 </a>

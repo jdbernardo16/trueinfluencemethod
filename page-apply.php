@@ -38,13 +38,13 @@
                     <?php tim_esc_text(tim_get_field('apply_hero_heading', "Let's Find Out If This Is the Right Fit.")); ?>
                 </h1>
 
-                <p class="text-[#faf8f5]/80 text-xl font-light mb-12 max-w-3xl mx-auto">
-                    <?php tim_esc_content(tim_get_field('apply_hero_description_1', 'Joanna works with a limited number of private clients at any one time, and every corporate and group engagement is carefully considered. The inquiry form is the first step — not a commitment, just a conversation.')); ?>
-                </p>
+                <div class="text-[#faf8f5]/80 text-xl font-light mb-12 max-w-3xl mx-auto">
+                    <?php tim_esc_text(tim_get_field('apply_hero_description_1', 'Joanna works with a limited number of private clients at any one time, and every corporate and group engagement is carefully considered. The inquiry form is the first step — not a commitment, just a conversation.')); ?>
+                </div>
 
-                <p class="text-[#faf8f5]/80 text-xl font-light mb-12 max-w-3xl mx-auto">
-                    <?php tim_esc_content(tim_get_field('apply_hero_description_2', 'Fill it out honestly. Tell us where you are, where you want to go, and what feels most alive in your work right now. Joanna\'s team will review your submission and be in touch within 2 business days.')); ?>
-                </p>
+                <div class="text-[#faf8f5]/80 text-xl font-light mb-12 max-w-3xl mx-auto">
+                    <?php tim_esc_text(tim_get_field('apply_hero_description_2', 'Fill it out honestly. Tell us where you are, where you want to go, and what feels most alive in your work right now. Joanna\'s team will review your submission and be in touch within 2 business days.')); ?>
+                </div>
 
                 <!-- Inquiry Form (Contact Form 7) -->
                 <div id="tim-inquiry-form" class="max-w-2xl mx-auto text-left">

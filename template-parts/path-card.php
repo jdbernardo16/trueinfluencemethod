@@ -25,7 +25,7 @@ $args = wp_parse_args($args, array(
 
 // Determine image based on icon
 $image_map = array(
-    'user' => get_template_directory_uri() . '/assets/images/carousel/img6.webp',
+    'user' => get_template_directory_uri() . '/assets/images/oneonone.webp',
     'users' => get_template_directory_uri() . '/assets/images/carousel/img7.webp',
     'building' => get_template_directory_uri() . '/assets/images/carousel/img8.webp',
     'book' => get_template_directory_uri() . '/assets/images/carousel/img1.webp',

@@ -474,7 +474,7 @@ function tim_ensure_cf7_apply_form()
 </div>
 
 <label class="cf7-label">What are you most interested in? <span class="cf7-required">*</span>
-    [select* inquiry_type first_as_label "Select an option..." "Private Training (1-on-1 with Joanna)" "Speak & Rise Mastermind" "Corporate Programs & Workshops" "Retreat Experience" "General Inquiry"]
+    [select* inquiry_type first_as_label "Select an option..." "Private Training (1-on-1 with Joanna)" "90-day Mastermind" "Corporate Programs & Workshops" "Retreat Experience" "General Inquiry"]
 </label>
 
 <label class="cf7-label">Company / Organization

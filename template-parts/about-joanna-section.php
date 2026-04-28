@@ -69,7 +69,7 @@ if ($about_image) {
 
                 <div class="relative max-w-xl mx-auto lg:mx-0">
                     <div class="h-px w-full bg-gradient-to-r from-transparent via-[#d4b478]/40 to-transparent mb-8"></div>
-                    <p class="font-serif text-2xl md:text-3xl text-[#0f203d] leading-snug italic">
+                    <p class="font-serif text-2xl md:text-3xl text-[#d4b478] leading-snug italic">
                         <?php echo esc_html($about_closing_line); ?>
                     </p>
                     <div class="h-px w-full bg-gradient-to-r from-transparent via-[#d4b478]/40 to-transparent mt-8"></div>

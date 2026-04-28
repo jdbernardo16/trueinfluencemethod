@@ -372,8 +372,24 @@ $impactStats = tim_get_repeater_field('corporate_impact_stats', array(
 
                     <!-- Impact Stats Grid -->
                     <?php if (!empty($impactStats)): ?>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-                            <?php foreach ($impactStats as $index => $stat): ?>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20" id="impact-stats">
+                            <?php foreach ($impactStats as $index => $stat):
+                                $raw_number = intval(preg_replace('/[^0-9]/', '', $stat['stat_value']));
+                                if ($raw_number === 0) {
+                                    $raw_number = intval($stat['stat_value']);
+                                }
+                                $prefix = '';
+                                $suffix = '';
+                                if (strpos($stat['stat_value'], '$') === 0) {
+                                    $prefix = '$';
+                                }
+                                if (strpos($stat['stat_value'], '%') !== false) {
+                                    $suffix = '%';
+                                }
+                                if (strpos($stat['stat_value'], '+') !== false) {
+                                    $suffix = '+';
+                                }
+                            ?>
                                 <div class="group relative bg-[#faf8f5]/5 border border-[#faf8f5]/10 rounded-2xl p-8 text-center hover:border-[#d4b478]/40 hover:bg-[#faf8f5]/[0.08] transition-all duration-500">
                                     <!-- Icon -->
                                     <div class="w-14 h-14 bg-[#d4b478]/15 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:bg-[#d4b478]/25 transition-all duration-300">
@@ -381,7 +397,15 @@ $impactStats = tim_get_repeater_field('corporate_impact_stats', array(
                                     </div>
                                     <!-- Stat Value -->
                                     <div class="text-4xl md:text-5xl font-serif text-[#d4b478] mb-3 leading-none">
-                                        <?php echo esc_html($stat['stat_value']); ?>
+                                        <?php if (!empty($prefix)) : ?>
+                                            <span class="stat-prefix"><?php echo esc_html($prefix); ?></span>
+                                        <?php endif; ?>
+                                        <span class="stat-counter"
+                                            data-target="<?php echo esc_attr($raw_number); ?>"
+                                            data-duration="2000">0</span>
+                                        <?php if (!empty($suffix)) : ?>
+                                            <span class="stat-suffix"><?php echo esc_html($suffix); ?></span>
+                                        <?php endif; ?>
                                     </div>
                                     <!-- Stat Label -->
                                     <div class="text-[#faf8f5]/60 font-light text-sm tracking-wide uppercase">
@@ -484,6 +508,82 @@ $impactStats = tim_get_repeater_field('corporate_impact_stats', array(
     </div>
 
     <?php get_footer(); ?>
+
+    <script>
+        (function() {
+            'use strict';
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-target'), 10);
+                var duration = parseInt(el.getAttribute('data-duration'), 10) || 2000;
+                if (isNaN(target) || target === 0) {
+                    el.textContent = target;
+                    return;
+                }
+
+                var start = 0;
+                var startTime = null;
+
+                function easeOutQuart(t) {
+                    return 1 - Math.pow(1 - t, 4);
+                }
+
+                function formatNumber(n) {
+                    return n.toLocaleString('en-US');
+                }
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var easedProgress = easeOutQuart(progress);
+                    var current = Math.floor(easedProgress * target);
+
+                    el.textContent = formatNumber(current);
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        el.textContent = formatNumber(target);
+                    }
+                }
+
+                window.requestAnimationFrame(step);
+            }
+
+            function initCounters() {
+                var counters = document.querySelectorAll('#impact-stats .stat-counter');
+                if (!counters.length) return;
+
+                if ('IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                animateCounter(entry.target);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        threshold: 0.3
+                    });
+
+                    counters.forEach(function(counter) {
+                        observer.observe(counter);
+                    });
+                } else {
+                    counters.forEach(function(counter) {
+                        var target = parseInt(counter.getAttribute('data-target'), 10);
+                        counter.textContent = target.toLocaleString('en-US');
+                    });
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCounters);
+            } else {
+                initCounters();
+            }
+        })();
+    </script>
 </body>
 
 </html>
