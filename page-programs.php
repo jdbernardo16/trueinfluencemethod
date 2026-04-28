@@ -103,26 +103,18 @@
                                         </ul>
                                     <?php endif; ?>
 
-                                    <!-- Access & Role -->
-                                    <div class="flex items-center gap-4 mb-6 pt-6 border-t <?php echo $is_highlighted ? 'border-[#faf8f5]/10' : 'border-[#0f203d]/10'; ?>">
-                                        <div>
-                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Access</span>
-                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
-                                                <?php echo esc_html($path['path_access'] ?: ''); ?>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Role</span>
-                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
-                                                <?php echo esc_html($path['path_role'] ?: ''); ?>
-                                            </p>
-                                        </div>
+                                    <!-- Access -->
+                                    <div class="mb-6 pt-6 border-t <?php echo $is_highlighted ? 'border-[#faf8f5]/10' : 'border-[#0f203d]/10'; ?>">
+                                        <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Access</span>
+                                        <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
+                                            <?php echo esc_html($path['path_access'] ?: ''); ?>
+                                        </p>
                                     </div>
 
                                     <!-- CTA Button -->
                                     <a href="<?php echo esc_url($cta_link); ?>"
                                         class="inline-block text-center w-full px-6 py-3 rounded-lg font-semibold transition-all <?php echo $is_highlighted ? 'bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] hover:shadow-lg hover:shadow-[#d4b478]/20' : 'bg-[#0f203d] hover:bg-[#0f203d]/90 text-[#faf8f5]'; ?>">
-                                        <?php echo esc_html($path['path_cta_text'] ?: 'Find My Program →'); ?>
+                                        <?php echo esc_html($path['path_cta_text'] ?: 'Join Now →'); ?>
                                     </a>
                                 </div>
                             </div>
@@ -143,8 +135,7 @@
                                     ['feature_text' => 'Peer network'],
                                 ],
                                 'path_access' => 'Retreat only',
-                                'path_role' => 'Student',
-                                'path_cta_text' => 'Find My Program →',
+                                'path_cta_text' => 'Join Now →',
                                 'path_cta_link' => home_url('/programs/mastermind'),
                                 'path_highlight' => false,
                             ],
@@ -159,8 +150,7 @@
                                     ['feature_text' => 'Speaker eligibility'],
                                 ],
                                 'path_access' => 'Monthly + retreat',
-                                'path_role' => 'Student',
-                                'path_cta_text' => 'Find My Program →',
+                                'path_cta_text' => 'Join Now →',
                                 'path_cta_link' => home_url('/programs/corporate'),
                                 'path_highlight' => false,
                             ],
@@ -174,7 +164,6 @@
                                     ['feature_text' => 'Everything in Cohort'],
                                 ],
                                 'path_access' => 'Direct 1:1',
-                                'path_role' => 'Private Client',
                                 'path_cta_text' => 'Apply to Become a Private Client →',
                                 'path_cta_link' => home_url('/programs/private-training'),
                                 'path_highlight' => true,
@@ -218,19 +207,11 @@
                                         <?php endforeach; ?>
                                     </ul>
 
-                                    <div class="flex items-center gap-4 mb-6 pt-6 border-t <?php echo $is_highlighted ? 'border-[#faf8f5]/10' : 'border-[#0f203d]/10'; ?>">
-                                        <div>
-                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Access</span>
-                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
-                                                <?php echo esc_html($path['path_access']); ?>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Role</span>
-                                            <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
-                                                <?php echo esc_html($path['path_role']); ?>
-                                            </p>
-                                        </div>
+                                    <div class="mb-6 pt-6 border-t <?php echo $is_highlighted ? 'border-[#faf8f5]/10' : 'border-[#0f203d]/10'; ?>">
+                                        <span class="text-xs font-medium <?php echo $is_highlighted ? 'text-[#faf8f5]/50' : 'text-[#0f203d]/40'; ?> uppercase tracking-wider">Access</span>
+                                        <p class="text-sm font-semibold <?php echo $is_highlighted ? 'text-[#faf8f5]' : 'text-[#0f203d]'; ?>">
+                                            <?php echo esc_html($path['path_access']); ?>
+                                        </p>
                                     </div>
 
                                     <a href="<?php echo esc_url($path['path_cta_link']); ?>"
