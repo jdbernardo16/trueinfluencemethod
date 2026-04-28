@@ -43,11 +43,6 @@ if ($about_image) {
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/70 to-transparent"></div>
                 </div>
 
-                <!-- Stat badge overlay -->
-                <div class="absolute -top-6 -right-6 bg-[#d4b478] text-[#0f203d] p-4 rounded-xl shadow-2xl">
-                    <p class="font-serif text-2xl font-bold">30+</p>
-                    <p class="text-xs font-medium">Years of Impact</p>
-                </div>
             </div>
 
             <!-- Text Content -->
