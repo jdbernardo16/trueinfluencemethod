@@ -915,20 +915,21 @@ add_action('init', 'tim_ensure_cf7_vault_form', 20);
  * 
  * @return array Results of form creation attempts
  */
-function tim_create_cf7_forms_manually() {
+function tim_create_cf7_forms_manually()
+{
     $results = array(
         'apply_form' => null,
         'vault_form' => null,
         'errors' => array(),
         'messages' => array()
     );
-    
+
     // Check if CF7 is active
     if (!function_exists('wpcf7') || !post_type_exists('wpcf7_contact_form')) {
         $results['errors'][] = 'Contact Form 7 plugin is not active.';
         return $results;
     }
-    
+
     // Create Apply Page Inquiry Form
     $apply_form_id = tim_ensure_cf7_apply_form();
     if ($apply_form_id) {
@@ -937,7 +938,7 @@ function tim_create_cf7_forms_manually() {
     } else {
         $results['errors'][] = 'Failed to create Apply Page Inquiry Form';
     }
-    
+
     // Create Vault Registration Form
     $vault_form_id = tim_ensure_cf7_vault_form();
     if ($vault_form_id) {
@@ -946,29 +947,30 @@ function tim_create_cf7_forms_manually() {
     } else {
         $results['errors'][] = 'Failed to create Vault Registration Form';
     }
-    
+
     return $results;
 }
 
 // Optional: Add admin notice if forms don't exist
-function tim_check_cf7_forms_admin_notice() {
+function tim_check_cf7_forms_admin_notice()
+{
     // Only show to admins
     if (!current_user_can('manage_options')) {
         return;
     }
-    
+
     // Check if CF7 is active
     if (!function_exists('wpcf7') || !post_type_exists('wpcf7_contact_form')) {
         return;
     }
-    
+
     // Check if forms exist
     $apply_form_id = get_option('tim_cf7_apply_form_id', 0);
     $vault_form_id = get_option('tim_cf7_vault_form_id', 0);
-    
+
     $apply_exists = $apply_form_id && get_post_status($apply_form_id) === 'publish';
     $vault_exists = $vault_form_id && get_post_status($vault_form_id) === 'publish';
-    
+
     if (!$apply_exists || !$vault_exists) {
         echo '<div class="notice notice-warning">';
         echo '<p><strong>TIM Theme:</strong> Contact Form 7 forms are missing. ';
@@ -978,3 +980,64 @@ function tim_check_cf7_forms_admin_notice() {
     }
 }
 add_action('admin_notices', 'tim_check_cf7_forms_admin_notice');
+
+/**
+ * Redirect parent pages to their first child page.
+ *
+ * When a visitor lands on a parent (top-level) page that has children,
+ * they are automatically redirected to the first child in menu order.
+ *
+ * To enable for a specific page, add a custom field 'redirect_to_first_child'
+ * with value '1' — or uncomment the template-based check below.
+ */
+function tim_redirect_parent_to_first_child()
+{
+    // Only act on singular pages (not posts, archives, etc.)
+    if (! is_page() || is_admin()) {
+        return;
+    }
+
+    $queried = get_queried_object();
+
+    if (! $queried) {
+        return;
+    }
+
+    // --- Option A: Redirect ALL parent pages that have children ---
+    // Uncomment the next line to enable globally:
+    // $should_redirect = true;
+
+    // --- Option B: Redirect only pages with a custom field ---
+    // $should_redirect = get_post_meta($queried->ID, 'redirect_to_first_child', true);
+
+    // --- Option C: Redirect specific pages by slug or template (active) ---
+    $template = get_page_template_slug($queried->ID);
+    $should_redirect = in_array($queried->post_name, [
+        'about',
+        'community',
+        // Add more page slugs here as needed:
+    ], true) || in_array($template, [
+        'page-about.php',
+        'page-community.php',
+        // Or by explicitly-assigned template:
+    ], true);
+
+    if (! $should_redirect) {
+        return;
+    }
+
+    // Get child pages sorted by menu order, then date
+    $children = get_pages([
+        'parent'      => $queried->ID,
+        'sort_column' => 'menu_order, post_date',
+        'sort_order'  => 'ASC',
+        'number'      => 1,
+    ]);
+
+    if (! empty($children)) {
+        $first_child = reset($children);
+        wp_redirect(get_permalink($first_child->ID), 301);
+        exit;
+    }
+}
+add_action('template_redirect', 'tim_redirect_parent_to_first_child');
