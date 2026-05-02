@@ -12,13 +12,22 @@ $partners_heading = get_field('partners_heading') ?: 'As Seen On';
 
 $partners = [
     ['name' => 'ABC', 'logo' => 'abc.png'],
+    ['name' => 'AOCC', 'logo' => 'aocc.png'],
+    ['name' => 'BBBS', 'logo' => 'bbbs.png'],
+    ['name' => 'BGCA', 'logo' => 'bgca.png'],
     ['name' => 'Bioneers', 'logo' => 'bioneers.png'],
-    ['name' => 'Flagler', 'logo' => 'flagler.png'],
+    ['name' => 'Bloomberg', 'logo' => 'bloomberg.png'],
+    ['name' => 'Flagler College', 'logo' => 'flagler-college.png'],
     ['name' => 'Forbes', 'logo' => 'forbes.jpeg'],
     ['name' => 'Harvard', 'logo' => 'harvard.svg'],
-    ['name' => 'Bloomberg', 'logo' => 'bloomberg.png'],
+    ['name' => 'MTV', 'logo' => 'mtv.png'],
+    ['name' => 'NAWBO', 'logo' => 'nawbo.jpg'],
     ['name' => 'Shambhala', 'logo' => 'shambhala.png'],
+    ['name' => 'Union College', 'logo' => 'union-college.png'],
+    ['name' => 'USM', 'logo' => 'usm.png'],
     ['name' => 'USA Today', 'logo' => 'usa-today.svg'],
+    ['name' => 'Vassar College', 'logo' => 'vassar-college.png'],
+    ['name' => 'Yahoo News', 'logo' => 'yahoo-news.png'],
 ];
 ?>
 
