@@ -11,22 +11,33 @@ $partners_badge_text = get_field('partners_badge_text') ?: 'Trusted By';
 $partners_heading = get_field('partners_heading') ?: 'As Seen On';
 
 $partners = [
+    ['name' => '30 Rock', 'logo' => '30-rock.webp'],
+    ['name' => '48 Hours', 'logo' => '48-hours.webp'],
     ['name' => 'ABC', 'logo' => 'abc.png'],
     ['name' => 'AOCC', 'logo' => 'aocc.png'],
+    ['name' => 'AT&T', 'logo' => 'att.webp'],
     ['name' => 'BBBS', 'logo' => 'bbbs.png'],
     ['name' => 'BGCA', 'logo' => 'bgca.png'],
     ['name' => 'Bioneers', 'logo' => 'bioneers.png'],
     ['name' => 'Bloomberg', 'logo' => 'bloomberg.png'],
+    ['name' => 'CNN', 'logo' => 'cnn.webp'],
+    ['name' => 'Deseret News', 'logo' => 'deseret-news.webp'],
+    ['name' => 'Disney', 'logo' => 'disney.webp'],
     ['name' => 'Flagler College', 'logo' => 'flagler-college.png'],
     ['name' => 'Forbes', 'logo' => 'forbes.jpeg'],
+    ['name' => 'Golden Apple Awards', 'logo' => 'golden-apple.webp'],
     ['name' => 'Harvard', 'logo' => 'harvard.svg'],
+    ['name' => 'iHeart Radio', 'logo' => 'iheart-radio.webp'],
     ['name' => 'MTV', 'logo' => 'mtv.png'],
     ['name' => 'NAWBO', 'logo' => 'nawbo.jpg'],
+    ['name' => 'RSC', 'logo' => 'rsc.webp'],
     ['name' => 'Shambhala', 'logo' => 'shambhala.png'],
     ['name' => 'Union College', 'logo' => 'union-college.png'],
     ['name' => 'USM', 'logo' => 'usm.png'],
     ['name' => 'USA Today', 'logo' => 'usa-today.svg'],
     ['name' => 'Vassar College', 'logo' => 'vassar-college.png'],
+    ['name' => 'WJCT', 'logo' => 'wjct.webp'],
+    ['name' => 'Wild Global', 'logo' => 'wild-global.png'],
     ['name' => 'Yahoo News', 'logo' => 'yahoo-news.png'],
 ];
 ?>
