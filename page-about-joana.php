@@ -76,16 +76,6 @@ $theme_uri = get_template_directory_uri();
                                 loading="eager" />
                             <div class="absolute inset-0 bg-[#d4b478]/5 mix-blend-multiply"></div>
                         </div>
-
-                        <!-- Decorative overlay -->
-                        <div class="absolute bottom-8 left-8 bg-[#faf8f5]/90 backdrop-blur-sm p-6 rounded-xl max-w-xs shadow-lg hidden md:block">
-                            <div class="font-serif italic text-[#0f203d] text-lg mb-2">
-                                "True Influence"
-                            </div>
-                            <div class="text-xs text-[#0f203d]/70 uppercase tracking-wider font-semibold">
-                                Signature Method
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -128,20 +118,6 @@ $theme_uri = get_template_directory_uri();
                                 alt="Me in action - speaking to a room or working one-on-one with a client"
                                 class="w-full h-[600px] object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/70 to-transparent"></div>
-
-                            <!-- Quote overlay -->
-                            <div class="absolute bottom-0 left-0 right-0 p-8">
-                                <div class="bg-[#faf8f5] p-6 rounded-xl backdrop-blur-sm">
-                                    <p class="font-serif text-[#0f203d] text-lg italic">
-                                        "The leaders who create lasting impact are not the loudest or the most polished. They are the most honest."
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute -top-6 -left-6 bg-[#d4b478] text-[#0f203d] p-4 rounded-xl shadow-2xl">
-                            <p class="font-serif text-2xl font-bold">30+</p>
-                            <p class="text-xs font-medium">Years of Impact</p>
                         </div>
                     </div>
                 </div>
@@ -188,18 +164,6 @@ $theme_uri = get_template_directory_uri();
                                 alt="Me speaking at a corporate event"
                                 class="w-full h-[500px] lg:h-[640px] object-cover transition-transform duration-700 group-hover:scale-105" />
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6">
-                                <div class="bg-[#faf8f5]/10 backdrop-blur-md border border-[#faf8f5]/10 p-5 rounded-xl">
-                                    <p class="font-serif text-[#faf8f5] text-lg italic leading-relaxed">
-                                        "The stage is not where I perform. It's where I reveal what was always there."
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Floating stat badge -->
-                        <div class="absolute -bottom-4 -right-4 md:right-6 bg-[#d4b478] text-[#0f203d] px-6 py-4 rounded-xl shadow-2xl">
-                            <p class="font-serif text-3xl font-bold">30+</p>
-                            <p class="text-xs font-semibold uppercase tracking-wider">Years of Impact</p>
                         </div>
                     </div>
 
@@ -366,14 +330,6 @@ $theme_uri = get_template_directory_uri();
                                 alt="My Philosophy - Warm, thoughtful portrait showing depth and wisdom"
                                 class="w-full h-[500px] object-cover" />
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/60 to-transparent"></div>
-
-                            <div class="absolute bottom-8 left-8 right-8">
-                                <div class="bg-[#faf8f5]/95 backdrop-blur-sm p-6 rounded-xl">
-                                    <div class="font-serif text-[#0f203d] text-lg italic">
-                                        "Your story is not just where you've been. It's the reason people choose to follow you."
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
