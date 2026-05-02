@@ -18,12 +18,13 @@ if (!defined('ABSPATH')) {
  *
  * @param string $field_name The ACF field name
  * @param mixed $default The default value if field is empty
+ * @param mixed $post_id The post ID or 'option' for options pages
  * @return mixed The field value or default
  */
-function tim_get_field($field_name, $default = '')
+function tim_get_field($field_name, $default = '', $post_id = false)
 {
-    $value = get_field($field_name);
-    return $value !== null && $value !== '' ? $value : $default;
+    $value = get_field($field_name, $post_id);
+    return ($value !== null && $value !== '' && $value !== false) ? $value : $default;
 }
 
 /**
@@ -32,11 +33,12 @@ function tim_get_field($field_name, $default = '')
  * @param string $field_name The ACF field name
  * @param string $fallback_url The fallback URL if field is empty
  * @param string $fallback_alt The fallback alt text
+ * @param mixed $post_id The post ID or 'option' for options pages
  * @return array Array with 'url' and 'alt' keys
  */
-function tim_get_image_field($field_name, $fallback_url = '', $fallback_alt = '')
+function tim_get_image_field($field_name, $fallback_url = '', $fallback_alt = '', $post_id = false)
 {
-    $image = get_field($field_name);
+    $image = get_field($field_name, $post_id);
 
     if ($image && is_array($image)) {
         return [
@@ -56,20 +58,13 @@ function tim_get_image_field($field_name, $fallback_url = '', $fallback_alt = ''
  *
  * @param string $field_name The ACF field name
  * @param array $fallback The fallback array if field is empty
+ * @param mixed $post_id The post ID or 'option' for options pages
  * @return array The repeater data or fallback
  */
-function tim_get_repeater_field($field_name, $fallback = [])
+function tim_get_repeater_field($field_name, $fallback = [], $post_id = false)
 {
-    $items = [];
-
-    if (have_rows($field_name)) {
-        while (have_rows($field_name)) {
-            the_row();
-            $items[] = get_row();
-        }
-    }
-
-    return !empty($items) ? $items : $fallback;
+    $items = get_field($field_name, $post_id);
+    return !empty($items) && is_array($items) ? $items : $fallback;
 }
 
 /**
