@@ -26,19 +26,23 @@ if (!defined('ABSPATH')) {
         /* KEYFRAME ANIMATIONS                   */
         /* ===================================== */
         @keyframes float {
+
             0%,
             100% {
                 transform: translateY(0px) translateX(0px);
                 opacity: 0.4;
             }
+
             25% {
                 transform: translateY(-20px) translateX(10px);
                 opacity: 0.8;
             }
+
             50% {
                 transform: translateY(-10px) translateX(-5px);
                 opacity: 0.6;
             }
+
             75% {
                 transform: translateY(-30px) translateX(15px);
                 opacity: 0.9;
@@ -46,11 +50,13 @@ if (!defined('ABSPATH')) {
         }
 
         @keyframes float-slow {
+
             0%,
             100% {
                 transform: translateY(0px) scale(1);
                 opacity: 0.3;
             }
+
             50% {
                 transform: translateY(-40px) scale(1.1);
                 opacity: 0.7;
@@ -62,6 +68,7 @@ if (!defined('ABSPATH')) {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -69,23 +76,37 @@ if (!defined('ABSPATH')) {
         }
 
         @keyframes pulse-glow {
+
             0%,
             100% {
                 box-shadow: 0 0 0 0 rgba(212, 180, 120, 0.4);
             }
+
             50% {
                 box-shadow: 0 0 0 12px rgba(212, 180, 120, 0);
             }
         }
 
         @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
         }
 
         @keyframes gold-pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .animate-float {
@@ -117,30 +138,37 @@ if (!defined('ABSPATH')) {
             animation-delay: 0.1s;
             opacity: 0;
         }
+
         .stagger-2 {
             animation-delay: 0.2s;
             opacity: 0;
         }
+
         .stagger-3 {
             animation-delay: 0.3s;
             opacity: 0;
         }
+
         .stagger-4 {
             animation-delay: 0.4s;
             opacity: 0;
         }
+
         .stagger-5 {
             animation-delay: 0.5s;
             opacity: 0;
         }
+
         .stagger-6 {
             animation-delay: 0.6s;
             opacity: 0;
         }
+
         .stagger-7 {
             animation-delay: 0.7s;
             opacity: 0;
         }
+
         .stagger-8 {
             animation-delay: 0.8s;
             opacity: 0;
@@ -155,6 +183,7 @@ if (!defined('ABSPATH')) {
         .card-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card-lift:hover {
             transform: translateY(-4px);
         }
@@ -168,6 +197,7 @@ if (!defined('ABSPATH')) {
         .quote-bubble {
             transition: all 0.3s ease;
         }
+
         .quote-bubble:hover {
             transform: scale(1.03);
             border-color: rgba(212, 180, 120, 0.4);
@@ -186,6 +216,7 @@ if (!defined('ABSPATH')) {
         .icon-glow {
             position: relative;
         }
+
         .icon-glow::after {
             content: '';
             position: absolute;
@@ -195,9 +226,11 @@ if (!defined('ABSPATH')) {
             opacity: 0;
             transition: opacity 0.4s ease;
         }
+
         .icon-glow:hover::after {
             opacity: 1;
         }
+
         .icon-glow-static::after {
             opacity: 0.6;
         }
@@ -217,9 +250,11 @@ if (!defined('ABSPATH')) {
             opacity: 0;
             transition: opacity 0.4s ease;
         }
+
         .corner-accent:hover::before {
             opacity: 1;
         }
+
         .corner-accent-static::before {
             opacity: 0.7;
         }
@@ -230,6 +265,7 @@ if (!defined('ABSPATH')) {
         .gold-border-glow {
             transition: box-shadow 0.4s ease, border-color 0.4s ease;
         }
+
         .gold-border-glow:hover {
             border-color: rgba(212, 180, 120, 0.5) !important;
             box-shadow: 0 0 30px rgba(212, 180, 120, 0.15), inset 0 0 30px rgba(212, 180, 120, 0.05);
@@ -266,6 +302,7 @@ if (!defined('ABSPATH')) {
             overflow: hidden;
             border-radius: inherit;
         }
+
         .icp-image-reveal img {
             width: 100%;
             height: 100%;
@@ -273,9 +310,11 @@ if (!defined('ABSPATH')) {
             opacity: 0.15;
             transition: transform 0.7s ease;
         }
+
         .icp-reveal-trigger:hover .icp-image-reveal {
             opacity: 1;
         }
+
         .icp-reveal-trigger:hover .icp-image-reveal img {
             transform: scale(1.05);
         }
@@ -289,6 +328,7 @@ if (!defined('ABSPATH')) {
             right: -8px;
             z-index: 20;
         }
+
         .ribbon-popular span {
             display: inline-block;
             padding: 4px 16px;
@@ -301,6 +341,7 @@ if (!defined('ABSPATH')) {
             border-radius: 4px 0 0 4px;
             box-shadow: 0 2px 8px rgba(212, 180, 120, 0.3);
         }
+
         .ribbon-popular span::after {
             content: '';
             position: absolute;
@@ -321,6 +362,7 @@ if (!defined('ABSPATH')) {
             padding-left: 1rem;
             transition: box-shadow 0.3s ease;
         }
+
         .quote-gold-accent:hover {
             box-shadow: -8px 0 20px -10px rgba(212, 180, 120, 0.3);
         }
@@ -346,6 +388,7 @@ if (!defined('ABSPATH')) {
         /* Reduced motion                       */
         /* ===================================== */
         @media (prefers-reduced-motion: reduce) {
+
             .animate-float,
             .animate-float-slow,
             .animate-fade-in-up,
@@ -356,6 +399,7 @@ if (!defined('ABSPATH')) {
                 opacity: 1 !important;
                 transform: none !important;
             }
+
             .stagger-1,
             .stagger-2,
             .stagger-3,
@@ -368,6 +412,80 @@ if (!defined('ABSPATH')) {
                 animation: none !important;
             }
         }
+    /* ===================================== */
+    /* ICP CARD THEME OVERRIDES              */
+    /* ===================================== */
+
+    /* The Authority — gold-warm card body */
+    .icp-card-authority {
+        background-color: #faf5e8 !important;
+    }
+
+    /* The Legacy — dark navy card body */
+    .icp-card-legacy {
+        background-color: #0f203d !important;
+    }
+
+    /* ===================================== */
+    /* ACCORDION (Experience & Revenue)      */
+    /* ===================================== */
+
+    /* Remove default <details>/<summary> marker */
+    .icp-accordion details,
+    .icp-accordion summary {
+        list-style: none;
+    }
+    .icp-accordion summary::-webkit-details-marker {
+        display: none;
+    }
+    .icp-accordion summary::marker {
+        display: none;
+        content: '';
+    }
+
+    /* Accordion trigger row */
+    .icp-accordion-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: 0.375rem 0;
+        color: #d4b478;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        user-select: none;
+        transition: opacity 0.2s ease;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+    }
+    .icp-accordion-trigger:hover {
+        opacity: 0.8;
+    }
+
+    /* Chevron icon inside trigger */
+    .icp-chevron {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+    details[open] .icp-chevron {
+        transform: rotate(180deg);
+    }
+
+    /* Expanded content */
+    .icp-accordion-content {
+        padding: 0.5rem 0 0.75rem 0;
+    }
+
+    /* Accordion transition */
+    .icp-accordion details {
+        transition: all 0.3s ease;
+    }
     </style>
 </head>
 
@@ -418,8 +536,8 @@ if (!defined('ABSPATH')) {
 
                     <!-- H1 -->
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight mb-8 animate-fade-in-up stagger-1">
-                        You're Not Missing a Message.
-                        <span class="text-[#d4b478] block mt-2">You're Missing Trust.</span>
+                        The key to your authority
+                        <span class="text-[#d4b478] block mt-2">is your authencity.</span>
                     </h1>
 
                     <!-- Description -->
@@ -718,7 +836,9 @@ if (!defined('ABSPATH')) {
                                 <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
                                         <span class="text-sm text-[#0f203d]/80">Clarity on what defines you and why it matters.</span>
                                     </li>
                                 </ul>
@@ -726,7 +846,9 @@ if (!defined('ABSPATH')) {
                                 <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
                                         <span class="text-sm text-[#0f203d]/80">A message you can say in one sentence.</span>
                                     </li>
                                 </ul>
@@ -783,7 +905,9 @@ if (!defined('ABSPATH')) {
                                 <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
                                         <span class="text-sm text-[#0f203d]/80">A structured message that lands.</span>
                                     </li>
                                 </ul>
@@ -791,7 +915,9 @@ if (!defined('ABSPATH')) {
                                 <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
                                         <span class="text-sm text-[#0f203d]/80">A signature talk aligned to your work.</span>
                                     </li>
                                 </ul>
@@ -843,7 +969,9 @@ if (!defined('ABSPATH')) {
                                 <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
                                         <span class="text-sm text-[#0f203d]/80">A distinct, repeatable point of view.</span>
                                     </li>
                                 </ul>
@@ -851,7 +979,9 @@ if (!defined('ABSPATH')) {
                                 <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
                                         <span class="text-sm text-[#0f203d]/80">A blueprint people can build on after you.</span>
                                     </li>
                                 </ul>
