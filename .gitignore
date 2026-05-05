@@ -109,3 +109,5 @@ yarn-error.log*
 # Documents
 docs/
 plans/
+/graphify-out/
+/icp/

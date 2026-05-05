@@ -31,7 +31,7 @@ class PrimaryNavWalker extends Walker_Nav_Menu
         $defaults = [
             'mode' => 'desktop',
             'cta_class' => '',
-            'cta_item' => 'apply',
+            'cta_item' => 'start',
         ];
 
         $this->config = wp_parse_args($config, $defaults);

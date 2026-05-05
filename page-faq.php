@@ -137,7 +137,7 @@ $faqs = get_field('faq_items');
                     <a href="<?php echo esc_url(get_field('faq_cta_primary_link') ?: home_url('/apply/')); ?>"
                         class="group px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 relative overflow-hidden">
                         <span class="relative z-10 flex items-center gap-2">
-                            <?php echo esc_html(get_field('faq_cta_primary_text') ?: 'Submit Your Application'); ?>
+                            <?php echo esc_html(get_field('faq_cta_primary_text') ?: 'Start Your Journey'); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>

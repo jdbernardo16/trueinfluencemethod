@@ -85,7 +85,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'type' => 'text',
                 'instructions' => 'The text for the primary call-to-action button.',
                 'required' => 0,
-                'default_value' => 'Submit Your Application',
+                'default_value' => 'Start Your Journey',
                 'placeholder' => '',
                 'prepend' => '',
                 'append' => '',

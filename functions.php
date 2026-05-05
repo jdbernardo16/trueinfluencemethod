@@ -457,7 +457,7 @@ function tim_ensure_cf7_apply_form()
         return null;
     }
 
-    // Build the form template (use & directly, not &amp;)
+    // Build the form template
     $form_template = <<<HTML
 <label class="cf7-label">Full Name <span class="cf7-required">*</span>
     [text* inquiry_name placeholder "Your full name"]
@@ -473,25 +473,17 @@ function tim_ensure_cf7_apply_form()
     </label>
 </div>
 
-<label class="cf7-label">What are you most interested in? <span class="cf7-required">*</span>
-    [select* inquiry_type first_as_label "Select an option..." "Private Training (1-on-1 with Joanna)" "90-day Mastermind" "Corporate Programs & Workshops" "Retreat Experience" "General Inquiry"]
+<label class="cf7-label">What's this regarding? <span class="cf7-required">*</span>
+    [select* inquiry_type first_as_label "Select an option..." "Private Training (1-on-1 with Joanna)" "90-day Mastermind" "Corporate Programs & Workshops" "Retreat Experience" "Speaking Engagement" "Media / Press" "General Question"]
 </label>
 
-<label class="cf7-label">Company / Organization
-    [text inquiry_company placeholder "Your company or organization"]
-</label>
-
-<label class="cf7-label">Tell us about yourself & what you're looking for <span class="cf7-required">*</span>
-    [textarea* inquiry_message 40x5 placeholder "Share where you are in your journey, what feels most alive in your work right now, and what you'd like to explore..."]
-</label>
-
-<label class="cf7-label">How did you hear about us?
-    [select inquiry_referral first_as_label "Select an option..." "Personal Referral" "Social Media" "Google Search" "Speaking Event / Workshop" "Podcast / Media Appearance" "Other"]
+<label class="cf7-label">Your Message <span class="cf7-required">*</span>
+    [textarea* inquiry_message 40x5 placeholder "Tell us a bit about yourself and what you're looking for..."]
 </label>
 
 <p class="cf7-privacy-note">Your information is kept strictly private and confidential. By submitting this form, you agree to be contacted by Joanna's team regarding your inquiry.</p>
 
-[submit class:cf7-submit-btn "Submit Your Inquiry"]
+[submit class:cf7-submit-btn "Send Message"]
 HTML;
 
     // Build the HTML email body
@@ -524,22 +516,14 @@ HTML;
         <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Phone</strong></td>
         <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_phone]</td>
       </tr>
-      <tr>
-        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Company</strong></td>
-        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_company]</td>
-      </tr>
     </table>
 
     <!-- Inquiry Details -->
     <h2 style="margin: 0 0 15px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; border-bottom: 2px solid #d4b478; padding-bottom: 8px;">Inquiry Details</h2>
     <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
       <tr>
-        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>Interest</strong></td>
+        <td style="padding: 8px 0; color: #666; font-size: 14px; width: 35%;"><strong>Regarding</strong></td>
         <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_type]</td>
-      </tr>
-      <tr>
-        <td style="padding: 8px 0; color: #666; font-size: 14px;"><strong>Referral Source</strong></td>
-        <td style="padding: 8px 0; color: #333; font-size: 14px;">[inquiry_referral]</td>
       </tr>
     </table>
 
@@ -566,7 +550,7 @@ MAILHTML;
     // Build the mail configuration
     $mail = [
         'active'             => true,
-        'subject'            => 'New Inquiry from [inquiry_name] — [inquiry_type]',
+        'subject'            => 'Website Inquiry from [inquiry_name] — [inquiry_type]',
         'sender'             => 'True Influence Method <[admin_email]>',
         'recipient'          => get_option('admin_email'),
         'body'               => $mail_body,
@@ -583,29 +567,24 @@ MAILHTML;
   <div style="background-color: #0f203d; padding: 30px 40px; text-align: center;">
     <h1 style="margin: 0; color: #faf8f5; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 400;">True Influence Method</h1>
     <div style="width: 60px; height: 2px; background-color: #d4b478; margin: 15px auto 0;"></div>
-    <p style="margin: 10px 0 0; color: rgba(250,248,245,0.7); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Your Inquiry Has Been Received</p>
+    <p style="margin: 10px 0 0; color: rgba(250,248,245,0.7); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Your Message Has Been Received</p>
   </div>
 
   <div style="padding: 30px 40px;">
     <p style="margin: 0 0 20px; color: #333; font-size: 16px; line-height: 1.6;">Dear [inquiry_name],</p>
 
-    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">Thank you for reaching out. Your inquiry has been received, and we truly appreciate your interest in working with Joanna.</p>
+    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">Thank you for reaching out. Your message has been received, and we appreciate your interest in the True Influence Method.</p>
 
     <div style="background-color: #f9f9f5; border: 1px solid #e5e5dd; border-radius: 8px; padding: 20px; margin-bottom: 25px;">
       <h3 style="margin: 0 0 12px; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 16px;">What Happens Next?</h3>
       <ul style="margin: 0; padding-left: 20px; color: #333; font-size: 14px; line-height: 1.8;">
-        <li>Joanna's team will review your submission carefully</li>
+        <li>Joanna's team will review your message</li>
         <li>You'll hear back within <strong>2 business days</strong></li>
-        <li>If it feels like a fit, we'll schedule a personal conversation</li>
+        <li>If it feels like a fit, we'll schedule a conversation</li>
       </ul>
     </div>
 
-    <div style="background-color: #0f203d; border-radius: 8px; padding: 20px; margin-bottom: 25px; text-align: center;">
-      <p style="margin: 0 0 5px; color: #d4b478; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Your Submission</p>
-      <p style="margin: 0; color: #faf8f5; font-size: 14px;">[inquiry_type]</p>
-    </div>
-
-    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">In the meantime, if you'd like to get a head start, feel free to <a href="https://calendly.com/joanna-trueinfluencemethod/private-training" style="color: #d4b478;">book a consultation</a> or reply directly to this email with any additional questions.</p>
+    <p style="margin: 0 0 20px; color: #333; font-size: 14px; line-height: 1.6;">In the meantime, feel free to <a href="https://calendly.com/joanna-trueinfluencemethod/private-training" style="color: #d4b478;">book a consultation</a> or reply directly to this email with any questions.</p>
 
     <p style="margin: 0 0 5px; color: #333; font-size: 14px; line-height: 1.6;">With warmth,</p>
     <p style="margin: 0; color: #0f203d; font-family: Georgia, 'Times New Roman', serif; font-size: 16px;"><strong>Joanna Horton McPherson</strong></p>

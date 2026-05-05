@@ -42,7 +42,7 @@ $hero_secondary_cta_link = get_field('hero_secondary_cta_link');
 if ($hero_secondary_cta_link && is_array($hero_secondary_cta_link)) {
     $hero_secondary_cta_link_url = $hero_secondary_cta_link['url'];
 } else {
-    $hero_secondary_cta_link_url = '/programs';
+    $hero_secondary_cta_link_url = '/icp-quiz';
 }
 ?>
 

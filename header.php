@@ -14,7 +14,7 @@
             'walker' => new \TailPress\Walkers\PrimaryNavWalker([
                 'mode' => 'desktop',
                 'cta_class' => 'bg-[#d4b478] text-white text-sm uppercase tracking-widest px-6 py-2.5 rounded-full font-medium hover:bg-[#b37a1f] transition-colors duration-300',
-                'cta_item' => 'apply'
+                'cta_item' => 'start'
             ]),
             'fallback_cb' => false
         ]);

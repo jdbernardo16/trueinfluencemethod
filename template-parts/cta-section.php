@@ -16,7 +16,7 @@ if ($cta_background_image) {
 $cta_heading = get_field('cta_heading') ?: 'The Path Is Made By Walking.';
 $cta_description = get_field('cta_description') ?: "You've done the work. You've built the vision. Now it's time to speak it into the world — with the clarity, courage, and influence your leadership deserves.";
 
-$cta_primary_cta_text = get_field('cta_primary_cta_text') ?: 'Submit Your Application';
+$cta_primary_cta_text = get_field('cta_primary_cta_text') ?: 'Start Your Journey';
 $cta_primary_cta_link = get_field('cta_primary_cta_link');
 if ($cta_primary_cta_link && is_array($cta_primary_cta_link)) {
     $cta_primary_cta_link_url = $cta_primary_cta_link['url'];
@@ -89,15 +89,7 @@ if (empty($trust_indicators)) {
                     </svg>
                 </span>
             </a>
-            <a href="<?php echo esc_url($cta_secondary_cta_link_url); ?>" target="_blank" rel="noopener noreferrer" class="group px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all flex items-center gap-2 justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform">
-                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-                    <line x1="16" x2="16" y1="2" y2="6"></line>
-                    <line x1="8" x2="8" y1="2" y2="6"></line>
-                    <line x1="3" x2="21" y1="10" y2="10"></line>
-                </svg>
-                <?php echo esc_html($cta_secondary_cta_text); ?>
-            </a>
+           
         </div>
 
         <div class="mt-16 flex items-center justify-center gap-8 flex-wrap">
