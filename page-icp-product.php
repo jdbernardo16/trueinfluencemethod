@@ -22,7 +22,62 @@ if (!defined('ABSPATH')) {
     <?php wp_head(); ?>
 
     <style>
-        /* FAQ Accordion */
+        /* ================================================================
+           BASE ANIMATIONS
+           ================================================================ */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 180, 120, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 180, 120, 0.5); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.03; }
+            50% { opacity: 0.07; }
+        }
+
+        /* ================================================================
+           FLOATING ELEMENTS
+           ================================================================ */
+        .animate-float {
+            animation: float var(--duration, 8s) ease-in-out infinite;
+        }
+
+        .floating-slow {
+            animation: float-slow 20s ease-in-out infinite;
+        }
+
+        .floating-slow-2 {
+            animation: float-slow 25s ease-in-out infinite reverse;
+        }
+
+        .watermark-breathe {
+            animation: breathe 6s ease-in-out infinite;
+        }
+
+        /* ================================================================
+           FAQ ACCORDION
+           ================================================================ */
         .faq-answer {
             display: none;
         }
@@ -36,12 +91,34 @@ if (!defined('ABSPATH')) {
             transition: transform 0.3s ease;
         }
 
-        /* Smooth scroll */
+        /* FAQ item left border on open state */
+        #faqList > div.open {
+            border-left: 3px solid #d4b478 !important;
+        }
+
+        /* FAQ answer fade-in */
+        .faq-answer {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .open .faq-answer {
+            animation: fadeInUp 0.3s ease-out forwards;
+        }
+
+        /* FAQ question hover */
+        #faqList button:hover {
+            background: rgba(212, 180, 120, 0.04);
+        }
+
+        /* ================================================================
+           SMOOTH SCROLL
+           ================================================================ */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Card hover lift */
+        /* ================================================================
+           CARD LIFT HOVER
+           ================================================================ */
         .card-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -49,33 +126,164 @@ if (!defined('ABSPATH')) {
             transform: translateY(-4px);
         }
 
-        /* Stagger animations */
+        /* ================================================================
+           GOLD LEFT ACCENT BAR ON CARDS
+           ================================================================ */
+        .card-accent {
+            position: relative;
+        }
+        .card-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #d4b478, #e8a838);
+            border-radius: 4px 0 0 4px;
+        }
+
+        /* ================================================================
+           STAGGER ANIMATIONS
+           ================================================================ */
         .animate-fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         .stagger-1 { animation-delay: 0.1s; opacity: 0; }
         .stagger-2 { animation-delay: 0.2s; opacity: 0; }
         .stagger-3 { animation-delay: 0.3s; opacity: 0; }
 
-        /* Sidebar sticky offset */
+        /* ================================================================
+           SIDEBAR STICKY OFFSET
+           ================================================================ */
         .sticky-top-24 {
             position: sticky;
             top: 6rem;
         }
-
         @media (max-width: 1023px) {
             .sticky-top-24 {
                 position: static;
+            }
+        }
+
+        /* ================================================================
+           CTA GLOW EFFECT
+           ================================================================ */
+        .cta-glow {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-glow:hover {
+            box-shadow: 0 0 25px rgba(212, 180, 120, 0.4), 0 0 50px rgba(212, 180, 120, 0.15);
+            transform: translateY(-1px);
+        }
+        .cta-glow:active {
+            transform: translateY(0);
+        }
+
+        /* ================================================================
+           HERO GOLD GRADIENT LINE
+           ================================================================ */
+        .hero-gold-line {
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, #d4b478, #e8a838, #d4b478, transparent);
+        }
+
+        /* ================================================================
+           ICP FIT BADGE ENHANCEMENTS
+           ================================================================ */
+        #icpFit > span {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        #icpFit > span:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ================================================================
+           LIST ITEM HOVER
+           ================================================================ */
+        .list-hover li {
+            transition: all 0.2s ease;
+            padding: 0.5rem 0.5rem;
+            border-radius: 0.5rem;
+            margin-left: -0.5rem;
+        }
+        .list-hover li:hover {
+            background: rgba(212, 180, 120, 0.06);
+            padding-left: 0.75rem;
+        }
+
+        /* ================================================================
+           NOT-FOR WARNING ENHANCEMENTS
+           ================================================================ */
+        .not-for-warning {
+            position: relative;
+            overflow: hidden;
+        }
+        .not-for-warning::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ef4444, #dc2626);
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* ================================================================
+           SIDEBAR GOLD TOP ACCENT
+           ================================================================ */
+        .sidebar-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #d4b478, #e8a838, #d4b478, transparent);
+            border-radius: 0 0 3px 3px;
+        }
+
+        /* ================================================================
+           DECORATIVE SECTION DIVIDER
+           ================================================================ */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 180, 120, 0.25), transparent);
+        }
+
+        /* ================================================================
+           DECORATIVE SVG PATTERN OVERLAY
+           ================================================================ */
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4b478' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* WCAG / reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-float,
+            .floating-slow,
+            .floating-slow-2,
+            .watermark-breathe,
+            .cta-glow,
+            .card-lift,
+            .animate-fade-in-up,
+            .faq-chevron {
+                animation: none !important;
+                transition: none !important;
+            }
+            .cta-glow:hover {
+                transform: none !important;
+            }
+            .card-lift:hover {
+                transform: none !important;
             }
         }
     </style>
@@ -92,9 +300,23 @@ if (!defined('ABSPATH')) {
         <!-- SECTION 1: BREADCRUMB + PRODUCT HEADER (DARK NAVY BG)           -->
         <!-- ============================================================ -->
         <section class="relative py-24 md:py-32 bg-[#0f203d] overflow-hidden">
+            <!-- SVG pattern overlay -->
+            <div class="hero-pattern absolute inset-0 opacity-50"></div>
+
             <!-- Decorative blurs -->
             <div class="absolute top-20 right-10 w-96 h-96 bg-[#d4b478]/10 rounded-full blur-[120px]"></div>
             <div class="absolute bottom-20 left-10 w-72 h-72 bg-[#0f203d]/50 rounded-full blur-[100px]"></div>
+
+            <!-- Watermark logo -->
+            <div class="watermark-breathe absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.035] pointer-events-none select-none">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icononly_transparent_nobuffer.png"
+                     alt="" aria-hidden="true"
+                     class="w-full h-full object-contain">
+            </div>
+
+            <!-- Ambient slow-floating circles -->
+            <div class="floating-slow absolute top-[15%] right-[20%] w-64 h-64 bg-[#d4b478]/5 rounded-full blur-[80px]"></div>
+            <div class="floating-slow-2 absolute bottom-[20%] left-[15%] w-48 h-48 bg-[#e8a838]/5 rounded-full blur-[70px]"></div>
 
             <!-- Floating particles -->
             <div class="absolute inset-0 overflow-hidden">
@@ -123,43 +345,53 @@ if (!defined('ABSPATH')) {
                 <!-- ICP Fit Badges -->
                 <div id="icpFit" class="flex flex-wrap gap-3 mt-6"></div>
             </div>
+
+            <!-- Gold gradient line at bottom -->
+            <div class="hero-gold-line absolute bottom-0 left-0"></div>
         </section>
 
         <!-- ============================================================ -->
         <!-- SECTION 2: MAIN CONTENT + SIDEBAR (CREAM BG)                   -->
         <!-- ============================================================ -->
-        <section class="bg-[#faf8f5]">
-            <div class="max-w-6xl mx-auto px-6 py-24">
+        <section class="relative bg-[#faf8f5]">
+            <!-- Blur element behind section (like philosophy section) -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-[#d4b478]/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#0f203d]/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+
+            <!-- Decorative section divider (top) -->
+            <div class="section-divider absolute top-0 left-1/4 w-1/2"></div>
+
+            <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
                 <div class="grid lg:grid-cols-3 gap-10">
                     <!-- Main Content (2 cols) -->
                     <div class="lg:col-span-2 space-y-10">
 
                         <!-- What This Is -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
+                        <div class="card-accent bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
                             <h2 class="font-serif text-2xl text-[#0f203d] mb-4 pb-3 border-b border-[#0f203d]/10">What This Is</h2>
                             <p id="prodDescription" class="text-[#0f203d]/70 text-lg leading-relaxed"></p>
                         </div>
 
                         <!-- What You Build -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
+                        <div class="card-accent bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
                             <h2 class="font-serif text-2xl text-[#0f203d] mb-4 pb-3 border-b border-[#0f203d]/10">What You Build</h2>
-                            <ul id="prodBuild" class="space-y-3"></ul>
+                            <ul id="prodBuild" class="space-y-3 list-hover"></ul>
                         </div>
 
                         <!-- What You Get -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
+                        <div class="card-accent bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
                             <h2 class="font-serif text-2xl text-[#0f203d] mb-4 pb-3 border-b border-[#0f203d]/10">What You Get</h2>
-                            <ul id="prodGet" class="space-y-3"></ul>
+                            <ul id="prodGet" class="space-y-3 list-hover"></ul>
                         </div>
 
                         <!-- Who This Is For -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
+                        <div class="card-accent bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
                             <h2 class="font-serif text-2xl text-[#0f203d] mb-4 pb-3 border-b border-[#0f203d]/10">Who This Is For</h2>
-                            <ul id="prodFor" class="space-y-3"></ul>
+                            <ul id="prodFor" class="space-y-3 list-hover"></ul>
                         </div>
 
                         <!-- FAQ -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
+                        <div class="card-accent bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
                             <h2 class="font-serif text-2xl text-[#0f203d] mb-6 pb-3 border-b border-[#0f203d]/10">Frequently Asked Questions</h2>
                             <div id="faqList" class="space-y-4"></div>
                         </div>
@@ -168,15 +400,15 @@ if (!defined('ABSPATH')) {
 
                     <!-- Sidebar (1 col) -->
                     <div class="lg:col-span-1">
-                        <div class="sticky-top-24 bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift">
+                        <div class="sidebar-accent sticky-top-24 bg-white rounded-2xl shadow-lg p-8 border border-[#d4b478]/10 card-lift relative">
                             <div class="text-center">
                                 <div id="sidePrice" class="font-serif text-3xl text-[#0f203d] font-bold"></div>
                                 <div id="sideValue" class="text-sm text-green-600 bg-green-50 inline-block px-3 py-1 rounded-full mt-2 mb-6"></div>
-                                <a id="checkoutBtn" href="#" class="block w-full px-6 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 text-center">Buy Now</a>
+                                <a id="checkoutBtn" href="#" class="cta-glow block w-full px-6 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 text-center">Buy Now</a>
                                 <p class="text-xs text-[#0f203d]/40 mt-3">Risk-free. Full refund within 14 days if it's not the right fit.</p>
 
                                 <!-- Not-for warning -->
-                                <div id="notForWarning" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-left">
+                                <div id="notForWarning" class="not-for-warning hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-left pl-6">
                                     <strong class="block text-red-700 text-sm mb-1">⛔ May not be right for you</strong>
                                     <span id="notForReason" class="text-red-600 text-sm"></span>
                                 </div>
@@ -184,6 +416,9 @@ if (!defined('ABSPATH')) {
                         </div>
                     </div>
                 </div>
+
+                <!-- Decorative section divider (bottom) -->
+                <div class="section-divider mt-16"></div>
             </div>
         </section>
 

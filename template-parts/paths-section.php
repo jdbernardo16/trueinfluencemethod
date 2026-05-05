@@ -128,7 +128,7 @@
             <!-- ICP 3: The Legacy -->
             <div class="group bg-white rounded-2xl shadow-lg overflow-hidden border border-[#d4b478]/10 hover:border-[#d4b478]/30 hover:shadow-xl transition-all duration-300 flex flex-col card-lift">
                 <div class="relative h-48 overflow-hidden">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img3.webp'); ?>"
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img4.webp'); ?>"
                         alt="The Legacy"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         loading="lazy" />
