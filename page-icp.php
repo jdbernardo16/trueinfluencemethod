@@ -412,80 +412,75 @@ if (!defined('ABSPATH')) {
                 animation: none !important;
             }
         }
-    /* ===================================== */
-    /* ICP CARD THEME OVERRIDES              */
-    /* ===================================== */
+        /* ===================================== */
+        /* ICP CARD THEME OVERRIDES              */
+        /* ===================================== */
 
-    /* The Authority — gold-warm card body */
-    .icp-card-authority {
-        background-color: #faf5e8 !important;
-    }
+        /* The Authority — gold-warm card body */
+        .icp-card-authority {
+            background-color: #faf5e8 !important;
+        }
 
-    /* The Legacy — dark navy card body */
-    .icp-card-legacy {
-        background-color: #0f203d !important;
-    }
+        /* The Legacy — dark navy card body */
+        .icp-card-legacy {
+            background-color: #0f203d !important;
+        }
 
-    /* ===================================== */
-    /* ACCORDION (Experience & Revenue)      */
-    /* ===================================== */
+        /* ===================================== */
+        /* ACCORDION (Experience & Revenue)      */
+        /* ===================================== */
 
-    /* Remove default <details>/<summary> marker */
-    .icp-accordion details,
-    .icp-accordion summary {
-        list-style: none;
-    }
-    .icp-accordion summary::-webkit-details-marker {
-        display: none;
-    }
-    .icp-accordion summary::marker {
-        display: none;
-        content: '';
-    }
+        /* Remove default <details>/<summary> marker */
+        .icp-accordion details,
+        .icp-accordion summary {
+            list-style: none;
+        }
+        .icp-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+        .icp-accordion summary::marker {
+            display: none;
+            content: '';
+        }
 
-    /* Accordion trigger row */
-    .icp-accordion-trigger {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        padding: 0.375rem 0;
-        color: #d4b478;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        user-select: none;
-        transition: opacity 0.2s ease;
-        border: none;
-        background: none;
-        width: 100%;
-        text-align: left;
-    }
-    .icp-accordion-trigger:hover {
-        opacity: 0.8;
-    }
+        /* Accordion trigger row */
+        .icp-accordion-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.375rem 0;
+            color: #d4b478;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            user-select: none;
+            transition: opacity 0.2s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+        .icp-accordion-trigger:hover {
+            opacity: 0.8;
+        }
 
-    /* Chevron icon inside trigger */
-    .icp-chevron {
-        width: 14px;
-        height: 14px;
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-    }
-    details[open] .icp-chevron {
-        transform: rotate(180deg);
-    }
+        /* Chevron icon inside trigger */
+        .icp-chevron {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        details[open] .icp-chevron {
+            transform: rotate(180deg);
+        }
 
-    /* Expanded content */
-    .icp-accordion-content {
-        padding: 0.5rem 0 0.75rem 0;
-    }
-
-    /* Accordion transition */
-    .icp-accordion details {
-        transition: all 0.3s ease;
-    }
+        /* Expanded content */
+        .icp-accordion-content {
+            padding: 0.5rem 0 0.75rem 0;
+        }
     </style>
 </head>
 
