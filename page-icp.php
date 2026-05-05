@@ -536,8 +536,8 @@ if (!defined('ABSPATH')) {
 
                     <!-- H1 -->
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight mb-8 animate-fade-in-up stagger-1">
-                        The key to your authority
-                        <span class="text-[#d4b478] block mt-2">is your authencity.</span>
+                        The Key To Your Authority
+                        <span class="text-[#d4b478] block mt-2">Is Your Authencity.</span>
                     </h1>
 
                     <!-- Description -->
@@ -545,25 +545,63 @@ if (!defined('ABSPATH')) {
                         For Speakers, Leaders and Legacy-Builders: Turn your lived experience into a message people trust and follow.
                     </p>
 
-                    <!-- Quote Bubbles -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12 animate-fade-in-up stagger-3">
-                        <div class="quote-bubble bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-4 text-center">
-                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed">
+                    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">
+                        For Early-Stage Entrepreneurs
+                    </h2>
+
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
+                        <!-- The Speaker -->
+                        <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow">
+                            <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Speaker</h3>
+                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
                                 "I don't know what to say."
                             </p>
+                            <a href="/icp-path/?icp=speaker"
+                                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
+                                Find My Message
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
                         </div>
-                        <div class="quote-bubble bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-4 text-center">
-                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed">
+
+                        <!-- The Authority -->
+                        <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow relative">
+                            <div class="ribbon-popular" style="top: -8px; right: -8px;">
+                                <span style="font-size: 0.55rem; padding: 3px 10px;">Most Popular</span>
+                            </div>
+                            <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Authority</h3>
+                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
                                 "I need a better message."
                             </p>
+                            <a href="/icp-path/?icp=authority"
+                                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
+                                Build My Talk
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
                         </div>
-                        <div class="quote-bubble bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-4 text-center">
-                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed">
+
+                        <!-- The Legacy -->
+                        <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow">
+                            <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Legacy</h3>
+                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
                                 "I need more confidence."
                             </p>
+                            <a href="/icp-path/?icp=legacy"
+                                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
+                                Private Training
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
                         </div>
                     </div>
-
                     <!-- Truth Statement -->
                     <div class="animate-fade-in-up stagger-4">
                         <p class="text-[#d4b478] text-lg md:text-xl font-semibold">
@@ -574,11 +612,8 @@ if (!defined('ABSPATH')) {
             </div>
         </section>
 
-        <!-- Section divider -->
-        <div class="section-divider"></div>
-
         <!-- ============================================================ -->
-        <!-- SECTION 2: FRAMEWORK — "What's Actually Happening"             -->
+        <!-- SECTION 3: FRAMEWORK — "What's Actually Happening"             -->
         <!-- ============================================================ -->
         <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d] relative overflow-hidden">
             <div class="absolute top-0 left-0 w-80 h-80 bg-[#d4b478]/5 rounded-full blur-[120px]"></div>
@@ -670,7 +705,7 @@ if (!defined('ABSPATH')) {
         <div class="section-divider"></div>
 
         <!-- ============================================================ -->
-        <!-- SECTION 3: WHY IT MATTERS — DARK NAVY BG WITH PARTICLES        -->
+        <!-- SECTION 4: WHY IT MATTERS — DARK NAVY BG WITH PARTICLES        -->
         <!-- ============================================================ -->
         <section class="py-24 md:py-32 bg-[#0f203d] text-[#faf8f5] relative overflow-hidden">
             <!-- Decorative blurs -->
@@ -775,7 +810,7 @@ if (!defined('ABSPATH')) {
         <div class="section-divider"></div>
 
         <!-- ============================================================ -->
-        <!-- SECTION 4: ICP SELECTOR — LIGHT CREAM BG                       -->
+        <!-- SECTION 5: ICP SELECTOR — LIGHT CREAM BG                       -->
         <!-- ============================================================ -->
         <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d] relative overflow-hidden"
             style="background-image: radial-gradient(circle at 10% 20%, rgba(212,180,120,0.04) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(212,180,120,0.04) 0%, transparent 50%);">
@@ -1068,7 +1103,7 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <!-- ============================================================ -->
-                <!-- SECTION 5: NOT SURE CTA — NAVY BOX                           -->
+                <!-- SECTION 6: NOT SURE CTA — NAVY BOX                           -->
                 <!-- ============================================================ -->
                 <div class="max-w-6xl mx-auto mt-16 bg-[#0f203d] rounded-2xl p-10 text-center relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-48 h-48 bg-[#d4b478]/5 rounded-full blur-[80px]"></div>
