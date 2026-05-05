@@ -819,9 +819,31 @@ if (!defined('ABSPATH')) {
                         <!-- Card body -->
                         <div class="p-6 flex flex-col flex-1 relative z-10 icp-reveal-trigger">
                             <h3 class="font-serif text-2xl text-[#0f203d] mb-1">The Speaker</h3>
-                            <p class="text-[#d4b478] text-xs font-bold tracking-[0.1em] uppercase mb-4">
-                                3–8 years leading · $100K–$500K revenue
-                            </p>
+                            <!-- Accordion: Experience & Revenue -->
+                            <div class="icp-accordion mb-4">
+                                <details>
+                                    <summary class="icp-accordion-trigger">
+                                        <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                        Experience &amp; Revenue Details
+                                    </summary>
+                                    <div class="icp-accordion-content">
+                                        <div class="flex items-start gap-3 mb-2">
+                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                            </svg>
+                                            <span class="text-sm text-[#0f203d]/80">Experience: 3–8 years leading</span>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                            </svg>
+                                            <span class="text-sm text-[#0f203d]/80">Revenue: $100K–$500K</span>
+                                        </div>
+                                    </div>
+                                </details>
+                            </div>
 
                             <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
                                 "I know I have something to say, but I can't clearly say what defines me yet."
