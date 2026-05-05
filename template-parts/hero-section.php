@@ -34,7 +34,7 @@ $hero_primary_cta_link = get_field('hero_primary_cta_link');
 if ($hero_primary_cta_link && is_array($hero_primary_cta_link)) {
     $hero_primary_cta_link_url = $hero_primary_cta_link['url'];
 } else {
-    $hero_primary_cta_link_url = '/apply';
+    $hero_primary_cta_link_url = '/start';
 }
 
 $hero_secondary_cta_text = get_field('hero_secondary_cta_text') ?: 'Explore the Method →';

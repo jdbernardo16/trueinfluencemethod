@@ -220,11 +220,11 @@
             <div class="h-px w-full bg-gradient-to-r from-transparent via-[#d4b478]/40 to-transparent mb-10"></div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="<?php echo esc_url(home_url('/icp/')); ?>" class="inline-flex items-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/30 shadow-lg shadow-[#d4b478]/10">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="inline-flex items-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/30 shadow-lg shadow-[#d4b478]/10">
                     Back to Home
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
-                <a href="<?php echo esc_url(home_url('/apply/')); ?>" class="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/20 shadow-lg shadow-[#d4b478]/5">
+                <a href="<?php echo esc_url(home_url('/inquiry/')); ?>" class="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/20 shadow-lg shadow-[#d4b478]/5">
                     Book a Consultation
                 </a>
             </div>
