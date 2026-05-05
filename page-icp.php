@@ -450,11 +450,11 @@ if (!defined('ABSPATH')) {
         .icp-accordion-trigger {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.375rem;
             cursor: pointer;
-            padding: 0.375rem 0;
+            padding: 0.25rem 0;
             color: #d4b478;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -472,8 +472,8 @@ if (!defined('ABSPATH')) {
 
         /* Chevron icon inside trigger */
         .icp-chevron {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             transition: transform 0.3s ease;
             flex-shrink: 0;
         }
@@ -484,7 +484,7 @@ if (!defined('ABSPATH')) {
 
         /* Expanded content */
         .icp-accordion-content {
-            padding: 0.5rem 0 0.75rem 0;
+            padding: 0.25rem 0 0.5rem 0;
         }
     </style>
 </head>

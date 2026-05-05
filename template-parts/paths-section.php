@@ -8,6 +8,53 @@
  */
 ?>
 
+<style>
+    .icp-accordion details,
+    .icp-accordion summary {
+        list-style: none;
+    }
+    .icp-accordion summary::-webkit-details-marker {
+        display: none;
+    }
+    .icp-accordion summary::marker {
+        display: none;
+        content: '';
+    }
+    .icp-accordion-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        cursor: pointer;
+        padding: 0.25rem 0;
+        color: #d4b478;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        user-select: none;
+        transition: opacity 0.2s ease;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+    }
+    .icp-accordion-trigger:hover {
+        opacity: 0.8;
+    }
+    .icp-chevron {
+        width: 12px;
+        height: 12px;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+    details[open] .icp-chevron {
+        transform: rotate(180deg);
+    }
+    .icp-accordion-content {
+        padding: 0.25rem 0 0.5rem 0;
+    }
+</style>
+
 <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d] relative overflow-hidden">
     <div class="absolute top-0 right-0 w-96 h-96 bg-[#d4b478]/5 rounded-full blur-[120px]"></div>
     <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#d4b478]/5 rounded-full blur-[100px]"></div>
