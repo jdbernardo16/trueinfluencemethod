@@ -141,7 +141,7 @@ $events = tim_get_repeater_field('events_past_events', array(
 
                 <!-- Visual break image -->
                 <div class="relative rounded-2xl overflow-hidden h-64 md:h-80 mb-16">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img6.webp'); ?>"
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img1.webp'); ?>"
                          alt=""
                          class="w-full h-full object-cover"
                          loading="lazy" />
@@ -196,15 +196,22 @@ $events = tim_get_repeater_field('events_past_events', array(
         </section>
 
         <!-- CTA Section -->
-        <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d] relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-96 h-96 bg-[#d4b478]/5 rounded-full blur-[120px]"></div>
+        <section class="py-24 md:py-32 text-[#faf8f5] relative overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img7.webp'); ?>"
+                     alt=""
+                     class="w-full h-full object-cover"
+                     loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/95 via-[#0f203d]/90 to-[#0f203d]/95"></div>
+            </div>
+            <div class="absolute top-0 left-0 w-96 h-96 bg-[#d4b478]/10 rounded-full blur-[120px]"></div>
 
             <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-                <h2 class="font-serif text-3xl md:text-5xl text-[#0f203d] mb-6">
+                <h2 class="font-serif text-3xl md:text-5xl text-[#faf8f5] mb-6">
                     <?php echo esc_html(tim_get_field('events_cta_heading', 'Ready to Join Our Next Retreat?')); ?>
                 </h2>
 
-                <p class="text-[#0f203d]/70 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
+                <p class="text-[#faf8f5]/70 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
                     <?php echo esc_html(tim_get_field('events_cta_description', 'Private clients and Mastermind members receive exclusive access to our quarterly retreat experiences. Apply today to begin your journey.')); ?>
                 </p>
 
