@@ -48,7 +48,13 @@ $events = tim_get_repeater_field('events_past_events', array(
     <div class="overflow-x-hidden">
         <!-- Hero Section -->
         <section class="relative py-20 md:py-32 flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#0f203d] via-[#0f203d] to-[#0f203d]"></div>
+            <div class="absolute inset-0">
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img8.webp'); ?>"
+                     alt=""
+                     class="w-full h-full object-cover opacity-30"
+                     loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-br from-[#0f203d]/85 via-[#0f203d]/75 to-[#0f203d]/90"></div>
+            </div>
 
             <!-- Decorative elements -->
             <div class="absolute top-20 left-10 w-72 h-72 bg-[#d4b478]/10 rounded-full blur-[100px]"></div>
