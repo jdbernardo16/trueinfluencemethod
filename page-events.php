@@ -13,19 +13,19 @@ $events = tim_get_repeater_field('events_past_events', array(
         'event_type' => 'Speaker Training',
         'event_title' => 'Speak & Rise Speaker Training',
         'event_description' => 'An intensive workshop focused on developing authentic presence and delivering your message with impact.',
-        'event_icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>'
+        'event_image' => get_template_directory_uri() . '/assets/images/carousel/img5.webp',
     ),
     array(
         'event_type' => 'Leadership Intensive',
         'event_title' => 'Leadership Intensives',
         'event_description' => 'Deep-dive sessions focused on authentic leadership and finding your voice as a leader.',
-        'event_icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>'
+        'event_image' => get_template_directory_uri() . '/assets/images/carousel/img1.webp',
     ),
     array(
         'event_type' => 'Strategy Days',
         'event_title' => 'Invitation-Only Strategy Days',
         'event_description' => 'Exclusive strategy sessions with Joanna for private clients looking to accelerate their growth.',
-        'event_icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d4b478" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>'
+        'event_image' => get_template_directory_uri() . '/assets/images/carousel/img4.webp',
     ),
 ));
 
@@ -52,7 +52,7 @@ $events = tim_get_repeater_field('events_past_events', array(
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img8.webp'); ?>"
                      alt=""
                      class="w-full h-full object-cover opacity-30"
-                     loading="lazy" />
+                     fetchpriority="high" />
                 <div class="absolute inset-0 bg-gradient-to-br from-[#0f203d]/85 via-[#0f203d]/75 to-[#0f203d]/90"></div>
             </div>
 
@@ -114,7 +114,7 @@ $events = tim_get_repeater_field('events_past_events', array(
                         set_query_var('event_type', $event['event_type']);
                         set_query_var('event_title', $event['event_title']);
                         set_query_var('event_description', $event['event_description']);
-                        set_query_var('event_icon', $event['event_icon']);
+                        set_query_var('event_image', $event['event_image']);
                         get_template_part('template-parts/event-card');
                         ?>
                     <?php endforeach; ?>
