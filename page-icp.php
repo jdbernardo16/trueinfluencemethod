@@ -546,7 +546,7 @@ if (!defined('ABSPATH')) {
                     </p>
 
                     <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">
-                        For Early-Stage Entrepreneurs
+                        Who I Am Becoming
                     </h2>
 
 
@@ -554,9 +554,9 @@ if (!defined('ABSPATH')) {
                         <!-- The Speaker -->
                         <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow">
                             <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Speaker</h3>
-                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
+                            <!-- <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
                                 "I don't know what to say."
-                            </p>
+                            </p> -->
                             <a href="/icp-path/?icp=speaker"
                                 class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
                                 Find My Message
@@ -573,9 +573,9 @@ if (!defined('ABSPATH')) {
                                 <span style="font-size: 0.55rem; padding: 3px 10px;">Most Popular</span>
                             </div>
                             <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Authority</h3>
-                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
+                            <!-- <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
                                 "I need a better message."
-                            </p>
+                            </p> -->
                             <a href="/icp-path/?icp=authority"
                                 class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
                                 Build My Talk
@@ -589,9 +589,9 @@ if (!defined('ABSPATH')) {
                         <!-- The Legacy -->
                         <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow">
                             <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Legacy</h3>
-                            <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
+                            <!-- <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
                                 "I need more confidence."
-                            </p>
+                            </p> -->
                             <a href="/icp-path/?icp=legacy"
                                 class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
                                 Private Training
@@ -601,12 +601,6 @@ if (!defined('ABSPATH')) {
                                 </svg>
                             </a>
                         </div>
-                    </div>
-                    <!-- Truth Statement -->
-                    <div class="animate-fade-in-up stagger-4">
-                        <p class="text-[#d4b478] text-lg md:text-xl font-semibold">
-                            That feels true, but it's not the real problem.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -632,7 +626,7 @@ if (!defined('ABSPATH')) {
                         <span class="w-2 h-2 bg-[#d4b478] rounded-full"></span>
                         The Framework
                     </span>
-                    <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-6">What's Actually Happening</h2>
+                    <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-6">What’s The Problem?</h2>
                 </div>
 
                 <!-- 4-column grid -->
@@ -1102,41 +1096,93 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
 
-                <!-- ============================================================ -->
-                <!-- SECTION 6: NOT SURE CTA — NAVY BOX                           -->
-                <!-- ============================================================ -->
-                <div class="max-w-6xl mx-auto mt-16 bg-[#0f203d] rounded-2xl p-10 text-center relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-48 h-48 bg-[#d4b478]/5 rounded-full blur-[80px]"></div>
-                    <div class="absolute bottom-0 left-0 w-40 h-40 bg-[#d4b478]/5 rounded-full blur-[60px]"></div>
+            </div>
+        </section>
 
-                    <!-- Additional glow behind the icon area -->
-                    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-32 h-32 bg-[#d4b478]/10 rounded-full blur-[60px] animate-pulse-glow"></div>
+        <!-- ============================================================ -->
+        <!-- SECTION 6: NOT SURE CTA — FULL-WIDTH BG (like cta-section)    -->
+        <!-- ============================================================ -->
+        <section class="py-24 md:py-32 text-center relative overflow-hidden">
+            <!-- Background image with gradient overlay (matching cta-section.php) -->
+            <div class="absolute inset-0">
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img4.webp'); ?>"
+                    alt=""
+                    class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-b from-[#0f203d]/95 via-[#0f203d]/90 to-[#0f203d]/95"></div>
+            </div>
 
-                    <!-- Floating orb -->
-                    <div class="float-orb w-40 h-40 bg-[#d4b478]/5 rounded-full blur-[50px] animate-float-slow"
-                        style="top: -10%; right: -5%; animation-duration: 10s;"></div>
+            <!-- Large decorative blur (matching cta-section.php scale) -->
+            <div class="absolute inset-0">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#d4b478]/5 rounded-full blur-[150px]"></div>
+            </div>
 
-                    <div class="relative z-10">
-                        <div class="relative inline-block mb-4">
-                            <div class="absolute inset-0 bg-[#d4b478] blur-[40px] opacity-20 rounded-full"></div>
-                            <svg class="w-12 h-12 text-[#d4b478] mx-auto relative z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="16" x2="12" y2="12"></line>
-                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                            </svg>
-                        </div>
-                        <h3 class="font-serif text-2xl text-[#faf8f5] mb-3">Not Sure Where You Are?</h3>
-                        <p class="text-[#faf8f5]/70 text-lg leading-relaxed mb-8 max-w-lg mx-auto">
-                            Take the 5-minute Influence Path Assessment and see exactly where your voice and leadership stopped matching.
-                        </p>
-                        <a href="/icp-quiz/"
-                            class="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all group">
+            <!-- Floating orbs for ambient depth -->
+            <div class="float-orb w-56 h-56 bg-[#d4b478]/5 rounded-full blur-[70px] animate-float-slow"
+                style="top: 5%; left: 5%; animation-duration: 16s;"></div>
+            <div class="float-orb w-40 h-40 bg-[#d4b478]/5 rounded-full blur-[50px] animate-float-slow"
+                style="bottom: 10%; right: 8%; animation-duration: 12s; animation-delay: 2s;"></div>
+
+            <!-- Floating particles -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <?php for ($i = 1; $i <= 10; $i++): ?>
+                    <div class="absolute w-2 h-2 bg-[#d4b478]/30 rounded-full animate-float"
+                        style="left: <?php echo rand(0, 100); ?>%; top: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 5); ?>s; animation-duration: <?php echo 6 + rand(0, 4); ?>s;">
+                    </div>
+                <?php endfor; ?>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <!-- Decorative icon: compass (path-finding) -->
+                <div class="mb-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#d4b478]/30 mx-auto">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                </div>
+
+                <h2 class="font-serif text-4xl md:text-5xl text-[#faf8f5] mb-6">
+                    Take Our Quiz
+                </h2>
+
+                <p class="text-[#faf8f5]/80 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
+                    Take the 5-minute Influence Path Assessment and see exactly where your voice and leadership stopped matching.
+                </p>
+
+                <!-- Solid gold CTA button (matching cta-section.php style) -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/icp-quiz/"
+                        class="group px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 relative overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
                             Find My Path
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                        </a>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Trust indicators (matching cta-section.php style) -->
+                <div class="mt-16 flex items-center justify-center gap-8 flex-wrap">
+                    <div class="flex items-center gap-2 text-[#faf8f5]/60 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#d4b478]">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        Free assessment
+                    </div>
+                    <div class="w-1 h-1 bg-[#faf8f5]/20 rounded-full"></div>
+                    <div class="flex items-center gap-2 text-[#faf8f5]/60 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#d4b478]">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        5 minutes
+                    </div>
+                    <div class="w-1 h-1 bg-[#faf8f5]/20 rounded-full"></div>
+                    <div class="flex items-center gap-2 text-[#faf8f5]/60 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#d4b478]">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        Instant results
                     </div>
                 </div>
             </div>

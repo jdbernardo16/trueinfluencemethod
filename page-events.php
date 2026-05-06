@@ -140,11 +140,13 @@ $events = tim_get_repeater_field('events_past_events', array(
                 </div>
 
                 <!-- Visual break image -->
-                <div class="relative rounded-2xl overflow-hidden h-64 md:h-80 mb-16">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img1.webp'); ?>"
+                <div class="relative rounded-2xl overflow-hidden mb-16">
+                    <div class="aspect-w-4 aspect-h-3 w-full">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img5.webp'); ?>"
                          alt=""
                          class="w-full h-full object-cover"
                          loading="lazy" />
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/70 via-[#0f203d]/30 to-transparent"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <span class="text-[#d4b478]/20 text-8xl md:text-9xl font-serif italic select-none">&amp;</span>

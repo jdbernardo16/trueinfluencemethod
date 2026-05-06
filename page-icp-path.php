@@ -95,7 +95,7 @@ $steps_map = [
         ],
         [
             'step_label'  => 'STEP 3',
-            'name'        => 'Phase 1: Tell Your Story — My Why',
+            'name'        => 'Tell Your Story — My Why',
             'price'       => '$3,200',
             'orig_price'  => '$12,000',
             'description' => 'Join the 90-day Mastermind cohort to clarify your story, receive peer feedback, and share your message live.',
@@ -107,7 +107,7 @@ $steps_map = [
     'authority' => [
         [
             'step_label'  => 'STEP 1',
-            'name'        => 'Phase 2: Move the Room — Signature Talk',
+            'name'        => 'Move the Room — Signature Talk',
             'price'       => '$12,000',
             'orig_price'  => '$20,000',
             'description' => 'Join the Speaker Cohort to develop a 7-minute signature talk that lands powerfully, with a retreat speaking opportunity included.',
@@ -117,7 +117,7 @@ $steps_map = [
         ],
         [
             'step_label'  => 'STEP 2',
-            'name'        => 'Phase 3: Master My Message — Keynote/TEDx',
+            'name'        => 'Master My Message — Keynote/TEDx',
             'price'       => '$25,000',
             'orig_price'  => '$40,000',
             'description' => 'Become known for a keynote-level talk that establishes your thought leader POV and creates a professional speaking reel.',
@@ -139,7 +139,7 @@ $steps_map = [
         ],
         [
             'step_label'  => 'STEP 2',
-            'name'        => 'Phase 4: Scaling Strategy',
+            'name'        => 'Scaling Strategy',
             'price'       => 'Starts at $250,000',
             'orig_price'  => '',
             'description' => 'Your message becomes a system. Build team-based delivery, a leadership framework, and scalable influence across your organization.',
@@ -149,7 +149,7 @@ $steps_map = [
         ],
         [
             'step_label'  => 'STEP 3',
-            'name'        => 'Phase 5: Legacy Framework',
+            'name'        => 'Legacy Framework',
             'price'       => 'Starts at $1,000,000',
             'orig_price'  => '',
             'description' => 'Your work outlives you. Create a legacy blueprint, succession architecture, and generational impact that defines your contribution forever.',
@@ -180,31 +180,31 @@ if ($icp_key === 'authority') {
 $anti_map = [
     'speaker' => [
         [
-            'name'   => 'Phase 2: Move the Room',
+            'name'   => 'Move the Room',
             'reason' => 'Builds on Phase 1 — complete that first',
             'price'  => '$12,000',
         ],
         [
-            'name'   => 'Phase 3: Master My Message',
+            'name'   => 'Master My Message',
             'reason' => 'Requires a structured signature talk first',
             'price'  => '$25,000',
         ],
     ],
     'authority' => [
         [
-            'name'   => 'Phase 1: Tell Your Story — My Why',
+            'name'   => 'Tell Your Story — My Why',
             'reason' => 'You already have a foundation — you need structure, not discovery',
             'price'  => '$3,200',
         ],
     ],
     'legacy' => [
         [
-            'name'   => 'Phase 1: Tell Your Story — My Why',
+            'name'   => 'Tell Your Story — My Why',
             'reason' => 'Designed for early-stage — beneath your level',
             'price'  => '$3,200',
         ],
         [
-            'name'   => 'Phase 2: Move the Room — Signature Talk',
+            'name'   => 'Move the Room — Signature Talk',
             'reason' => 'You need legacy positioning, not talk structure',
             'price'  => '$12,000',
         ],

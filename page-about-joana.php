@@ -61,10 +61,6 @@ $theme_uri = get_template_directory_uri();
                                 </svg>
                             </a>
                         </div>
-
-                        <div class="text-sm text-[#faf8f5]/60 font-medium">
-                            As featured on MTV, Harvard, USA Today
-                        </div>
                     </div>
 
                     <!-- Image Area -->

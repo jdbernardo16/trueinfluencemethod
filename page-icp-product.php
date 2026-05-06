@@ -439,7 +439,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'good', authority: 'neutral', legacy: 'bad' },
             icpGood: 'Best for: The Speaker',
             icpBad: 'Not for: The Legacy — this is too basic for your stage',
-            cta: 'Book Now',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'Is this a coaching call or a strategy session?', a: 'It\'s both. Joanna guides you to uncover the truth underneath what you\'ve been trying to say. It\'s part coaching, part breakthrough.' },
                 { q: 'What do I need to prepare?', a: 'Just bring what you\'ve been trying to say — notes, ideas, frustrations. Joanna will guide the rest.' },
@@ -467,7 +467,7 @@ if (!defined('ABSPATH')) {
             checkoutLink: 'https://go.trueinfluencemethod.com/checkout-4-session-training-package-325468'
         },
         phase1: {
-            title: 'Phase 1: Tell Your Story — My Why',
+            title: 'Tell Your Story — My Why',
             price: '$3,200',
             orig: '$12,000',
             sub: 'Join the 90-day Mastermind.',
@@ -478,7 +478,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'good', authority: 'neutral', legacy: 'bad' },
             icpGood: 'Best for: The Speaker',
             icpBad: 'Not for: The Legacy — this is below your experience level',
-            cta: 'Join the Program',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'How many people are in the mastermind?', a: 'Cohorts are capped at 12 people to ensure depth and personal attention.' },
                 { q: 'When do cohorts start?', a: 'New cohorts begin quarterly. The next one starts on the 15th of next month.' },
@@ -487,7 +487,7 @@ if (!defined('ABSPATH')) {
             checkoutLink: 'https://go.trueinfluencemethod.com/checkout-phase-1'
         },
         phase2: {
-            title: 'Phase 2: Move the Room — My Signature Talk',
+            title: 'Move the Room — My Signature Talk',
             price: '$12,000',
             orig: '$20,000',
             sub: 'Join the Speaker Cohort and take the stage.',
@@ -498,7 +498,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'bad', authority: 'good', legacy: 'bad' },
             icpGood: 'Best for: The Authority',
             icpBad: 'Not for: The Speaker — complete Phase 1 first',
-            cta: 'Take the Stage',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'Do I need speaking experience?', a: 'You need foundational clarity (Phase 1 or equivalent). No professional speaking experience required.' },
                 { q: 'When and where is the retreat?', a: 'The retreat is held twice a year at a resort in California. Dates are provided upon enrollment.' },
@@ -507,7 +507,7 @@ if (!defined('ABSPATH')) {
             checkoutLink: 'https://go.trueinfluencemethod.com/checkout-phase-2'
         },
         phase3: {
-            title: 'Phase 3: Master My Message — Keynote or TEDx Talk',
+            title: 'Master My Message — Keynote or TEDx Talk',
             price: '$25,000',
             orig: '$40,000',
             sub: 'Become known for something specific and valuable.',
@@ -518,7 +518,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'bad', authority: 'good', legacy: 'bad' },
             icpGood: 'Best for: The Authority',
             icpBad: 'Not for: The Speaker — build your foundation first with Phase 1',
-            cta: 'Create My Keynote',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'Do I need a TEDx talk to join?', a: 'No. This program prepares you for a TEDx or keynote-level talk. Previous clients have gone on to speak at TEDx events.' },
                 { q: 'How long is the program?', a: 'The program runs for 6 months with a mix of cohort sessions and private coaching.' },
@@ -527,7 +527,7 @@ if (!defined('ABSPATH')) {
             checkoutLink: 'https://go.trueinfluencemethod.com/checkout-phase-3'
         },
         phase4: {
-            title: 'Phase 4: Build My Team — Scaling Strategy',
+            title: 'Build My Team — Scaling Strategy',
             price: 'Starts at $250,000',
             sub: 'Your message becomes a system.',
             description: 'Your message is no longer just yours — it becomes a framework your entire team operates from. Build your leadership framework, a team communication system, and a mentorship structure based on your message.',
@@ -537,7 +537,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'bad', authority: 'neutral', legacy: 'good' },
             icpGood: 'Best for: The Legacy',
             icpBad: 'Not for: The Speaker — this requires years of leadership experience',
-            cta: 'Schedule a Consultation',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'Is this for me or for my whole team?', a: 'It starts with you and extends to your leadership team. We build the framework together.' },
                 { q: 'How long does Phase 4 take?', a: 'Typically 6-12 months depending on your organization\'s size and complexity.' },
@@ -546,7 +546,7 @@ if (!defined('ABSPATH')) {
             checkoutLink: 'https://go.trueinfluencemethod.com/checkout-phase-4'
         },
         phase5: {
-            title: 'Phase 5: Be Remembered — Legacy Framework',
+            title: 'Be Remembered — Legacy Framework',
             price: 'Starts at $1,000,000',
             sub: 'Your work outlives you.',
             description: 'This is where your life\'s work becomes a blueprint for generations. Build your legacy blueprint, impact thesis, and succession plan. Align your voice, wealth, and long-term contribution.',
@@ -556,7 +556,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'bad', authority: 'bad', legacy: 'good' },
             icpGood: 'Best for: The Legacy',
             icpBad: 'Not for: The Speaker or Authority — this requires a lifetime of leadership',
-            cta: 'Schedule a Consultation',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'How is this different from estate planning?', a: 'This is about your intellectual and leadership legacy — the message, framework, and impact you leave behind.' },
                 { q: 'How long does this engagement last?', a: 'Typically 12-18 months with ongoing advisory.' },
@@ -575,7 +575,7 @@ if (!defined('ABSPATH')) {
             icpFit: { speaker: 'bad', authority: 'neutral', legacy: 'good' },
             icpGood: 'Best for: The Legacy',
             icpBad: 'Not for: The Speaker — group programs provide better value at your stage',
-            cta: 'Apply Now',
+            cta: 'Enroll Now',
             faq: [
                 { q: 'How is this different from the group programs?', a: 'Private Training is fully customized to your situation. No curriculum — just what you need.' },
                 { q: 'How do we structure the engagement?', a: 'We start with a discovery session, then design a plan. Most clients work with Joanna for 3-6 months.' },
@@ -616,22 +616,22 @@ if (!defined('ABSPATH')) {
         document.getElementById('prodSub').textContent = data.sub;
 
         // ICP Fit badges
-        var fitEl = document.getElementById('icpFit');
-        fitEl.innerHTML = '';
-        Object.keys(data.icpFit).forEach(function(icp) {
-            var fit = data.icpFit[icp];
-            var badge = document.createElement('span');
-            badge.className = 'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ' +
-                (fit === 'good' ? 'bg-green-50 text-green-700 border border-green-200' :
-                 fit === 'bad' ? 'bg-red-50 text-red-700 border border-red-200' :
-                 'bg-[#faf8f5]/10 text-[#faf8f5]/80 border border-[#faf8f5]/20');
-            badge.textContent = icpFitText[fit] + ' — ' + icpLabels[icp];
-            if (icp === icpKey) {
-                badge.style.cssText = 'border: 2px solid #d4b478; background: rgba(212, 180, 120, 0.08);';
-                badge.style.fontWeight = '700';
-            }
-            fitEl.appendChild(badge);
-        });
+        // var fitEl = document.getElementById('icpFit');
+        // fitEl.innerHTML = '';
+        // Object.keys(data.icpFit).forEach(function(icp) {
+        //     var fit = data.icpFit[icp];
+        //     var badge = document.createElement('span');
+        //     badge.className = 'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ' +
+        //         (fit === 'good' ? 'bg-green-50 text-green-700 border border-green-200' :
+        //          fit === 'bad' ? 'bg-red-50 text-red-700 border border-red-200' :
+        //          'bg-[#faf8f5]/10 text-[#faf8f5]/80 border border-[#faf8f5]/20');
+        //     badge.textContent = icpFitText[fit] + ' — ' + icpLabels[icp];
+        //     if (icp === icpKey) {
+        //         badge.style.cssText = 'border: 2px solid #d4b478; background: rgba(212, 180, 120, 0.08);';
+        //         badge.style.fontWeight = '700';
+        //     }
+        //     fitEl.appendChild(badge);
+        // });
 
         // Description
         document.getElementById('prodDescription').textContent = data.description;
