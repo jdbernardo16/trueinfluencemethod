@@ -139,6 +139,18 @@ $events = tim_get_repeater_field('events_past_events', array(
                     </p>
                 </div>
 
+                <!-- Visual break image -->
+                <div class="relative rounded-2xl overflow-hidden h-64 md:h-80 mb-16">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img6.webp'); ?>"
+                         alt=""
+                         class="w-full h-full object-cover"
+                         loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d]/70 via-[#0f203d]/30 to-transparent"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-[#d4b478]/20 text-8xl md:text-9xl font-serif italic select-none">&amp;</span>
+                    </div>
+                </div>
+
                 <?php
                 $features = tim_get_repeater_field('events_expect_features', array(
                     array(
@@ -211,10 +223,6 @@ $events = tim_get_repeater_field('events_past_events', array(
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
                         </svg>
-                    </a>
-                    <a href="<?php echo esc_url($secondary_url); ?>"
-                        class="inline-flex items-center justify-center gap-3 border-2 border-[#d4b478] text-[#d4b478] text-sm uppercase tracking-widest px-8 py-4 rounded-full font-medium hover:bg-[#d4b478]/10 transition-colors duration-300">
-                        <?php echo esc_html(tim_get_field('events_cta_secondary_text', 'Explore Programs')); ?>
                     </a>
                 </div>
             </div>
