@@ -52,14 +52,14 @@ $theme_uri = get_template_directory_uri();
                                 class="inline-flex items-center justify-center px-8 py-4 bg-[#d4b478] text-[#0f203d] font-semibold rounded-full hover:bg-[#e8a838] transition-all duration-300 transform hover:scale-105 shadow-lg">
                                 Book Me to Speak
                             </a>
-                            <a href="#about"
+                            <!-- <a href="#about"
                                 class="inline-flex items-center justify-center px-8 py-4 border-2 border-[#faf8f5] text-[#faf8f5] font-semibold rounded-full hover:bg-[#faf8f5] hover:text-[#0f203d] transition-all duration-300">
                                 Learn More
                                 <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>
                                 </svg>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
 
@@ -474,12 +474,12 @@ $theme_uri = get_template_directory_uri();
                     for ($i = 0; $i < 2; $i++) :
                         foreach ($partners as $partner) :
                     ?>
-                        <div class="flex-shrink-0 flex items-center justify-center px-6 md:px-10 py-4 group" aria-label="<?php echo esc_attr($partner['name']); ?>">
-                            <img src="<?php echo esc_url($theme_uri . '/assets/images/partners/' . $partner['logo']); ?>"
-                                alt="<?php echo esc_attr($partner['name']); ?>"
-                                class="max-h-10 md:max-h-14 w-auto object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 select-none"
-                                draggable="false" />
-                        </div>
+                            <div class="flex-shrink-0 flex items-center justify-center px-6 md:px-10 py-4 group" aria-label="<?php echo esc_attr($partner['name']); ?>">
+                                <img src="<?php echo esc_url($theme_uri . '/assets/images/partners/' . $partner['logo']); ?>"
+                                    alt="<?php echo esc_attr($partner['name']); ?>"
+                                    class="max-h-10 md:max-h-14 w-auto object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 select-none"
+                                    draggable="false" />
+                            </div>
                     <?php
                         endforeach;
                     endfor;
@@ -498,14 +498,22 @@ $theme_uri = get_template_directory_uri();
                 animation: partners-marquee-scroll 40s linear infinite;
                 will-change: transform;
             }
+
             .partners-marquee-wrapper:hover .partners-marquee-track,
             .partners-marquee-wrapper:focus-within .partners-marquee-track {
                 animation-play-state: paused;
             }
+
             @keyframes partners-marquee-scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(-50%);
+                }
             }
+
             @media (prefers-reduced-motion: reduce) {
                 .partners-marquee-track {
                     animation: none;
@@ -632,34 +640,57 @@ $theme_uri = get_template_directory_uri();
         <script>
             (function() {
                 'use strict';
+
                 function animateCounter(el) {
                     var target = parseInt(el.getAttribute('data-target'), 10);
                     var duration = parseInt(el.getAttribute('data-duration'), 10) || 2000;
-                    if (isNaN(target) || target === 0) { el.textContent = target; return; }
+                    if (isNaN(target) || target === 0) {
+                        el.textContent = target;
+                        return;
+                    }
                     var start = 0;
                     var startTime = null;
-                    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-                    function formatNumber(n) { return n.toLocaleString('en-US'); }
+
+                    function easeOutQuart(t) {
+                        return 1 - Math.pow(1 - t, 4);
+                    }
+
+                    function formatNumber(n) {
+                        return n.toLocaleString('en-US');
+                    }
+
                     function step(timestamp) {
                         if (!startTime) startTime = timestamp;
                         var progress = Math.min((timestamp - startTime) / duration, 1);
                         var easedProgress = easeOutQuart(progress);
                         var current = Math.floor(easedProgress * target);
                         el.textContent = formatNumber(current);
-                        if (progress < 1) { window.requestAnimationFrame(step); } else { el.textContent = formatNumber(target); }
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        } else {
+                            el.textContent = formatNumber(target);
+                        }
                     }
                     window.requestAnimationFrame(step);
                 }
+
                 function initCounters() {
                     var counters = document.querySelectorAll('#social-proof-metrics .stat-counter');
                     if (!counters.length) return;
                     if ('IntersectionObserver' in window) {
                         var observer = new IntersectionObserver(function(entries) {
                             entries.forEach(function(entry) {
-                                if (entry.isIntersecting) { animateCounter(entry.target); observer.unobserve(entry.target); }
+                                if (entry.isIntersecting) {
+                                    animateCounter(entry.target);
+                                    observer.unobserve(entry.target);
+                                }
                             });
-                        }, { threshold: 0.3 });
-                        counters.forEach(function(counter) { observer.observe(counter); });
+                        }, {
+                            threshold: 0.3
+                        });
+                        counters.forEach(function(counter) {
+                            observer.observe(counter);
+                        });
                     } else {
                         counters.forEach(function(counter) {
                             var target = parseInt(counter.getAttribute('data-target'), 10);
@@ -667,7 +698,11 @@ $theme_uri = get_template_directory_uri();
                         });
                     }
                 }
-                if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initCounters); } else { initCounters(); }
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initCounters);
+                } else {
+                    initCounters();
+                }
             })();
         </script>
 
@@ -707,15 +742,21 @@ $theme_uri = get_template_directory_uri();
                             </p>
                             <ul class="space-y-2 mb-6">
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     One-on-one executive coaching
                                 </li>
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Personalized voice & message development
                                 </li>
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Ongoing strategic advisory
                                 </li>
                             </ul>
@@ -741,20 +782,26 @@ $theme_uri = get_template_directory_uri();
                             </p>
                             <ul class="space-y-2 mb-6">
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Custom keynotes & breakout sessions
                                 </li>
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Panel moderation & fireside chats
                                 </li>
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Virtual & in-person availability
                                 </li>
                             </ul>
                         </div>
-                        <a href="mailto:info@mywomenofinfluence.com" class="inline-flex items-center justify-center px-6 py-3 bg-[#d4b478] text-[#0f203d] font-semibold rounded-lg hover:bg-[#e8a838] transition-all mt-auto">
+                        <a href="/inquiry" class="inline-flex items-center justify-center px-6 py-3 bg-[#d4b478] text-[#0f203d] font-semibold rounded-lg hover:bg-[#e8a838] transition-all mt-auto">
                             Book a Keynote
                         </a>
                     </div>
@@ -777,15 +824,21 @@ $theme_uri = get_template_directory_uri();
                             </p>
                             <ul class="space-y-2 mb-6">
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     90-Day Mastermind
                                 </li>
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Private Training Cohort
                                 </li>
                                 <li class="flex items-start gap-2 text-sm text-[#0f203d]/70">
-                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                     Corporate Programs
                                 </li>
                             </ul>
@@ -824,30 +877,22 @@ $theme_uri = get_template_directory_uri();
                     Ready to Find Your Voice?
                 </h2>
                 <div class="text-[#faf8f5]/80 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
-                    The first step is a conversation. Fill out my private client inquiry form and my team will be in touch to guide you toward the right path.
+                    You've done the work. You've built the vision. Now it's time to speak it into the world — with the clarity, courage, and influence your leadership deserves.
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-                    <a href="<?php echo esc_url(home_url('/apply/')); ?>"
+                    <a href="<?php echo esc_url(home_url('/start/')); ?>"
                         class="inline-flex items-center gap-3 px-10 py-5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-xl hover:shadow-[#d4b478]/20 text-lg group">
-                        Apply to Work With Me
+                        Start Now
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                    <a href="mailto:info@mywomenofinfluence.com"
-                        class="inline-flex items-center gap-3 px-10 py-5 border-2 border-[#d4b478] text-[#d4b478] hover:bg-[#d4b478]/10 font-semibold rounded-lg transition-all text-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        info@mywomenofinfluence.com
-                    </a>
                 </div>
 
                 <div class="text-[#faf8f5]/50 text-sm">
-                    Or email directly at <a href="mailto:info@mywomenofinfluence.com" class="text-[#d4b478] hover:underline">info@mywomenofinfluence.com</a>
+                    Or email directly at <a href="mailto:info@trueinfluencemethod.com" class="text-[#d4b478] hover:underline">info@trueinfluencemethod.com</a>
                 </div>
             </div>
         </section>

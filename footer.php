@@ -124,7 +124,7 @@
                 <?php
                 $programs_heading = tim_get_field('footer_programs_heading', 'Programs', 'option');
                 $programs_links   = tim_get_repeater_field('footer_programs_links', [
-                    ['link_label' => 'Private Training',       'link_url' => home_url('/programs/private-training')],
+                    ['link_label' => 'The Speaker',       'link_url' => home_url('icp-path/?icp=speaker')],
                     ['link_label' => 'Speak & Rise',           'link_url' => home_url('/programs/speak-rise')],
                     ['link_label' => 'Corporate',              'link_url' => home_url('/programs/corporate')],
                     ['link_label' => 'True Influence License', 'link_url' => home_url('/programs/license')],
@@ -188,7 +188,7 @@
                 <p class="text-[#faf8f5]/30 text-xs uppercase tracking-widest">
                     <?php echo esc_html($footer_copyright); ?>
                 </p>
-                <div class="flex gap-4">
+                <!-- <div class="flex gap-4">
                     <?php if ($footer_privacy_url) : ?>
                         <a href="<?php echo esc_url($footer_privacy_url); ?>" class="text-[#faf8f5]/40 hover:text-[#d4b478] text-xs uppercase tracking-wider transition-colors">
                             <?php echo esc_html($footer_privacy_label); ?>
@@ -199,7 +199,7 @@
                             <?php echo esc_html($footer_terms_label); ?>
                         </a>
                     <?php endif; ?>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
