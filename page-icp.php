@@ -486,6 +486,77 @@ if (!defined('ABSPATH')) {
         .icp-accordion-content {
             padding: 0.25rem 0 0.5rem 0;
         }
+
+        /* ===================================== */
+        /* NEW: Portal Cards (Three Doorways)    */
+        /* ===================================== */
+        .portal-card {
+            position: relative;
+            border-radius: 100px 100px 16px 16px / 40px 40px 16px 16px;
+            background: rgba(250, 248, 245, 0.03);
+            border: 1px solid rgba(212, 180, 120, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(212, 180, 120, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portal-card:hover {
+            background: rgba(250, 248, 245, 0.07);
+            border-color: rgba(212, 180, 120, 0.3);
+            box-shadow: 0 0 40px rgba(212, 180, 120, 0.1), inset 0 0 60px rgba(212, 180, 120, 0.03);
+            transform: translateY(-6px);
+        }
+
+        .portal-card:hover::before {
+            opacity: 1;
+        }
+
+        .portal-icon-ring {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portal-icon-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 180, 120, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .portal-card:hover .portal-icon-ring::before {
+            inset: -8px;
+            border-color: rgba(212, 180, 120, 0.3);
+            box-shadow: 0 0 20px rgba(212, 180, 120, 0.1);
+        }
+
+        .portal-path-line {
+            position: absolute;
+            bottom: 24px;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(212, 180, 120, 0.15) 20%, rgba(212, 180, 120, 0.2) 50%, rgba(212, 180, 120, 0.15) 80%, transparent 100%);
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -537,7 +608,7 @@ if (!defined('ABSPATH')) {
                     <!-- H1 -->
                     <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight mb-8 animate-fade-in-up stagger-1">
                         The Key To Your Authority
-                        <span class="text-[#d4b478] block mt-2">Is Your Authencity.</span>
+                        <span class="text-[#d4b478] block mt-2">Is Your Authenticity.</span>
                     </h1>
 
                     <!-- Description -->
@@ -545,20 +616,34 @@ if (!defined('ABSPATH')) {
                         For Speakers, Leaders and Legacy-Builders: Turn your lived experience into a message people trust and follow.
                     </p>
 
-                    <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-6">
-                        Who I Am Becoming
-                    </h2>
+                    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto animate-fade-in-up stagger-3">
+                        <!-- Connecting path line -->
+                        <div class="portal-path-line hidden md:block"></div>
 
+                        <!-- Portal 1: The Speaker -->
+                        <div class="portal-card px-6 py-8 text-center group">
+                            <!-- Number watermark -->
+                            <span class="absolute top-3 left-1/2 -translate-x-1/2 text-7xl md:text-8xl font-serif text-[#d4b478]/[0.06] leading-none pointer-events-none select-none">01</span>
+                            
+                            <!-- Floating icon -->
+                            <div class="portal-icon-ring mb-5 relative z-10">
+                                <div class="w-12 h-12 bg-[#d4b478]/10 rounded-full flex items-center justify-center border border-[#d4b478]/20 relative z-10">
+                                    <svg class="w-5 h-5 text-[#d4b478]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                                    </svg>
+                                </div>
+                            </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
-                        <!-- The Speaker -->
-                        <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow">
-                            <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Speaker</h3>
-                            <!-- <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
+                            <h3 class="font-serif text-xl text-[#faf8f5] mb-2 relative z-10">The Speaker</h3>
+                            <p class="text-[#faf8f5]/50 text-sm italic leading-relaxed mb-6 relative z-10">
                                 "I don't know what to say."
-                            </p> -->
+                            </p>
+                            
                             <a href="/icp-path/?icp=speaker"
-                                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn relative z-10">
                                 Find My Message
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -567,17 +652,34 @@ if (!defined('ABSPATH')) {
                             </a>
                         </div>
 
-                        <!-- The Authority -->
-                        <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow relative">
-                            <div class="ribbon-popular" style="top: -8px; right: -8px;">
-                                <span style="font-size: 0.55rem; padding: 3px 10px;">Most Popular</span>
+                        <!-- Portal 2: The Authority -->
+                        <div class="portal-card px-6 py-8 text-center group relative">
+                            <!-- Most Popular badge -->
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+                                <span class="bg-[#d4b478] text-[#0f203d] text-[0.6rem] font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-full shadow-lg shadow-[#d4b478]/20">
+                                    Most Popular
+                                </span>
                             </div>
-                            <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Authority</h3>
-                            <!-- <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
+
+                            <!-- Number watermark -->
+                            <span class="absolute top-3 left-1/2 -translate-x-1/2 text-7xl md:text-8xl font-serif text-[#d4b478]/[0.06] leading-none pointer-events-none select-none">02</span>
+                            
+                            <!-- Floating icon -->
+                            <div class="portal-icon-ring mb-5 relative z-10">
+                                <div class="w-12 h-12 bg-[#d4b478]/10 rounded-full flex items-center justify-center border border-[#d4b478]/20 relative z-10">
+                                    <svg class="w-5 h-5 text-[#d4b478]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#faf8f5] mb-2 relative z-10">The Authority</h3>
+                            <p class="text-[#faf8f5]/50 text-sm italic leading-relaxed mb-6 relative z-10">
                                 "I need a better message."
-                            </p> -->
+                            </p>
+                            
                             <a href="/icp-path/?icp=authority"
-                                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn relative z-10">
                                 Build My Talk
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -586,14 +688,27 @@ if (!defined('ABSPATH')) {
                             </a>
                         </div>
 
-                        <!-- The Legacy -->
-                        <div class="bg-[#faf8f5]/5 border border-[#d4b478]/10 rounded-xl px-5 py-6 text-center hover:bg-[#faf8f5]/10 transition-all duration-300 gold-border-glow">
-                            <h3 class="font-serif text-lg text-[#faf8f5] mb-2">The Legacy</h3>
-                            <!-- <p class="text-[#faf8f5]/60 text-sm italic leading-relaxed mb-4">
+                        <!-- Portal 3: The Legacy -->
+                        <div class="portal-card px-6 py-8 text-center group">
+                            <!-- Number watermark -->
+                            <span class="absolute top-3 left-1/2 -translate-x-1/2 text-7xl md:text-8xl font-serif text-[#d4b478]/[0.06] leading-none pointer-events-none select-none">03</span>
+                            
+                            <!-- Floating icon -->
+                            <div class="portal-icon-ring mb-5 relative z-10">
+                                <div class="w-12 h-12 bg-[#d4b478]/10 rounded-full flex items-center justify-center border border-[#d4b478]/20 relative z-10">
+                                    <svg class="w-5 h-5 text-[#d4b478]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#faf8f5] mb-2 relative z-10">The Legacy</h3>
+                            <p class="text-[#faf8f5]/50 text-sm italic leading-relaxed mb-6 relative z-10">
                                 "I need more confidence."
-                            </p> -->
+                            </p>
+                            
                             <a href="/icp-path/?icp=legacy"
-                                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn">
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all text-sm group/btn relative z-10">
                                 Private Training
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>

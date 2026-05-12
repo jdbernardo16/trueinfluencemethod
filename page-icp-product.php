@@ -294,7 +294,7 @@ if (!defined('ABSPATH')) {
 
     <?php get_header(); ?>
 
-    <div class="overflow-x-hidden">
+    <div style="overflow-x: clip;">
 
         <!-- ============================================================ -->
         <!-- SECTION 1: BREADCRUMB + PRODUCT HEADER (DARK NAVY BG)           -->
@@ -408,10 +408,10 @@ if (!defined('ABSPATH')) {
                                 <p class="text-xs text-[#0f203d]/40 mt-3">Risk-free. Full refund within 14 days if it's not the right fit.</p>
 
                                 <!-- Not-for warning -->
-                                <div id="notForWarning" class="not-for-warning hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-left pl-6">
+                                <!-- <div id="notForWarning" class="not-for-warning hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-left pl-6">
                                     <strong class="block text-red-700 text-sm mb-1">⛔ May not be right for you</strong>
                                     <span id="notForReason" class="text-red-600 text-sm"></span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

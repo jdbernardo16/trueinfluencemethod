@@ -183,11 +183,13 @@ $anti_map = [
             'name'   => 'Move the Room',
             'reason' => 'Builds on Phase 1 — complete that first',
             'price'  => '$12,000',
+            'link'   => home_url('/icp-product/?product=phase2&icp=speaker'),
         ],
         [
             'name'   => 'Master My Message',
             'reason' => 'Requires a structured signature talk first',
             'price'  => '$25,000',
+            'link'   => home_url('/icp-product/?product=phase3&icp=speaker'),
         ],
     ],
     'authority' => [
@@ -195,6 +197,7 @@ $anti_map = [
             'name'   => 'Tell Your Story — My Why',
             'reason' => 'You already have a foundation — you need structure, not discovery',
             'price'  => '$3,200',
+            'link'   => home_url('/icp-product/?product=phase1&icp=authority'),
         ],
     ],
     'legacy' => [
@@ -202,16 +205,19 @@ $anti_map = [
             'name'   => 'Tell Your Story — My Why',
             'reason' => 'Designed for early-stage — beneath your level',
             'price'  => '$3,200',
+            'link'   => home_url('/icp-product/?product=phase1&icp=legacy'),
         ],
         [
             'name'   => 'Move the Room — Signature Talk',
             'reason' => 'You need legacy positioning, not talk structure',
             'price'  => '$12,000',
+            'link'   => home_url('/icp-product/?product=phase2&icp=legacy'),
         ],
         [
             'name'   => 'Phase 3: Master My Message — Keynote/TEDx',
             'reason' => 'You likely already have this capability',
             'price'  => '$25,000',
+            'link'   => home_url('/icp-product/?product=phase3&icp=legacy'),
         ],
     ],
 ];
@@ -676,13 +682,18 @@ $anti_items = isset($anti_map[$icp_key]) ? $anti_map[$icp_key] : [];
                                 </h3>
                                 <div class="space-y-4">
                                     <?php foreach ($anti_items as $anti): ?>
-                                        <div class="flex justify-between items-center pb-4 border-b border-[#d4b478]/10 last:border-b-0 last:pb-0">
+                                        <a href="<?php echo esc_url($anti['link']); ?>" class="group flex justify-between items-center pb-4 border-b border-[#d4b478]/10 last:border-b-0 last:pb-0 transition-opacity duration-200 hover:opacity-80">
                                             <div>
-                                                <p class="font-medium text-[#0f203d]/80"><?php echo esc_html($anti['name']); ?></p>
+                                                <p class="font-medium text-[#0f203d]/80 group-hover:text-[#0f203d]"><?php echo esc_html($anti['name']); ?></p>
                                                 <p class="text-sm text-[#d4b478]/70"><?php echo esc_html($anti['reason']); ?></p>
                                             </div>
-                                            <span class="text-[#d4b478]/60 font-semibold whitespace-nowrap ml-4"><?php echo esc_html($anti['price']); ?></span>
-                                        </div>
+                                            <span class="text-[#d4b478]/60 font-semibold whitespace-nowrap ml-4 flex items-center gap-2">
+                                                <?php echo esc_html($anti['price']); ?>
+                                                <svg class="w-4 h-4 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </span>
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                                 <p class="text-sm text-[#d4b478]/60 mt-4">
