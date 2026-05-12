@@ -804,298 +804,313 @@ if (!defined('ABSPATH')) {
         <div class="section-divider"></div>
 
         <!-- ============================================================ -->
-        <!-- SECTION 5: ICP SELECTOR — LIGHT CREAM BG                       -->
+        <!-- SECTION 5A: THE SPEAKER — "Emergence"                         -->
         <!-- ============================================================ -->
-        <section class="py-24 md:py-32 bg-[#faf8f5] text-[#0f203d] relative overflow-hidden"
-            style="background-image: radial-gradient(circle at 10% 20%, rgba(212,180,120,0.04) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(212,180,120,0.04) 0%, transparent 50%);">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-[#d4b478]/5 rounded-full blur-[120px]"></div>
-            <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#d4b478]/5 rounded-full blur-[100px]"></div>
+        <section class="py-24 md:py-32 lg:py-40 bg-[#faf8f5] text-[#0f203d] relative overflow-hidden"
+            style="background-image: radial-gradient(circle at 10% 20%, rgba(212,180,120,0.06) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(212,180,120,0.04) 0%, transparent 50%);">
 
-            <!-- Large floating orb -->
+            <!-- Floating orb -->
             <div class="float-orb w-60 h-60 bg-[#d4b478]/5 rounded-full blur-[80px] animate-float-slow"
-                style="top: 20%; right: 8%; animation-duration: 15s; animation-delay: 1s;"></div>
+                style="top: 15%; right: 5%; animation-duration: 15s; animation-delay: 1s;"></div>
 
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-16">
-                    <span class="inline-flex items-center gap-2 bg-[#d4b478]/10 border border-[#d4b478]/20 text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full mb-8">
-                        <span class="w-2 h-2 bg-[#d4b478] rounded-full"></span>
-                        Choose Your Path
-                    </span>
-                    <h2 class="font-serif text-4xl md:text-5xl text-[#0f203d] mb-6">Find Where You Are</h2>
-                    <p class="text-[#0f203d]/70 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-                        You don't need more strategy. You need to close the gap between what you know and what you can say.
-                    </p>
+            <!-- Small gold particles -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute w-2 h-2 bg-[#d4b478]/20 rounded-full animate-float" style="left: 8%; top: 25%; animation-delay: 0s; animation-duration: 7s;"></div>
+                <div class="absolute w-1.5 h-1.5 bg-[#d4b478]/30 rounded-full animate-float" style="left: 92%; top: 35%; animation-delay: 1.5s; animation-duration: 8s;"></div>
+                <div class="absolute w-2 h-2 bg-[#d4b478]/25 rounded-full animate-float" style="left: 75%; top: 70%; animation-delay: 3s; animation-duration: 6s;"></div>
+                <div class="absolute w-1 h-1 bg-[#d4b478]/20 rounded-full animate-float" style="left: 15%; top: 80%; animation-delay: 2s; animation-duration: 9s;"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto px-6 relative z-10">
+                <!-- Left: Image -->
+                <div class="relative animate-fade-in-up stagger-1">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl shadow-[#0f203d]/10 border border-[#d4b478]/20 aspect-[4/5] relative">
+                        <!-- Decorative gold corner accent -->
+                        <div class="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#d4b478]/40 rounded-tl-lg z-10 pointer-events-none"></div>
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img1.webp'); ?>"
+                            alt="The Speaker"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                            loading="lazy" />
+                    </div>
                 </div>
 
-                <!-- ICP Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Right: Content -->
+                <div class="relative animate-fade-in-up stagger-2">
+                    <!-- Giant watermark -->
+                    <span class="absolute -top-12 -right-8 text-[10rem] md:text-[14rem] font-serif text-[#d4b478]/[0.04] leading-none pointer-events-none select-none">01</span>
 
-                    <!-- ============================== -->
-                    <!-- ICP 1: The Speaker              -->
-                    <!-- ============================== -->
-                    <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden border border-[#d4b478]/10 hover:border-[#d4b478]/30 hover:shadow-xl transition-all duration-300 flex flex-col card-lift animate-fade-in-up stagger-1">
-                        <!-- Image background reveal on hover (like about-joana credentials) -->
-                        <div class="icp-image-reveal">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img1.webp'); ?>"
-                                alt=""
-                                aria-hidden="true" />
-                        </div>
+                    <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase">Path 01</span>
+                    <h3 class="font-serif text-4xl md:text-5xl text-[#0f203d] mt-2 mb-1">The Speaker</h3>
 
-                        <!-- Image area -->
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img1.webp'); ?>"
-                                alt="The Speaker"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                loading="lazy" />
-                            <div class="absolute inset-0 icp-card-gradient"></div>
-                        </div>
-
-                        <!-- Card body -->
-                        <div class="p-6 flex flex-col flex-1 relative z-10 icp-reveal-trigger">
-                            <h3 class="font-serif text-2xl text-[#0f203d] mb-1">The Speaker</h3>
-                            <!-- Accordion: Experience & Revenue -->
-                            <div class="icp-accordion mb-4">
-                                <details>
-                                    <summary class="icp-accordion-trigger">
-                                        <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                        Experience &amp; Revenue Details
-                                    </summary>
-                                    <div class="icp-accordion-content">
-                                        <div class="flex items-start gap-3 mb-2">
-                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                            </svg>
-                                            <span class="text-sm text-[#0f203d]/80">Experience: 3–8 years leading</span>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                            </svg>
-                                            <span class="text-sm text-[#0f203d]/80">Revenue: $100K–$500K</span>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
-                                "I know I have something to say, but I can't clearly say what defines me yet."
-                            </blockquote>
-
-                            <div class="space-y-3 mb-8 flex-1">
-                                <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <span class="text-sm text-[#0f203d]/80">Clarity on what defines you and why it matters.</span>
-                                    </li>
-                                </ul>
-
-                                <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <span class="text-sm text-[#0f203d]/80">A message you can say in one sentence.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="/icp-path/?icp=speaker"
-                                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 group/btn mt-auto">
-                                Find My Message
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <!-- Accordion: Experience & Revenue -->
+                    <div class="icp-accordion mb-4 mt-4">
+                        <details>
+                            <summary class="icp-accordion-trigger">
+                                <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
-                            </a>
-                        </div>
+                                Experience &amp; Revenue Details
+                            </summary>
+                            <div class="icp-accordion-content">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    <span class="text-sm text-[#0f203d]/80">Experience: 3–8 years leading</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    <span class="text-sm text-[#0f203d]/80">Revenue: $100K–$500K</span>
+                                </div>
+                            </div>
+                        </details>
                     </div>
 
-                    <!-- ============================== -->
-                    <!-- ICP 2: The Authority            -->
-                    <!-- ============================== -->
-                    <div class="group relative bg-[#faf5e8] rounded-2xl shadow-lg overflow-hidden border border-[#d4b478]/10 hover:border-[#d4b478]/30 hover:shadow-xl transition-all duration-300 flex flex-col card-lift animate-fade-in-up stagger-2">
-                        <!-- Popular/recommended ribbon -->
-                        <div class="ribbon-popular">
-                            <span>Most Popular</span>
-                        </div>
+                    <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
+                        "I know I have something to say, but I can't clearly say what defines me yet."
+                    </blockquote>
 
-                        <!-- Image background reveal on hover -->
-                        <div class="icp-image-reveal">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img2.webp'); ?>"
-                                alt=""
-                                aria-hidden="true" />
-                        </div>
+                    <div class="space-y-3 mb-8">
+                        <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="text-sm text-[#0f203d]/80">Clarity on what defines you and why it matters.</span>
+                            </li>
+                        </ul>
 
-                        <!-- Image area -->
-                        <div class="relative h-48 overflow-hidden">
+                        <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="text-sm text-[#0f203d]/80">A message you can say in one sentence.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="/icp-path/?icp=speaker"
+                        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 group/btn">
+                        Find My Message
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section divider -->
+        <!-- <div class="section-divider"></div> -->
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5B: THE AUTHORITY — "The Golden Path"                 -->
+        <!-- ============================================================ -->
+        <section class="py-24 md:py-32 lg:py-40 bg-[#faf5e8] text-[#0f203d] relative overflow-hidden gold-dot-pattern"
+            style="background-size: 16px 16px;">
+            <div class="absolute inset-0 bg-[#faf5e8]/[0.96]" style="background-size: 16px 16px;"></div>
+
+            <!-- Floating orb -->
+            <div class="float-orb w-60 h-60 bg-[#d4b478]/5 rounded-full blur-[80px] animate-float-slow"
+                style="bottom: 10%; left: 5%; animation-duration: 14s; animation-delay: 2s;"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto px-6 relative z-10">
+                <!-- Content (Left on desktop) -->
+                <div class="relative animate-fade-in-up stagger-1 lg:order-first order-2">
+                    <!-- Giant watermark -->
+                    <span class="absolute -top-12 -left-8 text-[10rem] md:text-[14rem] font-serif text-[#d4b478]/[0.06] leading-none pointer-events-none select-none">02</span>
+
+                    <!-- Premium "Most Popular" badge -->
+                    <div class="inline-flex items-center gap-2 bg-[#d4b478]/15 border border-[#d4b478]/30 rounded-full px-4 py-1.5 mb-4">
+                        <svg class="w-4 h-4 text-[#d4b478]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="text-[#d4b478] text-xs font-bold tracking-[0.15em] uppercase">Most Popular</span>
+                    </div>
+
+                    <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase block">Path 02</span>
+                    <h3 class="font-serif text-4xl md:text-5xl text-[#0f203d] mt-2 mb-1">The Authority</h3>
+
+                    <!-- Accordion: Experience & Revenue -->
+                    <div class="icp-accordion mb-4 mt-4">
+                        <details>
+                            <summary class="icp-accordion-trigger">
+                                <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                                Experience &amp; Revenue Details
+                            </summary>
+                            <div class="icp-accordion-content">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    <span class="text-sm text-[#0f203d]/80">Experience: 10–20 years leading</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    <span class="text-sm text-[#0f203d]/80">Revenue: $500K–$5M+</span>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
+                        "I know my work, but I over-explain it when it matters most."
+                    </blockquote>
+
+                    <div class="space-y-3 mb-8">
+                        <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="text-sm text-[#0f203d]/80">A structured message that lands.</span>
+                            </li>
+                        </ul>
+
+                        <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="text-sm text-[#0f203d]/80">A signature talk aligned to your work.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="/icp-path/?icp=authority"
+                        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 group/btn">
+                        Build My Talk
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Image (Right on desktop) -->
+                <div class="relative animate-fade-in-up stagger-2 lg:order-last order-1">
+                    <div class="bg-white p-3 rounded-2xl shadow-xl shadow-[#0f203d]/10">
+                        <div class="rounded-xl overflow-hidden ring-1 ring-[#d4b478]/20 aspect-[4/5]">
                             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img2.webp'); ?>"
                                 alt="The Authority"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                                 loading="lazy" />
-                            <div class="absolute inset-0 icp-card-gradient"></div>
-                        </div>
-
-                        <!-- Card body -->
-                        <div class="p-6 flex flex-col flex-1 relative z-10 icp-reveal-trigger">
-                            <h3 class="font-serif text-2xl text-[#0f203d] mb-1">The Authority</h3>
-
-                            <!-- Accordion: Experience & Revenue -->
-                            <div class="icp-accordion mb-4">
-                                <details>
-                                    <summary class="icp-accordion-trigger">
-                                        <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                        Experience &amp; Revenue Details
-                                    </summary>
-                                    <div class="icp-accordion-content">
-                                        <div class="flex items-start gap-3 mb-2">
-                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                            </svg>
-                                            <span class="text-sm text-[#0f203d]/80">Experience: 10–20 years leading</span>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                            </svg>
-                                            <span class="text-sm text-[#0f203d]/80">Revenue: $500K–$5M+</span>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
-                                "I know my work, but I over-explain it when it matters most."
-                            </blockquote>
-
-                            <div class="space-y-3 mb-8 flex-1">
-                                <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <span class="text-sm text-[#0f203d]/80">A structured message that lands.</span>
-                                    </li>
-                                </ul>
-
-                                <p class="text-[#0f203d]/50 text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <span class="text-sm text-[#0f203d]/80">A signature talk aligned to your work.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="/icp-path/?icp=authority"
-                                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 group/btn mt-auto">
-                                Build My Talk
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- ============================== -->
-                    <!-- ICP 3: The Legacy               -->
-                    <!-- ============================== -->
-                    <div class="group relative bg-[#0f203d] rounded-2xl shadow-lg overflow-hidden border border-[#d4b478]/20 hover:border-[#d4b478]/30 hover:shadow-xl transition-all duration-300 flex flex-col card-lift animate-fade-in-up stagger-3">
-                        <!-- Image background reveal on hover -->
-                        <div class="icp-image-reveal">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img4.webp'); ?>"
-                                alt=""
-                                aria-hidden="true" />
-                        </div>
-
-                        <!-- Image area -->
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img4.webp'); ?>"
-                                alt="The Legacy"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                loading="lazy" />
-                            <div class="absolute inset-0 icp-card-gradient"></div>
-                        </div>
-
-                        <!-- Card body -->
-                        <div class="p-6 flex flex-col flex-1 relative z-10 icp-reveal-trigger">
-                            <h3 class="font-serif text-2xl text-[#d4b478] mb-1">The Legacy</h3>
-
-                            <!-- Accordion: Experience & Revenue -->
-                            <div class="icp-accordion mb-4">
-                                <details>
-                                    <summary class="icp-accordion-trigger">
-                                        <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                        Experience &amp; Revenue Details
-                                    </summary>
-                                    <div class="icp-accordion-content">
-                                        <div class="flex items-start gap-3 mb-2">
-                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                            </svg>
-                                            <span class="text-sm text-[#faf8f5]/80">Experience: 20+ years leading</span>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                            </svg>
-                                            <span class="text-sm text-[#faf8f5]/80">Revenue: $5M–$25M+</span>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
-                                "I've built something significant, but I'm not clearly known for what I do differently."
-                            </blockquote>
-
-                            <div class="space-y-3 mb-8 flex-1">
-                                <p class="text-[#d4b478] text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <span class="text-sm text-[#faf8f5]/80">A distinct, repeatable point of view.</span>
-                                    </li>
-                                </ul>
-
-                                <p class="text-[#d4b478] text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                        <span class="text-sm text-[#faf8f5]/80">A blueprint people can build on after you.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="/icp-path/?icp=legacy"
-                                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 group/btn mt-auto">
-                                Private Training
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <!-- Section divider -->
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5C: THE LEGACY — "The Monument"                       -->
+        <!-- ============================================================ -->
+        <section class="bg-[#0f203d] text-[#faf8f5] relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh] items-center">
+                <!-- Image (Top on mobile, Right on desktop) -->
+                <div class="relative h-full min-h-[400px] lg:min-h-full lg:order-last animate-fade-in-up stagger-1">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/carousel/img4.webp'); ?>"
+                        alt="The Legacy"
+                        class="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy" />
+                    <!-- Gradient overlay fading into content on desktop -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#0f203d] via-[#0f203d]/80 to-transparent hidden lg:block"></div>
+                    <!-- Mobile gradient overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0f203d] via-transparent to-transparent lg:hidden"></div>
+                </div>
+
+                <!-- Content (Bottom on mobile, Left on desktop) -->
+                <div class="relative px-6 lg:px-16 py-24 animate-fade-in-up stagger-2">
+                    <!-- Giant watermark -->
+                    <span class="absolute -top-12 -right-4 text-[10rem] md:text-[14rem] font-serif text-[#d4b478]/[0.03] leading-none pointer-events-none select-none">03</span>
+
+                    <!-- Floating particles -->
+                    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                        <?php for ($i = 1; $i <= 8; $i++): ?>
+                            <div class="absolute w-2 h-2 bg-[#d4b478]/30 rounded-full animate-float"
+                                style="left: <?php echo rand(0, 100); ?>%; top: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 5); ?>s; animation-duration: <?php echo 6 + rand(0, 4); ?>s;">
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+
+                    <span class="text-[#d4b478] text-xs font-bold tracking-[0.2em] uppercase">Path 03</span>
+                    <h3 class="font-serif text-4xl md:text-5xl text-[#d4b478] mt-2 mb-1">The Legacy</h3>
+
+                    <!-- Accordion: Experience & Revenue -->
+                    <div class="icp-accordion mb-4 mt-4">
+                        <details>
+                            <summary class="icp-accordion-trigger">
+                                <svg class="icp-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                                Experience &amp; Revenue Details
+                            </summary>
+                            <div class="icp-accordion-content">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    <span class="text-sm text-[#faf8f5]/80">Experience: 20+ years leading</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-4 h-4 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    <span class="text-sm text-[#faf8f5]/80">Revenue: $5M–$25M+</span>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <blockquote class="text-[#d4b478] italic text-sm border-l-2 border-[#d4b478]/30 pl-4 mb-6 leading-relaxed quote-gold-accent">
+                        "I've built something significant, but I'm not clearly known for what I do differently."
+                    </blockquote>
+
+                    <div class="space-y-3 mb-8">
+                        <p class="text-[#d4b478] text-xs font-bold tracking-[0.15em] uppercase">You need:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="text-sm text-[#faf8f5]/80">A distinct, repeatable point of view.</span>
+                            </li>
+                        </ul>
+
+                        <p class="text-[#d4b478] text-xs font-bold tracking-[0.15em] uppercase mt-4">You get:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-[#d4b478] mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span class="text-sm text-[#faf8f5]/80">A blueprint people can build on after you.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="/icp-path/?icp=legacy"
+                        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#d4b478] hover:bg-[#e8a838] text-[#0f203d] font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-[#d4b478]/20 group/btn">
+                        Private Training
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
 
